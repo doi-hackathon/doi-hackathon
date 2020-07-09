@@ -3,6 +3,8 @@ package com.scan4kids.project.models;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "events")
@@ -18,8 +20,8 @@ public class Event {
     @Column(nullable = false, length = 200)
     private String location;
 
-//    @Column(nullable = false, date)
-//    private Date
+    @Column
+    private Timestamp dateAndTime;
 
     @Column(columnDefinition="TEXT")
     private String description;
@@ -27,23 +29,28 @@ public class Event {
     @Column(nullable = true)
     private String link;
 
-    @Column(int)
+    @Column(nullable = true)
     private int volunteerGoal;
+
+    @OneToOne
+    private User user;
 
     public Event(){}
 
-    public Event(String title, String location, String description, String link, int volunteerGoal) {
+    public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal) {
         this.title = title;
         this.location = location;
+        this.dateAndTime = dateAndTime;
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
     }
 
-    public Event(long id, String title, String location, String description, String link, int volunteerGoal) {
+    public Event(long id, String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal) {
         this.id = id;
         this.title = title;
         this.location = location;
+        this.dateAndTime = dateAndTime;
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
@@ -95,5 +102,13 @@ public class Event {
 
     public void setVolunteerGoal(int volunteerGoal) {
         this.volunteerGoal = volunteerGoal;
+    }
+
+    public Timestamp getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(Timestamp dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 }
