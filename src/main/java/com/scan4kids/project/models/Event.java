@@ -1,10 +1,8 @@
 package com.scan4kids.project.models;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -32,21 +30,24 @@ public class Event {
     @Column(nullable = true)
     private int volunteerGoal;
 
-    @OneToOne
-    private User user;
+    @ManyToMany(mappedBy = "events")
+    private List<User> users;
+
+
 
     public Event(){}
 
-    public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal) {
+    public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
         this.title = title;
         this.location = location;
         this.dateAndTime = dateAndTime;
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
+        this.users = users;
     }
 
-    public Event(long id, String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal) {
+    public Event(long id, String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -54,6 +55,7 @@ public class Event {
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
+        this.users = users;
     }
 
     public long getId() {
@@ -110,5 +112,13 @@ public class Event {
 
     public void setDateAndTime(Timestamp dateAndTime) {
         this.dateAndTime = dateAndTime;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

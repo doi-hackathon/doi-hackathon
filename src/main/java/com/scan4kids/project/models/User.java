@@ -1,6 +1,7 @@
 package com.scan4kids.project.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,14 @@ public class User {
 
     @Column(nullable = false)
     private boolean isAdmin;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_events",
+            joinColumns = {@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name="event_id")}
+    )
+    private List<Event> events;
 
     public User(){}
 
