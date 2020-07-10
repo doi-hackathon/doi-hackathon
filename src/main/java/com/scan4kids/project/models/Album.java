@@ -1,6 +1,7 @@
 package com.scan4kids.project.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="albums")
@@ -20,19 +21,26 @@ public class Album {
     @JoinColumn (name = "user_id")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
+    private List<Photo> photos;
+
 
     public Album() {
     }
 
-    public Album(String title, String description) {
+    public Album(String title, String description, List<Photo> photos, User user) {
         this.title = title;
         this.description = description;
+        this.photos = photos;
+        this.user = user;
     }
 
-    public Album(long id, String title, String description) {
+    public Album(long id, String title, String description, List<Photo> photos, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.photos = photos;
+        this.user = user;
     }
 
     public long getId() {
@@ -57,5 +65,21 @@ public class Album {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
