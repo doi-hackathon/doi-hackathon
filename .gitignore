@@ -31,5 +31,3 @@ build/
 .vscode/
 src/main/resources/application.properties
 src/main/sql/queries.sql
-
-src/main/resources/templates/users/sign-up.html
