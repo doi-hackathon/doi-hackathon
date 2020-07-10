@@ -33,8 +33,6 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> users;
 
-
-
     public Event(){}
 
     public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
