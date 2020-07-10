@@ -55,16 +55,6 @@ public class User {
         this.albums = albums;
     }
 
-    public User(User copy){
-        id = copy.id;
-        username = copy.username;
-        password = copy.password;
-        email = copy.email;
-        isAdmin = copy.isAdmin;
-        events = copy.events;
-        albums = copy.albums;
-    }
-
     public long getId() {
         return id;
     }
