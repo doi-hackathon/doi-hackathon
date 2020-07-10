@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Edit an event')">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--<nav th:replace="fragments/navbar :: navbar" />-->
+
+<div class="container">
+	<form th:action="${'/events/' + event.id + '/edit'}" th:method="POST" th:object="${event}">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Title</label>
+				<input type="text" name="title" class="form-control" id="formGroupExampleInput" th:field="*{title}">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Location</label>
+				<input type="text" name="location" class="form-control" id="formGroupExampleInput2" th:field="*{location}">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput3">Date and Time</label>
+				<input type="text" name="dateAndTime" class="form-control" id="formGroupExampleInput3" th:field="*{dateAndTime}">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput4">Description</label>
+				<input type="text" name="description" class="form-control" id="formGroupExampleInput4" th:field="*{description}">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput5">Link</label>
+				<input type="text" name="link" class="form-control" id="formGroupExampleInput5" th:field="*{link}">
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput6">Volunteer Goal</label>
+				<input type="text" name="volunteerGoal" class="form-control" id="formGroupExampleInput6" th:field="*{volunteerGoal}">
+			</div>
+
+			<button type="submit" class="btn btn-primary mb-2 mr-2">Update event</button>
+	</form>
+
+	<form th:action="${'/events/' + event.id + '/delete'}" th:method="POST">
+		<button type="submit" class="btn btn-danger mb-2">Delete</button>
+	</form>
+
+</div>
+
+<section th:replace="fragments/section :: section" />
+
+
+</body>
+</html>
