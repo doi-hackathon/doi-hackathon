@@ -31,6 +31,9 @@ public class User {
     )
     private List<Event> events;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Album> albums;
+
     public User(){}
 
     public User(String username, String password, String email, boolean isAdmin) {
