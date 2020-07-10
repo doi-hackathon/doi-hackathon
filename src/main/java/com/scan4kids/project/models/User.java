@@ -11,13 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -43,6 +43,16 @@ public class User {
         this.isAdmin = isAdmin;
         this.events = events;
         this.albums = albums;
+    }
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.password = copy.password;
+        this.email = copy.email;
+        this.isAdmin = copy.isAdmin;
+        this.events = copy.events;
+        this.albums = copy.albums;
     }
 
     public User(long id, String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
