@@ -36,19 +36,23 @@ public class User {
 
     public User(){}
 
-    public User(String username, String password, String email, boolean isAdmin) {
+    public User(String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
+        this.events = events;
+        this.albums = albums;
     }
 
-    public User(long id, String username, String password, String email, boolean isAdmin) {
+    public User(long id, String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
+        this.events = events;
+        this.albums = albums;
     }
 
     public long getId() {
@@ -89,5 +93,21 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 }
