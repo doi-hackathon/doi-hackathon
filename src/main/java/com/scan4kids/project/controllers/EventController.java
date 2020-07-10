@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class EventController {
         return "events/index";
     }
 
-    @GetMapping("events/create")
+    @PostMapping("events/create")
     public String createEvent(@ModelAttribute Event eventToCreate) {
         User currentUser = usersDao.getOne(1L);
 //        this will be used when security is configured
@@ -40,6 +42,17 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @GetMapping("/events/{id}/edit")
+    public String showEditForm(Model model, @PathVariable Long id) {
+        Event eventToEdit = eventsDao.getOne(id);
+        model.addAttribute("event", eventToEdit);
+        return "events/edit";
+    }
 
+    @PostMapping("/events/{id}/edit")
+    public String editEvent(@ModelAttribute Event eventToEdit) {
+        eventsDao.save(eventToEdit);
+        return "redirect:/events";
+    }
 
 }
