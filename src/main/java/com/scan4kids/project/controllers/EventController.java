@@ -55,4 +55,20 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @PostMapping("/events/{id}/delete")
+    public String delete(@PathVariable long id) {
+        eventsDao.deleteById(id);
+        return "redirect:/events";
+    }
+
+//    @PostMapping("/posts/{id}/delete")
+//    public String delete(@PathVariable long id){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if(currentUser == postsDao.getOne(id).getOwner()) {
+//            postsDao.deleteById(id);
+//        }
+//        postsDao.deleteById(id);
+//        return "redirect:/posts";
+//    }
+
 }
