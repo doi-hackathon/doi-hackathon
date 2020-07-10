@@ -38,7 +38,8 @@ public class EventController {
 //        this will be used when security is configured
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         eventToCreate.setUsers((List<User>) currentUser);
-        Event newEvent = eventsDao.save(eventToCreate);
+//        Event newEvent = eventsDao.save(eventToCreate); this line will be used with email service
+        eventsDao.save(eventToCreate);
         return "redirect:/events";
     }
 
@@ -60,15 +61,5 @@ public class EventController {
         eventsDao.deleteById(id);
         return "redirect:/events";
     }
-
-//    @PostMapping("/posts/{id}/delete")
-//    public String delete(@PathVariable long id){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if(currentUser == postsDao.getOne(id).getOwner()) {
-//            postsDao.deleteById(id);
-//        }
-//        postsDao.deleteById(id);
-//        return "redirect:/posts";
-//    }
 
 }
