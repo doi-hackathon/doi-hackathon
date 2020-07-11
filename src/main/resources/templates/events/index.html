@@ -22,5 +22,10 @@
         </form>
     </div>
 </div>
+<div class="row justify-content-center">
+    <form th:action="${'/events/create'}" th:method="GET" sec:authorize="isAuthenticated()">
+        <button class="btn btn-secondary">Create Event</button>
+    </form>
+</div>
 </body>
 </html>
