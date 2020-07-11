@@ -5,13 +5,14 @@
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <h1 class="d-flex justify-content-center">Albums</h1>
 
-<section th:replace="fragments/section :: section"></section>
-
 <h3 class="d-flex justify-content-center">This button is a placholder for album image that can be clicked to go to photos page.</h3>
 <div class="row justify-content-center">
     <form th:action="${'/albums/photos'}" th:method="GET">
         <button class="btn btn-secondary">Photos</button>
     </form>
 </div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
 </body>
 </html>
