@@ -5,6 +5,7 @@ import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,9 @@ public class EventController {
 
     @PostMapping("events/create")
     public String createEvent(@ModelAttribute Event eventToCreate) {
-        User currentUser = usersDao.getOne(1L);
+//        User currentUser = usersDao.getOne(1L);
 //        this will be used when security is configured
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         eventToCreate.setUsers((List<User>) currentUser);
 //        Event newEvent = eventsDao.save(eventToCreate); this line will be used with email service
         eventsDao.save(eventToCreate);
