@@ -5,7 +5,7 @@
 	<title>Title</title>
 </head>
 <body>
-<!--<nav th:replace="fragments/navbar :: navbar" />-->
+<nav th:replace="fragments/navbar :: navbar" />
 
 <div class="container">
 	<form th:action="${'/events/' + event.id + '/edit'}" th:method="POST" th:object="${event}">
@@ -44,7 +44,5 @@
 </div>
 
 <section th:replace="fragments/section :: section" />
-
-
 </body>
 </html>
