@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Events')"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<h1 class="d-flex justify-content-center mt-5">Upcoming Events</h1>
+<h1 th:if="${noEventsFound}">No events found!</h1>
+<div class="row justify-content-center">
+    <div class="card text-center m-5 border-secondary" style="width: 18rem;" th:each="event : ${events}">
+        <div class="card-body p-0">
+            <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
+            <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+        </div>
+<!--        <form class="my-2" th:action="${'/events/' + event.id}" th:method="GET">-->
+<!--            <button class="btn btn-secondary">View Post</button>-->
+<!--        </form>-->
+    </div>
+</div>
+</body>
+</html>
