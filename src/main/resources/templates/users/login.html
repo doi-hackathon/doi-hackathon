@@ -5,20 +5,26 @@
 	<title>Log In</title>
 </head>
 <body>
-<h1>Log In</h1>
-<div th:if="${param.error}">
+<h1 class="d-flex justify-content-center mt-5">Log In</h1>
+<div class="d-flex justify-content-center my-5" th:if="${param.error}">
 	Invalid Username and Password.
 </div>
-<div th:if="${param.logout}">
+<div class="d-flex justify-content-center my-5" th:if="${param.logout}">
 	You have been logged out.
 </div>
 
-<form th:action="@{/login}" th:method="POST">
-	<label for="username">Username</label>
-	<input id="username" name="username" type="text" />
-	<label for="password">Password</label>
-	<input id="password" name="password" type="password" />
-	<input type="submit" value="Log In" />
+<form th:action="@{/login}" th:method="post">
+	<div class="col-md-4 mx-auto">
+		<div>
+			<label for="username">Username</label>
+			<input id="username" class="form-control" name="username" type="text" />
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input id="password" class="form-control" name="password" type="password" />
+			<button type="submit" class="btn btn-secondary mt-2" value="Log In">Login</button>
+		</div>
+	</div>
 </form>
 </body>
 </html>
