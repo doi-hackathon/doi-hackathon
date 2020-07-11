@@ -5,6 +5,8 @@
 	<title>Log In</title>
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
 <h1 class="d-flex justify-content-center mt-5">Log In</h1>
 <div class="d-flex justify-content-center my-5" th:if="${param.error}">
 	Invalid Username and Password.
