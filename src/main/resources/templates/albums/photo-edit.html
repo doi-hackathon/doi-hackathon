@@ -21,6 +21,10 @@
 
 		<button type="submit" class="btn btn-primary mb-2 mr-2">Update Photo</button>
 	</form>
+
+	<form th:action="${'/albums/photos/' + photo.id + '/delete'}" th:method="POST">
+		<button type="submit" class="btn btn-danger mb-2">Delete</button>
+	</form>
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>

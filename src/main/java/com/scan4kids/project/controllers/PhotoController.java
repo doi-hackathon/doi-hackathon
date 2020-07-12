@@ -71,4 +71,11 @@ public class PhotoController {
         photosDao.save(photoToEdit);
         return "redirect:/albums/photos/" + photoToEdit.getId();
     }
+
+    @PostMapping("/albums/photos/{id}/delete")
+    public String destroy(@PathVariable long id) {
+        photosDao.deleteById(id);
+        return "redirect:/albums/photos";
+    }
+
 }
