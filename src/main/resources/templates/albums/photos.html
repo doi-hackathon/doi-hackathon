@@ -13,6 +13,9 @@
 					<img th:src="${photo.link}" class="card-title">
 <!--					<p th:text="${photo.description}" class="card-text">Description</p>-->
 <!--					<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>-->
+					<form th:action="${'/albums/photos/' + photo.id}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2 mr-2">View</button>
+					</form>
 				</div>
 			</div>
 		</div>
