@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('View a photo')"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<h1 class="d-flex justify-content-center">Photos</h1>
+
+<div class="container d-flex justify-content-center">
+		<div class="card border-white" style="width: 18rem;">
+			<div class="card-body">
+				<img th:src="${photo.link}" class="card-title">
+				<p th:text="${photo.description}" class="card-text">Description</p>
+				<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
+			</div>
+		</div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
+</body>
+</html>
