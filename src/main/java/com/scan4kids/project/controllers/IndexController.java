@@ -26,8 +26,4 @@ public class IndexController {
         return "donate";
     }
 
-    @GetMapping("/albums/photos")
-    public String photos() {
-        return "albums/photos";
-    }
 }
