@@ -10,4 +10,29 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+    @GetMapping("/albums")
+    public String albums() {
+        return "albums/index";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/donate")
+    public String donate() {
+        return "donate";
+    }
+
+    @GetMapping("/albums/photos")
+    public String photos() {
+        return "albums/photos";
+    }
 }

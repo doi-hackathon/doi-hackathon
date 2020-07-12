@@ -33,13 +33,14 @@ public class EventController {
         return "events/index";
     }
 
+    @GetMapping("/events/create")
+    public String createEventForm(Model eventCreateModel){
+        eventCreateModel.addAttribute("event", new Event());
+        return "events/create";
+    }
+
     @PostMapping("events/create")
     public String createEvent(@ModelAttribute Event eventToCreate) {
-//        User currentUser = usersDao.getOne(1L);
-//        this will be used when security is configured
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        eventToCreate.setUsers((List<User>) currentUser);
-//        Event newEvent = eventsDao.save(eventToCreate); this line will be used with email service
         eventsDao.save(eventToCreate);
         return "redirect:/events";
     }
