@@ -16,11 +16,6 @@ public class IndexController {
         return "about";
     }
 
-    @GetMapping("/albums")
-    public String albums() {
-        return "albums/index";
-    }
-
     @GetMapping("/contact")
     public String contact() {
         return "contact";
