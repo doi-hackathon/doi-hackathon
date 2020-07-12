@@ -2,11 +2,17 @@ package com.scan4kids.project.controllers;
 
 import com.scan4kids.project.daos.AlbumsRepository;
 import com.scan4kids.project.daos.PhotosRepository;
+import com.scan4kids.project.daos.UsersRepository;
+import com.scan4kids.project.models.Album;
 import com.scan4kids.project.models.Photo;
+import com.scan4kids.project.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -15,10 +21,12 @@ public class PhotoController {
 
     private AlbumsRepository albumsDao;
     private PhotosRepository photosDao;
+    private UsersRepository usersDao;
 
-    public PhotoController(AlbumsRepository albumsDao, PhotosRepository photosDao) {
+    public PhotoController(AlbumsRepository albumsDao, PhotosRepository photosDao, UsersRepository usersDao) {
         this.albumsDao = albumsDao;
         this.photosDao = photosDao;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/albums/photos")
@@ -34,6 +42,20 @@ public class PhotoController {
         Photo photo = photosDao.getOne(id);
         model.addAttribute("photo", photo);
         model.addAttribute("photoId", id); //this is optional, just to have this attribute in case it needs to be used in the view at some point.
-        return "albums/show";
+        return "albums/photo-show";
+    }
+
+    @GetMapping("/albums/photos/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("photo", new Photo());
+        return "albums/photo-create";
+    }
+
+    @PostMapping("albums/photos/create")
+    public String saveCreateForm(@ModelAttribute Photo photoToAdd) {
+        Album currentAlbum = albumsDao.getOne(2L); //hard-coded for now
+        photoToAdd.setAlbum(currentAlbum);
+        Photo photoInDB = photosDao.save(photoToAdd);
+        return "redirect:/albums/photos/" + photoInDB.getId();
     }
 }

@@ -7,11 +7,13 @@
 <h1 class="d-flex justify-content-center">Photos</h1>
 
 <div class="container d-flex justify-content-center">
-		<div class="card border-white" style="width: 18rem;">
+		<div class="card border-white">
 			<div class="card-body">
 				<img th:src="${photo.link}" class="card-title">
 				<p th:text="${photo.description}" class="card-text">Description</p>
 				<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
+				<br>
+				<br>
 			</div>
 		</div>
 </div>
