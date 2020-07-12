@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Sign Up')">
+	<meta charset="UTF-8" />
+	<title>Sign up</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<h1 class="d-flex justify-content-center my-5">Create an account</h1>
+<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+	<div class="row">
+		<div class="col-md-4 mx-auto">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input id="username" class="form-control" th:field="*{username}" />
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" class="form-control" th:field="*{email}" />
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input id="password" class="form-control" type="password" th:field="*{password}" />
+			</div>
+			<button type="submit" class="btn btn-secondary">Sign me up!</button>
+		</div>
+	</div>
+</form>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
+</body>
+</html>
