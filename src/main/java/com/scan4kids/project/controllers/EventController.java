@@ -65,13 +65,15 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/volunteer")
-    public String volunteerForEvent(@PathVariable long id){
+    public String volunteerForEvent(@PathVariable long id, Model model){
         Event eventToVolunteer = eventsDao.getOne(id);
         List<User> currentVolunteers = eventToVolunteer.getUsers();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         currentVolunteers.add(currentUser);
         eventToVolunteer.setUsers(currentVolunteers);
         eventsDao.save(eventToVolunteer);
+        model.addAttribute("user", currentUser);
+        model.addAttribute("event", eventToVolunteer);
         return "redirect:/userDashboard";
     }
 

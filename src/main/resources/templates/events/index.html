@@ -20,9 +20,11 @@
         </form>
             <br>
         <form th:action="${'/events/' + event.id + '/volunteer'}">
-            <button class="btn btn-primary">RSVP Event</button>
             <button class="btn btn-primary">Volunteer for Event</button>
         </form >
+<!--        <form th:action="${'/events/' + event.id + '/rsvp'}">-->
+<!--            <button class="btn btn-primary">RSVP Event</button>-->
+<!--        </form>-->
         <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
         </form>
     </div>

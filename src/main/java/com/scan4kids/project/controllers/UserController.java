@@ -48,6 +48,7 @@ public class UserController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
+
         return "users/userDashboard";
     }
 
