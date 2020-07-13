@@ -83,11 +83,4 @@ public class PhotoController {
         return "redirect:/albums/photos";
     }
 
-//    @GetMapping("/test")
-//    public String test(Model model){
-//        model.addAttribute("photo", new Photo());
-//        model.addAttribute("apiKey", apiKey);
-//        return "albums/test";
-//    }
-
 }

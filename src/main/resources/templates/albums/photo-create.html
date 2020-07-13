@@ -16,7 +16,7 @@
 			</div>
 			<div class="form-group">
 				<label for="upload"></label>
-				<button type="button" id="upload" name="upload" class="btn btn-outline-dark mb-2 mr-2">Upload a photo</button>
+				<button type="button" id="upload" name="upload" class="btn btn-outline-dark mb-2 mr-2">Upload photo</button>
 
 				<br>
 				<input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{link}" type="hidden">
@@ -37,7 +37,7 @@
             onUploadDone:
                 function (res) {
                     $("#stashFilestackURL").val(res.filesUploaded[0].url);
-                    // alert("Log fired " + res.filesUploaded[0].url);
+                    alert("File uploaded.");
                 }
         	}
 
@@ -47,7 +47,6 @@
             client.picker(options).open();
         });
 	</script>
-<!--	<script src="filestack.js"></script>-->
 
 </body>
 </html>
