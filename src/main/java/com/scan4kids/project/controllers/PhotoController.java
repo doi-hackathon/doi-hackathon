@@ -56,7 +56,7 @@ public class PhotoController {
 
     @PostMapping("/albums/photos/create")
     public String saveCreateForm(@ModelAttribute Photo photoToAdd) {
-        Album currentAlbum = albumsDao.getOne(1L); //hard-coded for now
+        Album currentAlbum = albumsDao.getOne(3L); //hard-coded for now
         photoToAdd.setAlbum(currentAlbum);
         Photo photoInDB = photosDao.save(photoToAdd);
         return "redirect:/albums/photos/" + photoInDB.getId();
