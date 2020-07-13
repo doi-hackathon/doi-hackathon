@@ -4,6 +4,8 @@ package com.scan4kids.project.controllers;
 import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.Event;
+import com.scan4kids.project.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +62,17 @@ public class EventController {
     public String delete(@PathVariable long id) {
         eventsDao.deleteById(id);
         return "redirect:/events";
+    }
+
+    @PostMapping("/events/{id}/volunteer")
+    public String volunteerForEvent(@PathVariable long id){
+        Event eventToVolunteer = eventsDao.getOne(id);
+        List<User> currentVolunteers = eventToVolunteer.getUsers();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        currentVolunteers.add(currentUser);
+        eventToVolunteer.setUsers(currentVolunteers);
+        eventsDao.save(eventToVolunteer);
+        return "redirect:/userDashboard";
     }
 
 }
