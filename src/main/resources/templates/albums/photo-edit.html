@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Edit a photo')">
 	<meta charset="UTF-8">
 	<title>Title</title>
@@ -9,7 +9,7 @@
 
 <div class="container">
 	<h2>Edit a photo</h2>
-	<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="post" th:object="${photo}">
+	<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="post" th:object="${photo}" sec:authorize="isAuthenticated()">
 		<div class="form-group">
 			<label for="formGroupExampleInput1">Description</label>
 			<input type="text" name="description" class="form-control" id="formGroupExampleInput1" th:field="*{description}">
@@ -22,7 +22,7 @@
 		<button type="submit" class="btn btn-primary mb-2 mr-2">Update Photo</button>
 	</form>
 
-	<form th:action="${'/albums/photos/' + photo.id + '/delete'}" th:method="POST">
+	<form th:action="${'/albums/photos/' + photo.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
 		<button type="submit" class="btn btn-danger mb-2">Delete Photo</button>
 	</form>
 </div>
