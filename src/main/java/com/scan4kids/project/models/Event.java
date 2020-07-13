@@ -2,6 +2,7 @@ package com.scan4kids.project.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
@@ -121,4 +122,10 @@ public class Event {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    public String getFormattedDate() {
+        String s = new SimpleDateFormat("MM/dd/yyyy").format(getDateAndTime());
+        return s;
+    }
+
 }

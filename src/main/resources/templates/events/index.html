@@ -9,7 +9,7 @@
     <div class="card text-center m-5 border-secondary" style="width: 18rem;" th:each="event : ${events}">
         <div class="card-body p-0">
             <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
-            <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
+            <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.getFormattedDate()}"></div>
             <p class="card-text my-3 px-2" th:text="${event.description}"></p>
             <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
             <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
