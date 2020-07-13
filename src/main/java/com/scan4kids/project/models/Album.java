@@ -35,6 +35,13 @@ public class Album {
         this.user = user;
     }
 
+    //May be deleted later, testing only for now
+    public Album(String title, String description, User user) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
+    }
+
     public Album(long id, String title, String description, List<Photo> photos, User user) {
         this.id = id;
         this.title = title;
