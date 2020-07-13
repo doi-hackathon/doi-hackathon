@@ -19,7 +19,7 @@
             <button form="delete-form" class="btn btn-danger">Delete Event</button>
         </form>
             <br>
-        <form th:action="${'/events/' + event.id + '/volunteer'}">
+        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
             <button class="btn btn-primary">Volunteer for Event</button>
         </form >
 <!--        <form th:action="${'/events/' + event.id + '/rsvp'}">-->
