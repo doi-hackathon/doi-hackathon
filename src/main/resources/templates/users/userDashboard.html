@@ -6,17 +6,17 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<h1>Welcome, <span th:text="${username}"></span></h1>
-<p>Email: <span th:text="${post.user.email}"></span> </p>
+<h1>Welcome, <span th:text="${currentUser.username}"></span></h1>
+<p>Email: <span th:text="${currentUser.email}"></span> </p>
 <form>
     <button type="submit" class="btn btn-primary"> Update Email </button>
 </form>
-<div th:each="event : ${events}">
+<!--<div th:each="event : ${events}">-->
     <p>Events You've RSVP'd to</p>
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
 </div>
-<div th:each="event : ${events}">
+<!--<div th:each="event : ${events}">-->
     <p>Events You've volunteered for</p>
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
