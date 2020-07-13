@@ -6,12 +6,12 @@
 
 	<h1 class="d-flex justify-content-center">Photos</h1>
 
-	<div class="container">
+	<div class="container d-flex flex-wrap justify-content-center">
 		<div th:each="photo : ${photos}">
-			<div class="card border-white" style="width: 18rem;">
+			<div class="card border-white">
 				<div class="card-body">
 					<a th:href="${'/albums/photos/' + photo.id}">
-						<img th:src="${photo.link}" class="card-title">
+						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
 					</a>
 				</div>
 			</div>
