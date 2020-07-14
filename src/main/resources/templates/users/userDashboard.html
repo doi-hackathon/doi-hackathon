@@ -11,15 +11,20 @@
 <form>
     <button type="submit" class="btn btn-primary"> Update Email </button>
 </form>
-<!--<div th:each="event : ${events}">-->
+
     <p>Events You've RSVP'd to</p>
+    <div th:each="eventRsvp : ${usersEventsRsvp}">
+        <p th:text="${eventRsvp.title}"></p>
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
 </div>
-<p>Events You've volunteered for</p>
+<h3>Events You've volunteered for</h3>
 <div th:each="event : ${usersEvents}">
-    <p th:text="${event.title}"></p>
-    <form th:action=""><button>Remove Event</button></form>
+    <h5>Event Title: <span th:text="${event.title}"></span></h5>
+    <h5>Event Description: <span th:text="${event.description}"></span></h5>
+    <h5>Event Location:  <span th:text="${event.location}"></span></h5>
+    <h5>Event Date and Time: <span th:text="${event.dateAndTime}"></span></h5>
+<!--    <form th:action=""><button>Remove Event</button></form>-->
     <a><button>View Event</button></a>
 </div>
 

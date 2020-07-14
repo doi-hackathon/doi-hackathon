@@ -48,10 +48,11 @@ public class UserController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
         List <Event> usersEvents = user.getEvents();
-        System.out.println("usersEvents" + usersEvents.size());
+        List <Event> usersEventsRsvp = user.getEvents();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
         model.addAttribute("usersEvents", usersEvents);
+        model.addAttribute("usersEventsRsvp", usersEventsRsvp);
         return "users/userDashboard";
     }
 
