@@ -9,11 +9,12 @@
 <div class="container d-flex justify-content-center">
 		<div class="card border-white">
 			<div class="card-body">
-				<img th:src="${photo.link}" class="card-title">
+				<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
 				<p th:text="${photo.description}" class="card-text">Description</p>
 				<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
+<!--				this is temporary-->
 				<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
-					<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
+					<button type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
 				</form>
 				<br>
 				<br>

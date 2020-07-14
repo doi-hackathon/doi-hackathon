@@ -6,6 +6,7 @@ import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.Album;
 import com.scan4kids.project.models.Photo;
 import com.scan4kids.project.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @Controller
 public class PhotoController {
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
 
     private AlbumsRepository albumsDao;
     private PhotosRepository photosDao;
@@ -46,12 +50,13 @@ public class PhotoController {
     @GetMapping("/albums/photos/create")
     public String showCreateForm(Model model) {
         model.addAttribute("photo", new Photo());
+        model.addAttribute("apiKey", apiKey);
         return "albums/photo-create";
     }
 
     @PostMapping("/albums/photos/create")
     public String saveCreateForm(@ModelAttribute Photo photoToAdd) {
-        Album currentAlbum = albumsDao.getOne(1L); //hard-coded for now
+        Album currentAlbum = albumsDao.getOne(3L); //hard-coded for now
         photoToAdd.setAlbum(currentAlbum);
         Photo photoInDB = photosDao.save(photoToAdd);
         return "redirect:/albums/photos/" + photoInDB.getId();
