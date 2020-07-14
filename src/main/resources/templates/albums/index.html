@@ -5,6 +5,17 @@
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <h1 class="d-flex justify-content-center">Albums</h1>
 
+<div class="container d-flex flex-wrap justify-content-center">
+    <div th:each="album : ${albums}">
+        <div class="card" style="width: 16rem; height: 12rem;">
+
+            <div class="card-body">
+                <p class="card-title">Album title: <span th:text="${album.title}" /></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h3 class="d-flex justify-content-center">This button is a placeholder for album image that can be clicked to go to photos page.</h3>
 <div class="row justify-content-center">
     <form th:action="${'/albums/photos'}" th:method="GET">

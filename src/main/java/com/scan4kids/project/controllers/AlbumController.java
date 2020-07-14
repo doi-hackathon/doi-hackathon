@@ -25,7 +25,7 @@ public class AlbumController {
     public String albumIndex(Model model) {
         List<Album> albums = albumsDao.findAll();
         model.addAttribute("albums", albums);
-        model.addAttribute("noEventsFound", albums.size() == 0);
+        model.addAttribute("noAlbumsFound", albums.size() == 0);
         return "albums/index";
     }
 
