@@ -1,9 +1,6 @@
 package com.scan4kids.project.models;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
 @Entity
@@ -20,8 +17,8 @@ public class Event {
     @Column(nullable = false, length = 200)
     private String location;
 
-    @Column
-    private Timestamp dateAndTime;
+    @Column(nullable = false)
+    private String dateAndTime;
 
     @Column(columnDefinition="TEXT")
     private String description;
@@ -37,7 +34,7 @@ public class Event {
 
     public Event(){}
 
-    public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
+    public Event(String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
         this.title = title;
         this.location = location;
         this.dateAndTime = dateAndTime;
@@ -47,7 +44,7 @@ public class Event {
         this.users = users;
     }
 
-    public Event(long id, String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
+    public Event(long id, String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -106,11 +103,11 @@ public class Event {
         this.volunteerGoal = volunteerGoal;
     }
 
-    public Timestamp getDateAndTime() {
+    public String getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(Timestamp dateAndTime) {
+    public void setDateAndTime(String dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 
@@ -121,4 +118,5 @@ public class Event {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
 }
