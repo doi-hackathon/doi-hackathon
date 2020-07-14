@@ -9,7 +9,7 @@
 
 <div class="container">
 <!--	This is temporary-->
-	<h2>Delete a photo</h2>
+	<h3>Are you sure you want to delete this photo?</h3>
 <!--	<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="post" th:object="${photo}" sec:authorize="isAuthenticated()">-->
 <!--		<div class="form-group">-->
 <!--			<label for="formGroupExampleInput1">Description</label>-->
@@ -24,7 +24,7 @@
 <!--	</form>-->
 
 	<form th:action="${'/albums/photos/' + photo.id + '/delete'}" th:method="POST" th:object="${photo}" sec:authorize="isAuthenticated()">
-		<button type="submit" class="btn btn-danger mb-2">Delete Photo</button>
+		<button type="submit" class="btn btn-danger mb-2">Delete photo</button>
 	</form>
 </div>
 
