@@ -16,10 +16,11 @@
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
 </div>
-<div th:each="event : ${}">
-    <p>Events You've volunteered for</p>
-    <form><button>Remove Event</button></form>
-    <form><button>View Event</button></form>
+<p>Events You've volunteered for</p>
+<div th:each="event : ${usersEvents}">
+    <p th:text="${event.title}"></p>
+    <form th:action=""><button>Remove Event</button></form>
+    <a><button>View Event</button></a>
 </div>
 
 

@@ -20,11 +20,13 @@ public class UserController {
     private UsersRepository users;
     private PasswordEncoder passwordEncoder;
     private EventsRepository eventsDao;
+    private UsersRepository usersDao;
 
 
-    public UserController(UsersRepository users, PasswordEncoder passwordEncoder) {
+    public UserController(UsersRepository users, PasswordEncoder passwordEncoder, UsersRepository usersDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/sign-up")
@@ -43,12 +45,13 @@ public class UserController {
 
     @GetMapping("/userDashboard")
     public String showUserDashboard(Model model){
-//        User currentUser = users.getOne(1L);
-//        List<Event> eventsList = eventsDao.findAll();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(currentUser.getId());
+        List <Event> usersEvents = user.getEvents();
+        System.out.println("usersEvents" + usersEvents.size());
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
-
+        model.addAttribute("usersEvents", usersEvents);
         return "users/userDashboard";
     }
 
