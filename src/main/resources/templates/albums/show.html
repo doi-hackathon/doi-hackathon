@@ -13,7 +13,7 @@
 			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
 			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
 			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
-				<a th:href="${'/albums/photos/' + photo.id}">
+				<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
 					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
 				</a>
 			</div>
