@@ -12,18 +12,19 @@
     <button type="submit" class="btn btn-primary"> Update Email </button>
 </form>
 
-    <p>Events You've RSVP'd to</p>
-    <div th:each="eventRsvp : ${usersEventsRsvp}">
-        <p th:text="${eventRsvp.title}"></p>
+    <h5>Events You've RSVP'd to</h5>
+    <div th:each="userevent_rsvp : ${usersEvents}">
+        <h5>RSVP'd Event: <span th:text="${userevent_rsvp.getEvent().title}"></span></h5>
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
 </div>
+<br>
 <h3>Events You've volunteered for</h3>
-<div th:each="event : ${usersEvents}">
-    <h5>Event Title: <span th:text="${event.title}"></span></h5>
-    <h5>Event Description: <span th:text="${event.description}"></span></h5>
-    <h5>Event Location:  <span th:text="${event.location}"></span></h5>
-    <h5>Event Date and Time: <span th:text="${event.dateAndTime}"></span></h5>
+<div th:each="userEvent : ${usersEvents}">
+    <h5>Event Title: <span th:text="${userEvent.getEvent().getTitle()}"></span></h5>
+    <h5>Event Description: <span th:text="${userEvent.getEvent().description}"></span></h5>
+    <h5>Event Location:  <span th:text="${userEvent.getEvent().location}"></span></h5>
+    <h5>Event Date and Time: <span th:text="${userEvent.getEvent().dateAndTime}"></span></h5>
 <!--    <form th:action=""><button>Remove Event</button></form>-->
     <a><button>View Event</button></a>
 </div>

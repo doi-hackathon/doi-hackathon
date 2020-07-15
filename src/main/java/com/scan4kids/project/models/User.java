@@ -23,26 +23,31 @@ public class User {
     @Column(nullable = false)
     private boolean isAdmin;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="users_events",
-            joinColumns = {@JoinColumn(name="user_id")},
-            inverseJoinColumns = {@JoinColumn(name="event_id")}
-    )
-    private List<Event> events;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Album> albums;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UsersEvents> userEvents;
+
     public User(){}
 
-    public User(String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(String username, String password, String email, boolean isAdmin, List<Album> albums, List<UsersEvents> userEvents) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
-        this.events = events;
         this.albums = albums;
+        this.userEvents = userEvents;
+    }
+
+    public User(long id, String username, String password, String email, boolean isAdmin, List<Album> albums, List<UsersEvents> userEvents) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.isAdmin = isAdmin;
+        this.albums = albums;
+        this.userEvents = userEvents;
     }
 
     public User(User copy) {
@@ -51,19 +56,9 @@ public class User {
         this.password = copy.password;
         this.email = copy.email;
         this.isAdmin = copy.isAdmin;
-        this.events = copy.events;
         this.albums = copy.albums;
     }
 
-    public User(long id, String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.isAdmin = isAdmin;
-        this.events = events;
-        this.albums = albums;
-    }
 
     public long getId() {
         return id;
@@ -105,19 +100,19 @@ public class User {
         isAdmin = admin;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
     public List<Album> getAlbums() {
         return albums;
     }
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public List<UsersEvents> getUserEvents() {
+        return userEvents;
+    }
+
+    public void setUserEvents(List<UsersEvents> userEvents) {
+        this.userEvents = userEvents;
     }
 }

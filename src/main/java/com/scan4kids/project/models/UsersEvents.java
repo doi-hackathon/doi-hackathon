@@ -1,25 +1,23 @@
 package com.scan4kids.project.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import javax.persistence.*;
 
 @Entity
-@Table("users_events")
+@Table(name = "users_events")
 public class UsersEvents {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "event_id")
-    @JsonManagedReference
     private Event event;
 
     @Column(nullable = false)

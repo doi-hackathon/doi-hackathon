@@ -2,9 +2,11 @@ package com.scan4kids.project.controllers;
 
 
 import com.scan4kids.project.daos.EventsRepository;
+import com.scan4kids.project.daos.UsersEventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
+import com.scan4kids.project.models.UsersEvents;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +21,12 @@ import java.util.List;
 public class EventController {
     private UsersRepository usersDao;
     private EventsRepository eventsDao;
+    private UsersEventsRepository usersEventsDao;
 
-    public EventController(UsersRepository usersRepository, EventsRepository eventsRepository) {
+    public EventController(UsersRepository usersRepository, EventsRepository eventsRepository, UsersEventsRepository usersEventsRepository) {
         this.usersDao = usersRepository;
         this.eventsDao = eventsRepository;
+        this.usersEventsDao = usersEventsRepository;
     }
 
     @GetMapping("/events")
@@ -84,22 +88,18 @@ public class EventController {
         Event eventToVolunteer = eventsDao.getOne(id);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
-        List <Event> usersEvents = user.getEvents();
-        usersEvents.add(eventToVolunteer);
-        user.setEvents(usersEvents);
-        usersDao.save(user);
+        UsersEvents userEventsToSave = new UsersEvents(user, eventToVolunteer, true);
+        usersEventsDao.save(userEventsToSave);
         return "redirect:/userDashboard";
     }
 
     @PostMapping("/events/{id}/rsvp")
     public String rsvpForEvent(@PathVariable long id){
-        Event eventToRsvp = eventsDao.getOne(id);
+        Event eventToVolunteer = eventsDao.getOne(id);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
-        List <Event> usersEventsRsvp = user.getEvents();
-        usersEventsRsvp.add(eventToRsvp);
-        user.setEvents(usersEventsRsvp);
-        usersDao.save(user);
+        UsersEvents userEventsToSave = new UsersEvents(user, eventToVolunteer, false);
+        usersEventsDao.save(userEventsToSave);
         return "redirect:/userDashboard";
     }
 

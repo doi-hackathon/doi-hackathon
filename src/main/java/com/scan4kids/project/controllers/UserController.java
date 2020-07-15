@@ -4,6 +4,7 @@ import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
+import com.scan4kids.project.models.UsersEvents;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -47,12 +48,10 @@ public class UserController {
     public String showUserDashboard(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
-        List <Event> usersEvents = user.getEvents();
-        List <Event> usersEventsRsvp = user.getEvents();
+        List <UsersEvents> usersEvents = user.getUserEvents();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
         model.addAttribute("usersEvents", usersEvents);
-        model.addAttribute("usersEventsRsvp", usersEventsRsvp);
         return "users/userDashboard";
     }
 
