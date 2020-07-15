@@ -19,9 +19,12 @@
             <button form="delete-form" class="btn btn-danger">Delete Event</button>
         </form>
             <br>
-        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-            <button class="btn btn-primary">Volunteer for Event</button>
+        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post" th:if="${!usersEvents.isVolunteer()}">
+            <button id="volunteerBtn" class="btn btn-primary">Volunteer for Event</button>
         </form >
+<!--        <form action="" th:if="" method="post">-->
+<!--            <p>You have volunteered for this event</p>-->
+<!--        </form>-->
         <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
             <button class="btn btn-primary">RSVP Event</button>
         </form>
@@ -37,5 +40,6 @@
 
 <footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
+
 </body>
 </html>
