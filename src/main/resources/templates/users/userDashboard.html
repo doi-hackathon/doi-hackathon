@@ -13,14 +13,14 @@
 </form>
 
     <h5>Events You've RSVP'd to</h5>
-    <div th:each="userevent_rsvp : ${usersEvents}">
-        <h5>RSVP'd Event: <span th:text="${userevent_rsvp.getEvent().title}"></span></h5>
+    <div th:each="userevent_rsvp : ${usersEvents}" th:if="${!userevent_rsvp.isVolunteer()}">
+        <h5>RSVPed Event: <span th:text="${userevent_rsvp.getEvent().title}"></span></h5>
     <form><button>Remove Event</button></form>
     <form><button>View Event</button></form>
 </div>
 <br>
 <h3>Events You've volunteered for</h3>
-<div th:each="userEvent : ${usersEvents}">
+<div th:each="userEvent : ${usersEvents}" th:if="${userEvent.isVolunteer()}">
     <h5>Event Title: <span th:text="${userEvent.getEvent().getTitle()}"></span></h5>
     <h5>Event Description: <span th:text="${userEvent.getEvent().description}"></span></h5>
     <h5>Event Location:  <span th:text="${userEvent.getEvent().location}"></span></h5>
