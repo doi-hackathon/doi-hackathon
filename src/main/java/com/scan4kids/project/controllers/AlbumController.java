@@ -29,6 +29,14 @@ public class AlbumController {
         return "albums/index";
     }
 
+    @GetMapping("/albums/{id}")
+    public String showAnAlbum(@PathVariable long id, Model model) {
+        Album album = albumsDao.getOne(id);
+        model.addAttribute("album", album);
+        model.addAttribute("albumId", id); //this is optional, just to have this attribute in case it needs to be used in the view at some point.
+        return "albums/show";
+    }
+
     @GetMapping("/create")
     public String createAlbumForm(Model eventCreateModel){
         eventCreateModel.addAttribute("album", new Album());

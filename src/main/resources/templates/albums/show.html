@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head :: head('View an album')"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<h1 class="d-flex justify-content-center">Album</h1>
+
+<div class="container d-flex justify-content-center">
+	<div class="card border-white">
+		<div class="card-body">
+			<p class="card-title">Album title: <span th:text="${album.title}" /></p>
+			<p class="card-text">Album id #: <span th:text="${album.id}" /></p>
+			<p class="card-text">Description: <span th:text="${album.description}" /></p>
+			<form th:action="${'/albums/photos/create'}" th:method="GET" sec:authorize="isAuthenticated()">
+				<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
+			</form>
+			<!--			<p class="card-text">From album: <span th:text="${album.id}" /></p>-->
+			<!--			<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">-->
+			<!--				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>-->
+			<!--			</form>-->
+			<br>
+			<br>
+		</div>
+	</div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
+</body>
+</html>
