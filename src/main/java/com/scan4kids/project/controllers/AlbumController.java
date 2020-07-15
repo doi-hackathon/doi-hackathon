@@ -2,7 +2,11 @@ package com.scan4kids.project.controllers;
 
 
 import com.scan4kids.project.daos.AlbumsRepository;
+import com.scan4kids.project.daos.PhotosRepository;
 import com.scan4kids.project.models.Album;
+import com.scan4kids.project.models.Photo;
+import com.scan4kids.project.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +20,21 @@ import java.util.List;
 public class AlbumController {
 
     private AlbumsRepository albumsDao;
+    private PhotosRepository photosDao;
 
-    public AlbumController(AlbumsRepository albumsRepository) {
+    public AlbumController(AlbumsRepository albumsRepository, PhotosRepository photosDao) {
         this.albumsDao = albumsRepository;
+        this.photosDao = photosDao;
     }
 
     @GetMapping("/albums")
     public String albumIndex(Model model) {
         List<Album> albums = albumsDao.findAll();
+//        System.out.println(albums.iterator());
+        List<Photo> photos = photosDao.findAll();
+        model.addAttribute("photos", photos);
+//        System.out.println(photos);
+//        System.out.println(photos.get(0).getLink());
         model.addAttribute("albums", albums);
         model.addAttribute("noAlbumsFound", albums.size() == 0);
         return "albums/index";
@@ -37,16 +48,18 @@ public class AlbumController {
         return "albums/show";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/albums/create")
     public String createAlbumForm(Model eventCreateModel){
         eventCreateModel.addAttribute("album", new Album());
         return "albums/create";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/albums/create")
     public String createAlbum(@ModelAttribute Album albumToCreate) {
-        albumsDao.save(albumToCreate);
-        return "redirect:/events";
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //so that the logged-in user is associated with album creation.
+        albumToCreate.setUser(currentUser);
+        Album createdAlbum = albumsDao.save(albumToCreate);
+        return "redirect:/albums/" + createdAlbum.getId();
     }
 
     @GetMapping("/albums/{id}/edit")
@@ -59,13 +72,13 @@ public class AlbumController {
     @PostMapping("/albums/{id}/edit")
     public String editEvent(@ModelAttribute Album albumToEdit) {
         albumsDao.save(albumToEdit);
-        return "redirect: /albums";
+        return "redirect:/albums/" + albumToEdit.getId();
     }
 
     @PostMapping("/albums/{id}/delete")
     public String delete(@PathVariable long id) {
         albumsDao.deleteById(id);
-        return "redirect: /albums";
+        return "redirect:/albums";
     }
 
 }
