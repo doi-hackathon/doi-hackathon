@@ -9,10 +9,15 @@
 <div class="container d-flex justify-content-center">
 	<div class="card border-white">
 		<div class="card-body">
-			<p class="card-title">Album title: <span th:text="${album.title}" /></p>
-			<p class="card-text">Album id #: <span th:text="${album.id}" /></p>
-			<p class="card-text">Description: <span th:text="${album.description}" /></p>
-			<p class="card-text">Photos in this album: <span th:text="${album.photos.toArray()}" /></p>
+			<h4 class="card-title">Album title: <span th:text="${album.title}" /></h4>
+			<h6 class="card-text">Album # <span th:text="${album.id}" /></h6>
+			<p class="card-text"> <span th:text="${album.description}" /></p>
+			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
+				<a th:href="${'/albums/photos/' + photo.id}">
+					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+				</a>
+			</div>
+
 			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET" sec:authorize="isAuthenticated()">
 				<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
 			</form>
