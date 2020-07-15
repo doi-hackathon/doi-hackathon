@@ -5,61 +5,39 @@
     <nav th:replace="fragments/navbar :: navbar"></nav>
     <h1 class="d-flex justify-content-center">Albums</h1>
 
-    <div th:each="album : ${albums}">
-        <h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" /></h4>
-        <h6 class="card-title d-flex justify-content-center">Album #<span th:text="${album.id}" /></h6>
-        <h6 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h6>
-        <div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
-<!--            <p>Test: <span th:text="${album.photos.get}" /></p>-->
-            <img th:src="${photo.link}" style="width: 320px; height: 240px;">
-<!--            <p>From album: <span th:text="${photo.album.title}" /></p>-->
-<!--            <p>Album id#: <span th:text="${photo.album.id}" /></p>-->
-        </div>
-        <br>
-    </div>
-<!--        <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 480px; height: 960px;" data-ride="carousel">-->
-<!--            <ol class="carousel-indicators">-->
-<!--                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>-->
-<!--                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>-->
-<!--                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>-->
-<!--            </ol>-->
-<!--            <div class="carousel-inner">-->
-<!--                <div class="carousel-item active pic">-->
-
-<!--                    <img src="https://cdn.filestackcontent.com/S8G65RcyRASZM57OW2Qt" class="d-block w-100" alt="Cat">-->
-<!--                    <div class="carousel-caption d-none d-md-block">-->
-<!--                        &lt;!&ndash;											<h5>First slide label</h5>&ndash;&gt;-->
-<!--                        <p>Cat</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="carousel-item pic">-->
-<!--                    <img src="https://cdn.filestackcontent.com/4OnTJjXSTXCqoXE94BHm" class="d-block w-100" alt="Beach">-->
-<!--                    <div class="carousel-caption d-none d-md-block">-->
-<!--                        &lt;!&ndash;											<h5>Second slide label</h5>&ndash;&gt;-->
-<!--                        <p>Beach</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="carousel-item pic">-->
-<!--                    <img src="https://cdn.filestackcontent.com/XTiEQWVgSSKmZM6WY4rc" class="d-block w-100" alt="Flowers">-->
-<!--                    <div class="carousel-caption d-none d-md-block">-->
-<!--                        &lt;!&ndash;											<h5>Third slide label</h5>&ndash;&gt;-->
-<!--                        <p>Flowers</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">-->
-<!--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                <span class="sr-only">Previous</span>-->
-<!--            </a>-->
-<!--            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">-->
-<!--                <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                <span class="sr-only">Next</span>-->
-<!--            </a>-->
+<!--    Start of Regular View-->
+<!--    <div th:each="album : ${albums}">-->
+<!--        <h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" /></h4>-->
+<!--        <h6 class="card-title d-flex justify-content-center">Album #<span th:text="${album.id}" /></h6>-->
+<!--        <h6 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h6>-->
+<!--        <div th:each="photo : ${album.photos}" class="d-flex justify-content-center">-->
+<!--            <img th:src="${photo.link}" style="width: 320px; height: 240px;">-->
 <!--        </div>-->
+<!--        <br>-->
+<!--    </div>-->
+<!--    <a th:href="${'/albums/photos/' + photo.id}">-->
+<!--        <img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">-->
+<!--    </a>-->
 
+
+<!--    Start of Cards-->
+<div class="d-flex justify-content-center flex-wrap">
+    <div th:each="album : ${albums}">
+        <div class="card mr-4">
+            <a th:href="${'/albums/' + album.id}">
+                <img th:src="${album.photos[0].link}" class="card-img-top" style="width: 286px; height: 202px;">
+            </a>
+            <div class="card-body">
+                <p class="card-text"><span th:text="${album.title}" class="d-flex justify-content-center"/></p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
 
 
     <footer th:replace="fragments/footer :: footer"></footer>
-<section th:replace="fragments/section :: section"></section>
+    <section th:replace="fragments/section :: section"></section>
 </body>
 </html>

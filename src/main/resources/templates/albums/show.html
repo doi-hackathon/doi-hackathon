@@ -9,9 +9,9 @@
 <div class="container d-flex justify-content-center">
 	<div class="card border-white">
 		<div class="card-body">
-			<h4 class="card-title">Album title: <span th:text="${album.title}" /></h4>
-			<h6 class="card-text">Album # <span th:text="${album.id}" /></h6>
-			<p class="card-text"> <span th:text="${album.description}" /></p>
+			<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
+			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
+			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
 			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
 				<a th:href="${'/albums/photos/' + photo.id}">
 					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
