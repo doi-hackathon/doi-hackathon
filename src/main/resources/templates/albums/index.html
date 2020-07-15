@@ -5,18 +5,18 @@
     <nav th:replace="fragments/navbar :: navbar"></nav>
     <h1 class="d-flex justify-content-center">Albums</h1>
 
-    <div th:each="photo : ${photos}">
-        <img th:src="${photo.link}" style="width: 320px; height: 240px;">
-        <p>From album: <span th:text="${photo.album.title}" /></p>
-        <p>Album id#: <span th:text="${photo.album.id}" /></p>
-    </div>
-
     <div th:each="album : ${albums}">
         <h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" /></h4>
-        <h5 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h5>
-        <h5 class="card-title d-flex justify-content-center"><span th:text="${album.id}" /></h5>
-        <p class="card-title d-flex justify-content-center"><span th:text="${album.getPhotos().toArray()}" /></p>
-
+        <h6 class="card-title d-flex justify-content-center">Album #<span th:text="${album.id}" /></h6>
+        <h6 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h6>
+        <div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
+<!--            <p>Test: <span th:text="${album.photos.get}" /></p>-->
+            <img th:src="${photo.link}" style="width: 320px; height: 240px;">
+<!--            <p>From album: <span th:text="${photo.album.title}" /></p>-->
+<!--            <p>Album id#: <span th:text="${photo.album.id}" /></p>-->
+        </div>
+        <br>
+    </div>
 <!--        <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 480px; height: 960px;" data-ride="carousel">-->
 <!--            <ol class="carousel-indicators">-->
 <!--                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>-->
@@ -56,7 +56,7 @@
 <!--                <span class="sr-only">Next</span>-->
 <!--            </a>-->
 <!--        </div>-->
-    </div>
+
 
 
     <footer th:replace="fragments/footer :: footer"></footer>

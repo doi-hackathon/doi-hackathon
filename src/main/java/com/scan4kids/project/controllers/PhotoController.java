@@ -47,16 +47,18 @@ public class PhotoController {
         return "albums/photo-show";
     }
 
-    @GetMapping("/albums/photos/create")
-    public String showCreateForm(Model model) {
+    @GetMapping("/albums/{albumid}/photos/create")
+    public String showCreateForm(Model model, @PathVariable long albumid) {
+//        Album album = albumsDao.getOne(albumid);
+        model.addAttribute("albumid", albumid);
         model.addAttribute("photo", new Photo());
         model.addAttribute("apiKey", apiKey);
         return "albums/photo-create";
     }
 
-    @PostMapping("/albums/photos/create")
-    public String saveCreateForm(@ModelAttribute Photo photoToAdd) {
-        Album currentAlbum = albumsDao.getOne(3L); //hard-coded for now
+    @PostMapping("/albums/{albumid}/photos/create")
+    public String saveCreateForm(@ModelAttribute Photo photoToAdd, @PathVariable long albumid) {
+        Album currentAlbum = albumsDao.getOne(albumid);
         photoToAdd.setAlbum(currentAlbum);
         Photo photoInDB = photosDao.save(photoToAdd);
         return "redirect:/albums/photos/" + photoInDB.getId();
@@ -71,7 +73,7 @@ public class PhotoController {
 
     @PostMapping("/albums/photos/{id}/edit")
     public String updatePhoto(@ModelAttribute Photo photoToEdit) {
-        Album currentAlbum = albumsDao.getOne(3L); //hard-coded for now
+        Album currentAlbum = albumsDao.getOne(4L); //hard-coded for now
         photoToEdit.setAlbum(currentAlbum);
         photosDao.save(photoToEdit);
         return "redirect:/albums/photos/" + photoToEdit.getId();

@@ -9,11 +9,12 @@
 
 	<div class="container">
 		<h2>Add a photo</h2>
-		<form th:action="@{/albums/photos/create}" th:method="post" th:object="${photo}">
+		<form th:action="${'/albums/' + albumid + '/photos/create'}" th:method="post" th:object="${photo}">
 			<div class="form-group">
 				<label for="description">Description</label>
 				<input type="text" name="description" class="form-control" id="description" th:field="*{description}">
 			</div>
+<!--			<input type="hidden" name="albumid" id="albumid" th:value="${albumid}">-->
 			<div class="form-group">
 				<label for="upload"></label>
 				<button type="button" id="upload" name="upload" class="btn btn-outline-dark mb-2 mr-2">Upload photo</button>

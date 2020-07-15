@@ -12,7 +12,8 @@
 			<p class="card-title">Album title: <span th:text="${album.title}" /></p>
 			<p class="card-text">Album id #: <span th:text="${album.id}" /></p>
 			<p class="card-text">Description: <span th:text="${album.description}" /></p>
-			<form th:action="${'/albums/photos/create'}" th:method="GET" sec:authorize="isAuthenticated()">
+			<p class="card-text">Photos in this album: <span th:text="${album.photos.toArray()}" /></p>
+			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET" sec:authorize="isAuthenticated()">
 				<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
 			</form>
 			<!--			<p class="card-text">From album: <span th:text="${album.id}" /></p>-->
