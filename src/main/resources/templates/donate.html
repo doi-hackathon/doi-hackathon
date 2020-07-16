@@ -8,7 +8,26 @@
 <h1 class="d-flex justify-content-center">Donate</h1>
 
 
-<script src="js/stripe.js"></script>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-10 col-12 my-auto mx-auto text-center">
+                <h1>
+                    Stripe Payment Examples
+                </h1>
+                <p class="lead mb-4">
+                    What would you like to do?
+                </p>
+                <a class="btn btn-success" th:href="@{/charge}">Create One-Time Charge</a>
+                <p class="mt-5 text-muted">
+                    <small>An example project by <a th:href="@{https://attacomsian.com}" target="_blank">Atta</a>.</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<script src="js/stripe.js"></script>-->
 <!--<form action="/charge" method="post" id="payment-form">-->
 <!--    <div class="form-row">-->
 <!--        <label for="card-element">-->

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PaymentController {
 
-    @Value("${stripe.keys.public}")
+    @Value("pk_test_51H5dssG4ZY77oKMAnTgTxm00Qu1LIHd1QJ1O84APCudNZe2nbDvTHssCs3G8B0IhRHH3mfQXoGPSXW45JOgTOje300rKKEuyVa")
     private String API_PUBLIC_KEY;
 
     private StripeService stripeService;
