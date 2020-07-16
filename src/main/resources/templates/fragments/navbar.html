@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<nav th:fragment="navbar" id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand" href="/">S.C.A.N.</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,9 +35,9 @@
                         <button class="btn btn-outline-secondary">Sign Up</button>
                     </form>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+                <form th:action="@{/login}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
+                    <button class="btn btn-outline-secondary">Login</button>
+                </form>
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
