@@ -20,8 +20,8 @@
         </form>
             <br>
         <div th:each="userEvent : ${usersEvents}">
-            <div th:switch="${usersEvents.get(event.getId())}" >
-                <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post" >
+            <div th:switch="${usersEvents.get(event.getId() -1)}">
+                <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
                     <button class="btn btn-primary">Volunteer for Event</button>
                 </form >
                 <p th:case="${true}">You've already volunteered.</p>

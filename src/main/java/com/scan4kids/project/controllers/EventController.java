@@ -34,6 +34,7 @@ public class EventController {
         List<Event> events = eventsDao.findAll();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
+        System.out.println("usersEvents: " +  usersEvents.get(0).getId());
         model.addAttribute("usersEvents", usersEvents);
         model.addAttribute("events", events);
         model.addAttribute("noEventsFound", events.size() == 0);
