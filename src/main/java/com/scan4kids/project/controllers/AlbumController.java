@@ -71,8 +71,17 @@ public class AlbumController {
 
     @PostMapping("/albums/{id}/edit")
     public String editEvent(@ModelAttribute Album albumToEdit) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        albumToEdit.setUser(currentUser);
         albumsDao.save(albumToEdit);
         return "redirect:/albums/" + albumToEdit.getId();
+    }
+
+    @GetMapping("/albums/{id}/delete")
+    public String showDeleteForm(Model model, @PathVariable Long id) {
+        Album albumToDelete = albumsDao.getOne(id);
+        model.addAttribute("album", albumToDelete);
+        return "albums/delete";
     }
 
     @PostMapping("/albums/{id}/delete")

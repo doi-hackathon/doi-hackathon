@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Albums')"></head>
 <body>
     <nav th:replace="fragments/navbar :: navbar"></nav>
     <h1 class="d-flex justify-content-center">Albums</h1>
+
+    <form th:action="${'/albums/create'}" th:method="GET" sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mb-2 mr-2">Create an Album</button>
+    </form>
 
 <!--    Start of Regular View-->
 <!--    <div th:each="album : ${albums}">-->
@@ -32,6 +36,8 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <br>
     <br>
 </div>

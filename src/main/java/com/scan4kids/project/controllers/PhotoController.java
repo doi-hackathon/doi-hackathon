@@ -81,6 +81,13 @@ public class PhotoController {
         return "redirect:/albums/{albumid}/photos/" + photoInDB.getId();
     }
 
+    @GetMapping("/albums/{albumid}/photos/{id}/delete")
+    public String showDeleteForm(Model model, @PathVariable Long id) {
+        Photo photoToDelete = photosDao.getOne(id);
+        model.addAttribute("photo", photoToDelete);
+        return "albums/photo-delete";
+    }
+
     @PostMapping("/albums/{albumid}/photos/{id}/delete")
     public String destroy(@PathVariable long id) {
         photosDao.deleteById(id);

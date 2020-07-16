@@ -21,10 +21,15 @@
 			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET" sec:authorize="isAuthenticated()">
 				<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
 			</form>
-			<!--			<p class="card-text">From album: <span th:text="${album.id}" /></p>-->
-			<!--			<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">-->
-			<!--				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>-->
-			<!--			</form>-->
+
+			<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
+				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit Album</button>
+			</form>
+
+			<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET" sec:authorize="isAuthenticated()">
+				<button type="submit" class="btn btn-danger mb-2 mr-2">Delete Album</button>
+			</form>
+
 			<br>
 			<br>
 		</div>
