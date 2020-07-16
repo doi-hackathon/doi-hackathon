@@ -23,6 +23,12 @@ public class Photo {
     public Photo() {
     }
 
+    //may be deleted later
+    public Photo(String description, String link) {
+        this.description = description;
+        this.link = link;
+    }
+
     public Photo(String description, String link, Album album){
         this.description = description;
         this.link = link;

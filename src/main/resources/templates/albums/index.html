@@ -1,18 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Albums')"></head>
 <body>
-<nav th:replace="fragments/navbar :: navbar"></nav>
-<h1 class="d-flex justify-content-center">Albums</h1>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+    <h1 class="d-flex justify-content-center">Albums</h1>
 
-<h3 class="d-flex justify-content-center">This button is a placeholder for album image that can be clicked to go to photos page.</h3>
-<div class="row justify-content-center">
-    <form th:action="${'/albums/photos'}" th:method="GET">
-        <button class="btn btn-secondary">Photos</button>
+    <form th:action="${'/albums/create'}" th:method="GET" sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mb-2 mr-2">Create an Album</button>
     </form>
-</div>
 
-<footer th:replace="fragments/footer :: footer"></footer>
-<section th:replace="fragments/section :: section"></section>
+    <div th:each="album : ${albums}">
+        <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 400px; height: 275px;" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active pic">
+                    <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                    <a th:href="${'/albums/' + album.id}">
+                        <img th:src="${album.photos[0].link}" class="d-block w-100">
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p><span th:text="${album.photos[0].description}"/></p>
+                    </div>
+                </div>
+                <div class="carousel-item pic">
+                    <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                    <a th:href="${'/albums/' + album.id}">
+                        <img th:src="${album.photos[1].link}" class="d-block w-100">
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p><span th:text="${album.photos[1].description}"/></p>
+                    </div>
+                </div>
+                <div class="carousel-item pic">
+                    <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                    <a th:href="${'/albums/' + album.id}">
+                        <img th:src="${album.photos[2].link}" class="d-block w-100">
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p><span th:text="${album.photos[2].description}"/></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer"></footer>
+    <section th:replace="fragments/section :: section"></section>
 </body>
 </html>
