@@ -6,7 +6,6 @@
 
 <h1 class="d-flex justify-content-center">Album</h1>
 
-<!-- Regular view -->
 <div class="container d-flex justify-content-center">
 	<div class="card border-white">
 		<div class="card-body">
@@ -31,49 +30,13 @@
 				<button type="submit" class="btn btn-danger mb-2 mr-2">Delete Album</button>
 			</form>
 
+			<a th:href="${'/albums'}">Back to all Albums</a>
+
 			<br>
 			<br>
 		</div>
 	</div>
 </div>
-
-
-<!--Start of code-trial-->
-<!--<div th:each="photo : ${album.photos}">-->
-<!--	<div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 480px; height: 960px;" data-ride="carousel">-->
-<!--		<ol class="carousel-indicators">-->
-<!--			<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>-->
-<!--			<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>-->
-<!--		</ol>-->
-<!--		<div class="carousel-inner">-->
-<!--			<div th:each="photo : ${album.photos}">-->
-<!--				<div class="carousel-item active pic">-->
-<!--					<img src="https://cdn.filestackcontent.com/4OnTJjXSTXCqoXE94BHm" style="width: 286px; height: 202px;">-->
-<!--					<div class="carousel-caption d-none d-md-block">-->
-<!--						&lt;!&ndash;											<h5>DOG First slide label</h5>&ndash;&gt;-->
-<!--							<p><span th:text="${photo.description}" /></p>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--			<div class="carousel-item pic">-->
-<!--				<img src="https://cdn.filestackcontent.com/4OnTJjXSTXCqoXE94BHm" class="d-block w-100" alt="Beach">-->
-<!--				<div class="carousel-caption d-none d-md-block">-->
-<!--					&lt;!&ndash;											<h5> DOLPHINS Second slide label</h5>&ndash;&gt;-->
-<!--					<p><span th:text="${album.photos[1].description}" /></p>-->
-<!--				</div>-->
-<!--			</div>-->
-
-<!--		</div>-->
-<!--		<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">-->
-<!--			<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--			<span class="sr-only">Previous</span>-->
-<!--		</a>-->
-<!--		<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">-->
-<!--			<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--			<span class="sr-only">Next</span>-->
-<!--		</a>-->
-<!--	</div>-->
-<!--</div>-->
 
 <footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
