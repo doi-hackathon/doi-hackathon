@@ -9,6 +9,5 @@ import java.util.List;
 
 public interface UsersEventsRepository extends JpaRepository<UsersEvents, Long> {
     List<UsersEvents> findAllByUserId(long id);
-
-    byte countByEventAndUserAndVolunteer(Event event, User user, boolean isVolunteer);
+//    byte countByEventAndUserAndVolunteer(Event event, User user, boolean isVolunteer);
 }

@@ -19,21 +19,10 @@
             <button form="delete-form" class="btn btn-danger">Delete Event</button>
         </form>
             <br>
-        <div th:each="userEvent : ${usersEvents}">
-            <div th:switch="${usersEvents.get(event.getId() -1)}">
-                <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                    <button class="btn btn-primary">Volunteer for Event</button>
-                </form >
-                <p th:case="${true}">You've already volunteered.</p>
-            </div>
-        </div>
-<!--        <form action="" th:if="" method="post">-->
-<!--            <p>You have volunteered for this event</p>-->
-<!--        </form>-->
-        <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
-            <button class="btn btn-primary">RSVP Event</button>
-        </form>
         <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
+        </form>
+        <form th:action="${'/events/' + event.id}" th:method="GET">
+            <button class="btn-primary">View Event Details</button>
         </form>
     </div>
 </div>
@@ -42,6 +31,7 @@
         <button class="btn btn-secondary">Create Event</button>
     </form>
 </div>
+
 
 <footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>

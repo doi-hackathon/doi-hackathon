@@ -41,6 +41,14 @@ public class EventController {
         return "events/index";
     }
 
+    @GetMapping("/events/{id}")
+    public String show(@PathVariable long id, Model model){
+        Event event = eventsDao.getOne(id);
+        model.addAttribute("eventId", id);
+        model.addAttribute("event", event);
+        return "/events/show";
+    }
+
     @GetMapping("/events/create")
     public String createEventForm(Model eventCreateModel){
         eventCreateModel.addAttribute("event", new Event());
