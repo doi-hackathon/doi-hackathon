@@ -32,13 +32,11 @@ public class AlbumController {
         List<Album> albums = albumsDao.findAll();
 //        System.out.println(albums.iterator());
         List<Photo> photos = photosDao.findAll();
-        model.addAttribute("notEnoughForCarousel", photos.size() == 0 || photos.size() == 1 || photos.size() == 2);
         model.addAttribute("photos", photos);
 //        System.out.println(photos);
 //        System.out.println(photos.get(0).getLink());
         model.addAttribute("albums", albums);
         model.addAttribute("noAlbumsFound", albums.size() == 0);
-//        model.addAttribute("notEnoughForCarousel", for( Album album : albums));
         return "albums/index";
     }
 
