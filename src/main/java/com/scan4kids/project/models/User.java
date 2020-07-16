@@ -120,4 +120,5 @@ public class User {
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
     }
+
 }
