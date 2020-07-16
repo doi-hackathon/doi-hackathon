@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Donate')"></head>
+<head th:replace="fragments/head :: head('Donate')">
+<!--    <script src="https://js.stripe.com/v3/"></script>-->
+</head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <h1 class="d-flex justify-content-center">Donate</h1>
 
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
 
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
+<script src="js/stripe.js"></script>
+<!--<form action="/charge" method="post" id="payment-form">-->
+<!--    <div class="form-row">-->
+<!--        <label for="card-element">-->
+<!--            Credit or debit card-->
+<!--        </label>-->
+<!--        <div id="card-element">-->
+<!--            &lt;!&ndash; A Stripe Element will be inserted here. &ndash;&gt;-->
+<!--        </div>-->
 
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
+<!--        &lt;!&ndash; Used to display form errors. &ndash;&gt;-->
+<!--        <div id="card-errors" role="alert"></div>-->
+<!--    </div>-->
 
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
-
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
-
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
-
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
-
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus fugiat libero perferendis quo voluptates! Accusantium harum libero numquam obcaecati! Ea iste iure magnam nulla officia quaerat, quasi quisquam repudiandae soluta?</h1>
+<!--    <button>Submit Payment</button>-->
+<!--</form>-->
 
 <footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
