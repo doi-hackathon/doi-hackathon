@@ -34,7 +34,7 @@ public class EventController {
         List<Event> events = eventsDao.findAll();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
-        System.out.println("usersEvents: " +  usersEvents.get(0).getId());
+//        System.out.println("usersEvents: " +  usersEvents.get(0).getId());
         model.addAttribute("usersEvents", usersEvents);
         model.addAttribute("events", events);
         model.addAttribute("noEventsFound", events.size() == 0);
@@ -44,8 +44,18 @@ public class EventController {
     @GetMapping("/events/{id}")
     public String show(@PathVariable long id, Model model){
         Event event = eventsDao.getOne(id);
+        System.out.println("event: " + event);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
+        byte isAttendee = usersEventsDao.countByEventAndUser(event, currentUser);
+        if (isAttendee > 0){
+            System.out.println("isAttendee: " + isAttendee);
+            }
+        System.out.println("usersEvents.size(): " + usersEvents.size());
+        model.addAttribute("usersEvents", usersEvents);
         model.addAttribute("eventId", id);
         model.addAttribute("event", event);
+        model.addAttribute("isAttendee", isAttendee);
         return "/events/show";
     }
 
