@@ -19,9 +19,14 @@
             <button form="delete-form" class="btn btn-danger">Delete Event</button>
         </form>
             <br>
-        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post" th:if="${!usersEvents.isVolunteer()}">
-            <button id="volunteerBtn" class="btn btn-primary">Volunteer for Event</button>
-        </form >
+        <div th:each="userEvent : ${usersEvents}">
+            <div th:switch="${usersEvents.get(event.getId())}" >
+                <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post" >
+                    <button class="btn btn-primary">Volunteer for Event</button>
+                </form >
+                <p th:case="${true}">You've already volunteered.</p>
+            </div>
+        </div>
 <!--        <form action="" th:if="" method="post">-->
 <!--            <p>You have volunteered for this event</p>-->
 <!--        </form>-->

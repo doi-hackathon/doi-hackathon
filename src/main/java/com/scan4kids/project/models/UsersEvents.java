@@ -3,6 +3,7 @@ package com.scan4kids.project.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users_events")
@@ -62,4 +63,10 @@ public class UsersEvents {
     public void setVolunteer(boolean volunteer) {
         isVolunteer = volunteer;
     }
+
+    public boolean containsEvent(Event event, List<UsersEvents> list){
+        return list.stream().filter(o -> o.id == event.getId()).findFirst().isPresent();
+    }
+
+
 }
