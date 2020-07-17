@@ -13,7 +13,8 @@
 		<div class="col-md-4 mx-auto">
 			<div class="form-group">
 				<label for="username">Username</label>
-				<input id="username" class="form-control" th:field="*{username}" />
+				<input id="username" name="username" th:class="validate" th:field="*{username}" />
+				<small class="form-text text-muted" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
@@ -22,11 +23,12 @@
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input id="password" class="form-control" type="password" th:field="*{password}" />
+				<input id="password" name="password" type="password" th:class="validate" th:field="*{password}" />
 			</div>
 			<div class="form-group">
-				<label for="confirmpassword">Confirm</label>
-				<input id="confirmpassword" class="form-control" type="password" th:field="*{matchingPassword}" />
+				<label for="passwordToConfirm">Re-Enter Password</label>
+				<input id="passwordToConfirm" name="passwordToConfirm" type="password" />
+				<small class="form-text text-muted" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
 			</div>
 			<button type="submit" class="btn btn-secondary">Sign me up!</button>
 		</div>

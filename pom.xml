@@ -67,12 +67,6 @@
             <version>7.26.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.13.Final</version>
-        </dependency>
-
     </dependencies>
 
     <build>
