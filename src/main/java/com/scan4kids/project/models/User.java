@@ -1,5 +1,7 @@
 package com.scan4kids.project.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    String passwordToConfirm;
 
     @Column(nullable = false, length = 100, unique = true)
     private String email;
@@ -36,9 +41,10 @@ public class User {
 
     public User(){}
 
-    public User(String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
         this.username = username;
         this.password = password;
+        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
         this.isAdmin = isAdmin;
         this.events = events;
@@ -55,10 +61,11 @@ public class User {
         this.albums = copy.albums;
     }
 
-    public User(long id, String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(long id, String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
         this.isAdmin = isAdmin;
         this.events = events;
@@ -87,6 +94,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordToConfirm() {
+        return passwordToConfirm;
+    }
+
+    public void setPasswordToConfirm(String passwordToConfirm) {
+        this.passwordToConfirm = passwordToConfirm;
     }
 
     public String getEmail() {
