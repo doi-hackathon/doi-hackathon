@@ -21,9 +21,9 @@ public class IndexController {
         return "contact";
     }
 
-    @GetMapping("/donate")
-    public String donate() {
-        return "donate";
-    }
+//    @GetMapping("/donate")
+//    public String donate() {
+//        return "donate";
+//    }
 
 }
