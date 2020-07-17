@@ -88,6 +88,12 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @PostMapping("/events/{id}/deleteUserEvent")
+    public String deleteFromUsersEvents(@PathVariable long id) {
+        usersEventsDao.deleteById(id);
+        return "redirect:/events";
+    }
+
     @PostMapping("/events/{id}/volunteer")
     public String volunteerForEvent(@PathVariable long id){
         Event eventToVolunteer = eventsDao.getOne(id);
