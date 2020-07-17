@@ -47,15 +47,13 @@ public class EventController {
         System.out.println("event: " + event);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
-        byte isAttendee = usersEventsDao.countByEventAndUser(event, currentUser);
-        if (isAttendee > 0){
-            System.out.println("isAttendee: " + isAttendee);
-            }
+        byte attendeeCount = usersEventsDao.countByEventAndUser(event, currentUser);
+        System.out.println("currentUserAttendeeCount: " + attendeeCount);
         System.out.println("usersEvents.size(): " + usersEvents.size());
         model.addAttribute("usersEvents", usersEvents);
         model.addAttribute("eventId", id);
         model.addAttribute("event", event);
-        model.addAttribute("isAttendee", isAttendee);
+        model.addAttribute("attendeeCount", attendeeCount);
         return "/events/show";
     }
 

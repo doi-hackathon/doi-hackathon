@@ -29,7 +29,7 @@
             <!--                    </form>-->
             <!--                </div>-->
             <!--            </div>-->
-            <div>
+            <div th:if="${attendeeCount == 0}">
                 <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
                     <button class="btn btn-primary">Volunteer for Event</button>
                 </form>
