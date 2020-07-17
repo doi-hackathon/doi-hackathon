@@ -16,7 +16,9 @@
     <div th:each="userevent_rsvp : ${usersEvents}" th:if="${!userevent_rsvp.isVolunteer()}">
         <h5>RSVPed Event: <span th:text="${userevent_rsvp.getEvent().title}"></span></h5>
     <form><button>Remove Event</button></form>
-    <form><button>View Event</button></form>
+        <form th:action="${'/events/' + userevent_rsvp.id}" th:method="GET">
+            <button class="btn-primary">View Event Details</button>
+        </form>
 </div>
 <br>
 <h3>Events You've volunteered for</h3>
