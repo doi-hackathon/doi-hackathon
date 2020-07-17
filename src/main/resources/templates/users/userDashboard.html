@@ -26,7 +26,9 @@
     <h5>Event Location:  <span th:text="${userEvent.getEvent().location}"></span></h5>
     <h5>Event Date and Time: <span th:text="${userEvent.getEvent().dateAndTime}"></span></h5>
 <!--    <form th:action=""><button>Remove Event</button></form>-->
-    <a><button>View Event</button></a>
+    <form th:action="${'/events/' + userEvent.id}" th:method="GET">
+        <button class="btn-primary">View Event Details</button>
+    </form>
 </div>
 
 
