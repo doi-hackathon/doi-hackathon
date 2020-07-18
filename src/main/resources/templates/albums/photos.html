@@ -2,27 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Photos')"></head>
 <body>
-	<nav th:replace="fragments/navbar :: navbar"></nav>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
-	<h1 class="d-flex justify-content-center">Photos</h1>
+<h1 class="d-flex justify-content-center">Photos</h1>
 
-	<div class="container d-flex justify-content-center">
-		<div th:each="photo : ${photos}">
-			<div class="card border-white" style="width: 18rem;">
-				<div class="card-body">
-					<img th:src="${photo.link}" class="card-title">
-<!--					<p th:text="${photo.description}" class="card-text">Description</p>-->
-<!--					<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>-->
-					<form th:action="${'/albums/photos/' + photo.id}" th:method="GET">
-						<button type="submit" class="btn btn-primary mb-2 mr-2">View</button>
-					</form>
-				</div>
+<h3 th:if="${noPhotosFound}">No photos found.</h3>
+
+
+<div class="container d-flex flex-wrap justify-content-center">
+	<div th:each="photo : ${photos}">
+		<div class="card border-white">
+			<div class="card-body">
+				<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
+					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+				</a>
 			</div>
 		</div>
-
 	</div>
+</div>
 
-	<footer th:replace="fragments/footer :: footer"></footer>
-	<section th:replace="fragments/section :: section"></section>
+<a th:href="${'/albums'}" class="d-flex justify-content-center">Go to all Albums</a>
+
+<br>
+<br>
+<br>
+<br>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
 </body>
 </html>
