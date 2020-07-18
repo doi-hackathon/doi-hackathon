@@ -30,11 +30,17 @@ public class AlbumController {
     @GetMapping("/albums")
     public String albumIndex(Model model) {
         List<Album> albums = albumsDao.findAll();
-//        System.out.println(albums.iterator());
+
+        for(Album album: albums) {
+            boolean noPhoto = album.getPhotos().size() == 0;
+            boolean onePhoto = album.getPhotos().size() == 1;
+            model.addAttribute("noPhoto", noPhoto);
+            model.addAttribute("onePhoto", onePhoto);
+        }
+
         List<Photo> photos = photosDao.findAll();
+        System.out.println(photos.size());
         model.addAttribute("photos", photos);
-//        System.out.println(photos);
-//        System.out.println(photos.get(0).getLink());
         model.addAttribute("albums", albums);
         model.addAttribute("noAlbumsFound", albums.size() == 0);
         return "albums/index";
