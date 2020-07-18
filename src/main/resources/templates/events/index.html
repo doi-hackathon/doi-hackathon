@@ -23,6 +23,9 @@
                 <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
                 </form>
             </div>
+            <form th:action="${'/events/' + event.id}" th:method="GET">
+                <button class="btn-primary">View Event Details</button>
+            </form>
         </div>
     </div>
 </div>

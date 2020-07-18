@@ -18,8 +18,8 @@
         <h5>Event Description: <span th:text="${userEvent_rsvp.getEvent().description}"></span></h5>
         <h5>Event Location:  <span th:text="${userEvent_rsvp.getEvent().location}"></span></h5>
         <h5>Event Date and Time: <span th:text="${userEvent_rsvp.getEvent().dateAndTime}"></span></h5>
-        <form id="delete-form" class="" th:action="${'/events/' + userEvent_rsvp.getId() + '/deleteUserEvent'}" th:method="POST">
-            <button form="delete-form" class="btn btn-danger">Remove RSVP</button>
+        <form id="remove-rsvp-form" class="" th:action="${'/events/' + userEvent_rsvp.getId() + '/deleteUserEvent'}" th:method="POST">
+            <button form="remove-rsvp-form" class="btn btn-danger">Remove RSVP</button>
         </form>
         <form th:action="${'/events/' + userEvent_rsvp.getEvent().getId()}" th:method="GET">
             <button class="btn-primary">View Event Details</button>
@@ -33,8 +33,8 @@
     <h5>Event Description: <span th:text="${userEvent_volunteer.getEvent().description}"></span></h5>
     <h5>Event Location:  <span th:text="${userEvent_volunteer.getEvent().location}"></span></h5>
     <h5>Event Date and Time: <span th:text="${userEvent_volunteer.getEvent().dateAndTime}"></span></h5>
-    <form th:action="${'/events/' + userEvent_volunteer.getId() + '/deleteUserEvent'}" th:method="POST">
-        <button form="delete-form" class="btn btn-danger">Remove Volunteer</button>
+    <form id='remove-volunteer-form' th:action="${'/events/' + userEvent_volunteer.getId() + '/deleteUserEvent'}" th:method="POST">
+        <button form="remove-volunteer-form" class="btn btn-danger">Remove Volunteer</button>
     </form>
     <form th:action="${'/events/' + userEvent_volunteer.getEvent().getId()}" th:method="GET">
         <button class="btn-primary">View Event Details</button>
