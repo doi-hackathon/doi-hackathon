@@ -39,9 +39,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Album> albums;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UsersEvents> userEvents;
+
     public User(){}
 
-    public User(String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
         this.username = username;
         this.password = password;
         this.passwordToConfirm = passwordToConfirm;
@@ -49,6 +52,7 @@ public class User {
         this.isAdmin = isAdmin;
         this.events = events;
         this.albums = albums;
+        this.userEvents = userEvents;
     }
 
     public User(User copy) {
@@ -61,7 +65,7 @@ public class User {
         this.albums = copy.albums;
     }
 
-    public User(long id, String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(long id, String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -70,6 +74,7 @@ public class User {
         this.isAdmin = isAdmin;
         this.events = events;
         this.albums = albums;
+        this.userEvents = userEvents;
     }
 
     public long getId() {
@@ -134,6 +139,14 @@ public class User {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public List<UsersEvents> getUserEvents() {
+        return userEvents;
+    }
+
+    public void setUserEvents(List<UsersEvents> userEvents) {
+        this.userEvents = userEvents;
     }
 
 }

@@ -21,7 +21,7 @@ public class Event {
     private String location;
 
     @Column
-    private Timestamp dateAndTime;
+    private String dateAndTime;
 
     @Column(columnDefinition="TEXT")
     private String description;
@@ -37,7 +37,7 @@ public class Event {
 
     public Event(){}
 
-    public Event(String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
+    public Event(String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
         this.title = title;
         this.location = location;
         this.dateAndTime = dateAndTime;
@@ -47,7 +47,7 @@ public class Event {
         this.userEvents = userEvents;
     }
 
-    public Event(long id, String title, String location, Timestamp dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
+    public Event(long id, String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -106,11 +106,11 @@ public class Event {
         this.volunteerGoal = volunteerGoal;
     }
 
-    public Timestamp getDateAndTime() {
+    public String getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(Timestamp dateAndTime) {
+    public void setDateAndTime(String dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 
