@@ -1,9 +1,6 @@
 package com.scan4kids.project.models;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
 @Entity
@@ -20,7 +17,7 @@ public class Event {
     @Column(nullable = false, length = 200)
     private String location;
 
-    @Column
+    @Column(nullable = false)
     private String dateAndTime;
 
     @Column(columnDefinition="TEXT")
@@ -121,4 +118,5 @@ public class Event {
     public void setUserEvents(List<UsersEvents> userEvents) {
         this.userEvents = userEvents;
     }
+
 }

@@ -6,16 +6,17 @@
 
 <h1 class="d-flex justify-content-center">Photos</h1>
 
-<h3 th:if="${noPhotosFound}">No photos found.</h3>
+	<h3 th:if="${noPhotosFound}">No photos found.</h3>
 
 
-<div class="container d-flex flex-wrap justify-content-center">
-	<div th:each="photo : ${photos}">
-		<div class="card border-white">
-			<div class="card-body">
-				<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
-					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-				</a>
+	<div class="container d-flex flex-wrap justify-content-center">
+		<div th:each="photo : ${photos}">
+			<div class="card border-white">
+				<div class="card-body">
+					<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
+						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

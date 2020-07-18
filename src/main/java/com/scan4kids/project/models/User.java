@@ -148,5 +148,4 @@ public class User {
     public void setUserEvents(List<UsersEvents> userEvents) {
         this.userEvents = userEvents;
     }
-
 }
