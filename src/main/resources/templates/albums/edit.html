@@ -24,7 +24,7 @@
 				<button type="submit" class="btn btn-primary mb-2 mr-2">Update</button>
 			</form>
 
-			<form th:action="${'/albums/' + album.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
+			<form th:action="${'/albums/' + album.id + '/delete'}" th:method="POST">
 				<button type="submit" class="btn btn-danger mb-2">Delete</button>
 			</form>
 		</div>

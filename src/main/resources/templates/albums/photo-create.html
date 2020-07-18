@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Create a photo')">
 	<meta charset="UTF-8">
 	<title>Title</title>
@@ -8,22 +8,26 @@
 	<nav th:replace="fragments/navbar :: navbar" />
 
 	<div class="container">
-		<h2>Add a photo</h2>
-		<form th:action="${'/albums/' + albumid + '/photos/create'}" th:method="post" th:object="${photo}">
-			<div class="form-group">
-				<label for="description">Description</label>
-				<input type="text" name="description" class="form-control" id="description" th:field="*{description}">
-			</div>
-<!--			<input type="hidden" name="albumid" id="albumid" th:value="${albumid}">-->
-			<div class="form-group">
-				<label for="upload"></label>
-				<button type="button" id="upload" name="upload" class="btn btn-outline-dark mb-2 mr-2">Upload photo</button>
+		<div sec:authorize="isAuthenticated()">
+			<div th:if="${#authentication.principal.isAdmin()}">
+				<h2>Add a photo</h2>
+				<form th:action="${'/albums/' + albumid + '/photos/create'}" th:method="post" th:object="${photo}">
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input type="text" name="description" class="form-control" id="description" th:field="*{description}">
+					</div>
+		<!--			<input type="hidden" name="albumid" id="albumid" th:value="${albumid}">-->
+					<div class="form-group">
+						<label for="upload"></label>
+						<button type="button" id="upload" name="upload" class="btn btn-outline-dark mb-2 mr-2">Upload photo</button>
 
-				<br>
-				<input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{link}" type="hidden">
-				<button type="submit" class="btn btn-primary mb-2 mr-2">Done</button>
+						<br>
+						<input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{link}" type="hidden">
+						<button type="submit" class="btn btn-primary mb-2 mr-2">Done</button>
+					</div>
+				</form>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<footer th:replace="fragments/footer :: footer"></footer>
