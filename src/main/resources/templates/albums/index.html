@@ -15,46 +15,85 @@
         </div>
     </div>
 
-    <div th:each="album : ${albums}">
-        <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 400px; height: 275px;" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-<!--                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>-->
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active pic">
-                    <span class="d-flex justify-content-center" th:text="${album.title}"/>
-                    <a th:href="${'/albums/' + album.id}">
-                        <img th:src="${album.photos[0].link}" class="d-block w-100">
-                    </a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <p><span th:text="${album.photos[0].description}"/></p>
-                    </div>
-                </div>
-                <div class="carousel-item pic">
-                    <span class="d-flex justify-content-center" th:text="${album.title}"/>
-                    <a th:href="${'/albums/' + album.id}">
-                        <img th:src="${album.photos[1].link}" class="d-block w-100">
-                    </a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <p><span th:text="${album.photos[1].description}"/></p>
-                    </div>
-                </div>
-<!--                <div class="carousel-item pic">-->
-<!--                    <span class="d-flex justify-content-center" th:text="${album.title}"/>-->
-<!--                    <a th:href="${'/albums/' + album.id}">-->
-<!--                        <img th:src="${album.photos[2].link}" class="d-block w-100">-->
-<!--                    </a>-->
-<!--                    <div class="carousel-caption d-none d-md-block">-->
-<!--                        <p><span th:text="${album.photos[2].description}"/></p>-->
-<!--                    </div>-->
-<!--                </div>-->
+    <div th:if="${noPhoto}">
+        <!--    Start of Regular View-->
+        <div th:each="album : ${albums}">
+            <a th:href="${'/albums/' + album.id}"><h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" /></h4></a>
+            <h6 class="card-title d-flex justify-content-center">Album #<span th:text="${album.id}" /></h6>
+            <h6 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h6>
+            <div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
+                <a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
+                    <img th:src="${photo.link}" style="width: 320px; height: 240px;">
+                </a>
             </div>
+            <br>
         </div>
-        <br>
-        <br>
-        <br>
+    </div>
+
+    <div th:if="${onePhoto}">
+        <!--    Start of Cards-->
+        <div class="d-flex justify-content-center flex-wrap">
+            <div th:each="album : ${albums}">
+                <div class="card mr-4">
+                    <a th:href="${'/albums/' + album.id}">
+                        <img th:src="${album.photos[0].link}" class="card-img-top" style="width: 286px; height: 202px;">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text"><span th:text="${album.title}" class="d-flex justify-content-center"/></p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+    <div th:if="${not (onePhoto || noPhoto)}">
+        <!--    Start of Carousel-->
+        <div th:each="album : ${albums}">
+            <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 400px; height: 275px;" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <!--                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>-->
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active pic">
+                        <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                        <a th:href="${'/albums/' + album.id}">
+                            <img th:src="${album.photos[0].link}" class="d-block w-100">
+                        </a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <p><span th:text="${album.photos[0].description}"/></p>
+                        </div>
+                    </div>
+                    <div class="carousel-item pic">
+                        <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                        <a th:href="${'/albums/' + album.id}">
+                            <img th:src="${album.photos[1].link}" class="d-block w-100">
+                        </a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <p><span th:text="${album.photos[1].description}"/></p>
+                        </div>
+                    </div>
+                    <!--                <div class="carousel-item pic">-->
+                    <!--                    <span class="d-flex justify-content-center" th:text="${album.title}"/>-->
+                    <!--                    <a th:href="${'/albums/' + album.id}">-->
+                    <!--                        <img th:src="${album.photos[2].link}" class="d-block w-100">-->
+                    <!--                    </a>-->
+                    <!--                    <div class="carousel-caption d-none d-md-block">-->
+                    <!--                        <p><span th:text="${album.photos[2].description}"/></p>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
     </div>
 
 
