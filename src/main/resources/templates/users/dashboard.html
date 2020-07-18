@@ -33,7 +33,7 @@
     <h5>Event Description: <span th:text="${userEvent_volunteer.getEvent().description}"></span></h5>
     <h5>Event Location:  <span th:text="${userEvent_volunteer.getEvent().location}"></span></h5>
     <h5>Event Date and Time: <span th:text="${userEvent_volunteer.getEvent().dateAndTime}"></span></h5>
-    <form id="delete-form" class="" th:action="${'/events/' + userEvent_volunteer.getId() + '/deleteUserEvent'}" th:method="POST">
+    <form th:action="${'/events/' + userEvent_volunteer.getId() + '/deleteUserEvent'}" th:method="POST">
         <button form="delete-form" class="btn btn-danger">Remove Volunteer</button>
     </form>
     <form th:action="${'/events/' + userEvent_volunteer.getEvent().getId()}" th:method="GET">
@@ -43,7 +43,7 @@
 
 
 <!--Commented out this block because it was covering the last "view event details" button -->
-<!--<footer th:replace="fragments/footer :: footer"></footer>-->
-<!--<section th:replace="fragments/section :: section"></section>-->
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
 </body>
 </html>

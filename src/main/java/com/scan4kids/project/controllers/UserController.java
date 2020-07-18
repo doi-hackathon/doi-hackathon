@@ -3,7 +3,6 @@ package com.scan4kids.project.controllers;
 import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersEventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
-import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
 import com.scan4kids.project.models.UsersEvents;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -47,7 +45,7 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/userDashboard")
+    @GetMapping("/dashboard")
     public String showUserDashboard(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
@@ -55,6 +53,6 @@ public class UserController {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
         model.addAttribute("usersEvents", usersEvents);
-        return "users/userDashboard";
+        return "users/dashboard";
     }
 }

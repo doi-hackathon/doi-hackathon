@@ -32,10 +32,6 @@ public class EventController {
     @GetMapping("/events")
     public String eventsIndex(Model model) {
         List<Event> events = eventsDao.findAll();
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
-//        System.out.println("usersEvents: " +  usersEvents.get(0).getId());
-        model.addAttribute("usersEvents", usersEvents);
         model.addAttribute("events", events);
         model.addAttribute("noEventsFound", events.size() == 0);
         return "events/index";
@@ -54,7 +50,7 @@ public class EventController {
         model.addAttribute("eventId", id);
         model.addAttribute("event", event);
         model.addAttribute("attendeeCount", attendeeCount);
-        return "/events/show";
+        return "events/show";
     }
 
     @GetMapping("/events/create")
@@ -101,7 +97,7 @@ public class EventController {
         User user = usersDao.getOne(currentUser.getId());
         UsersEvents userEventsToSave = new UsersEvents(user, eventToVolunteer, true);
         usersEventsDao.save(userEventsToSave);
-        return "redirect:/userDashboard";
+        return "redirect:/dashboard";
     }
 
     @PostMapping("/events/{id}/rsvp")
@@ -111,7 +107,7 @@ public class EventController {
         User user = usersDao.getOne(currentUser.getId());
         UsersEvents userEventsToSave = new UsersEvents(user, eventToVolunteer, false);
         usersEventsDao.save(userEventsToSave);
-        return "redirect:/userDashboard";
+        return "redirect:/dashboard";
     }
 
 
