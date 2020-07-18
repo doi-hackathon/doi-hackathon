@@ -14,27 +14,28 @@
             <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
             <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
         </div>
-        <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
-            <button class="btn btn-secondary">Edit Event</button>
-            <button form="delete-form" class="btn btn-danger">Delete Event</button>
-        </form>
-            <br>
-        <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
-        </form>
-        <form th:action="${'/events/' + event.id}" th:method="GET">
-            <button class="btn-primary">View Event Details</button>
-        </form>
+        <div sec:authorize="isAuthenticated()">
+            <div th:if="${#authentication.principal.isAdmin()}">
+                <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
+                    <button class="btn btn-secondary">Edit Event</button>
+                    <button form="delete-form" class="btn btn-danger">Delete Event</button>
+                </form >
+                <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row justify-content-center">
-    <form th:action="${'/events/create'}" th:method="GET" sec:authorize="isAuthenticated()">
-        <button class="btn btn-secondary">Create Event</button>
-    </form>
+<div sec:authorize="isAuthenticated()">
+    <div th:if="${#authentication.principal.isAdmin()}">
+        <div class="row justify-content-center">
+            <form th:action="${'/events/create'}" th:method="GET">
+                <button class="btn btn-secondary">Create Event</button>
+            </form>
+        </div>
+    </div>
 </div>
-
-
 <footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
-
 </body>
 </html>
