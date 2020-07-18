@@ -4,21 +4,28 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center">Photos</h1>
+<h1 class="d-flex justify-content-center">Photo</h1>
 
 <div class="container d-flex justify-content-center">
-		<div class="card border-white">
-			<div class="card-body">
-				<img th:src="${photo.link}" class="card-title">
-				<p th:text="${photo.description}" class="card-text">Description</p>
-				<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
-				<form th:action="${'/albums/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
-					<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
-				</form>
-				<br>
-				<br>
-			</div>
+	<div class="card border-white">
+		<div class="card-body">
+			<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+			<p th:text="${photo.description}" class="card-text">Description</p>
+			<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
+
+			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
+				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
+			</form>
+
+			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="GET" sec:authorize="isAuthenticated()">
+				<button type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
+			</form>
+
+			<a th:href="${'/albums/photos'}">Go to all Photos</a>
+			<br>
+			<br>
 		</div>
+	</div>
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>
