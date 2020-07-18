@@ -17,19 +17,19 @@
             <label for="formGroupExampleInput2">Location</label>
             <input type="text" name="location" class="form-control" id="formGroupExampleInput2" th:field="*{location}">
         </div>
-        <div class="row">
-            <div class='col-md-6'>
-                <div class="form-group">
-                    <label class="control-label">Event Time</label>
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" name="dateTime" th:field="*{dateAndTime}"/>
-                        <span class="input-group-addon">
+            <div class="row">
+                <div class='col-md-6'>
+                    <div class="form-group">
+                        <label class="control-label">Event Time</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" name="dateTime" th:field="*{dateAndTime}"/>
+                            <span class="input-group-addon">
                              <span class="glyphicon glyphicon-calendar"></span>
                              </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         <div class="form-group">
             <label for="formGroupExampleInput4">Description</label>
             <input type="text" name="description" class="form-control" id="formGroupExampleInput4" th:field="*{description}">
