@@ -18,17 +18,29 @@
 				</a>
 			</div>
 
-			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET" sec:authorize="isAuthenticated()">
-				<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
-			</form>
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
+					</form>
+				</div>
+			</div>
 
-			<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
-				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit Album</button>
-			</form>
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2 mr-2">Edit Album</button>
+					</form>
+				</div>
+			</div>
 
-			<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET" sec:authorize="isAuthenticated()">
-				<button type="submit" class="btn btn-danger mb-2 mr-2">Delete Album</button>
-			</form>
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
+						<button type="submit" class="btn btn-danger mb-2 mr-2">Delete Album</button>
+					</form>
+				</div>
+			</div>
 
 			<a th:href="${'/albums'}">Back to all Albums</a>
 

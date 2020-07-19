@@ -8,25 +8,29 @@
 <nav th:replace="fragments/navbar :: navbar" />
 
 <div class="container">
-	<h3>Edit Photo</h3>
-	<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="post" th:object="${photo}" sec:authorize="isAuthenticated()">
-		<div class="form-group">
-			<label for="description">Description</label>
-			<input type="text" name="description" class="form-control" id="description" th:field="*{description}">
-		</div>
-		<div class="form-group">
-			<label for="upload"></label>
-			<button type="button" name="upload" class="btn btn-outline-dark mb-2" id="upload" th:field="*{link}">Upload new photo</button>
+	<div sec:authorize="isAuthenticated()">
+		<div th:if="${#authentication.principal.isAdmin()}">
+			<h3>Edit Photo</h3>
+			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="post" th:object="${photo}">
+				<div class="form-group">
+					<label for="description">Description</label>
+					<input type="text" name="description" class="form-control" id="description" th:field="*{description}">
+				</div>
+				<div class="form-group">
+					<label for="upload"></label>
+					<button type="button" name="upload" class="btn btn-outline-dark mb-2" id="upload" th:field="*{link}">Upload new photo</button>
 
-			<br>
-			<input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{link}" type="hidden">
-			<button type="submit" class="btn btn-primary mb-2 mr-2">Update photo</button>
-		</div>
-	</form>
+					<br>
+					<input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{link}" type="hidden">
+					<button type="submit" class="btn btn-primary mb-2 mr-2">Update photo</button>
+				</div>
+			</form>
 
-	<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="POST" th:object="${photo}" sec:authorize="isAuthenticated()">
-		<button type="submit" class="btn btn-danger mb-2">Delete photo</button>
-	</form>
+			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="POST" th:object="${photo}">
+				<button type="submit" class="btn btn-danger mb-2">Delete photo</button>
+			</form>
+		</div>
+	</div>
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>

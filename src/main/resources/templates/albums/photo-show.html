@@ -13,13 +13,17 @@
 			<p th:text="${photo.description}" class="card-text">Description</p>
 			<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
 
-			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
-				<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
-			</form>
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
+					</form>
 
-			<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="GET" sec:authorize="isAuthenticated()">
-				<button type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
-			</form>
+					<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="GET">
+						<button type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
+					</form>
+				</div>
+			</div>
 
 			<a th:href="${'/albums/photos'}">Go to all Photos</a>
 			<br>

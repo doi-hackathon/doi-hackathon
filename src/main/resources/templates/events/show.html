@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('scanApp | View event')">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"/>
+<div class="container">
+    <div th:if="${event == null}">
+        No events found.
+    </div>
+    <div class="row justify-content-center">
+        <div class="card text-center m-5 border-secondary" style="width: 18rem;">
+            <div class="card-body p-0">
+                <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
+                <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
+                <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
+                <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
+            </div>
+            <!--            <div th:each="userEvent : ${usersEvents}">-->
+            <!--                <div th:switch="${usersEvents.get(event.getId())}">-->
+            <!--                    <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">-->
+            <!--                    <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">-->
+            <!--                        <button class="btn btn-primary">Volunteer for Event</button>-->
+            <!--                    </form >-->
+            <!--                    <p th:case="${true}">You've already volunteered.</p>-->
+            <!--                    </form>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div th:if="${attendeeCount == 0}">
+                <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
+                    <button class="btn btn-primary">Volunteer for Event</button>
+                </form>
+                <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
+                    <button class="btn btn-primary">RSVP Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
