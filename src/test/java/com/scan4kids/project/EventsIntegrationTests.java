@@ -113,5 +113,27 @@ public class EventsIntegrationTests {
                 .andExpect(content().string(containsString(existingEvent.getTitle())));
     }
 
+    @Test
+    public void testEditEvent() throws Exception {
+        //gets the first Event
+        Event existingEvent = eventsDao.findAll().get(0);
+        //makes a post request to /events/{id}/edit and expect a redirection to the events index page
+        this.mvc.perform(
+                post("/events/" + existingEvent.getId() + "/edit").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("title", "editedTitle")
+                        .param("location", "editedLocation")
+                        .param("dateAndTime", "editedDateAndTime"))
+                .andExpect(status().is3xxRedirection());
+
+        //Makes a GET request to /events and expect a redirection to the Events index page
+        this.mvc.perform(get("/events"))
+                .andExpect(status().isOk())
+                //test the dynamic content of the page
+                .andExpect(content().string(containsString("editedTitle")))
+                .andExpect(content().string(containsString("editedDateAndTime")));
+    }
+
+
 
 }
