@@ -61,7 +61,8 @@
 }
 
 .card-signin .card-img-left {
-    width: 60%;
+    width: 50vh;
+    height: 50vh;
     background: scroll center url('https://iili.io/dqmhDQ.jpg');
     background-size: cover;
 }
