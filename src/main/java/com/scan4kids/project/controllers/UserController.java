@@ -43,7 +43,7 @@ public class UserController {
         User existingEmail = usersDao.findByEmail(user.getEmail());
 
         if(existingUsername != null) {
-            validation.rejectValue("username", "user.username", "Your username is already in use.");
+            validation.rejectValue("username", "user.username", user.getUsername() + " is already in use.");
         }
 
         if(!user.getPassword().equals(user.getPasswordToConfirm())) {

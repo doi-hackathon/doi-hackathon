@@ -1,6 +1,6 @@
-a:hover {
-    box-shadow: 0 5px black;
-}
+/*a:hover {*/
+/*    box-shadow: 0 5px black;*/
+/*}*/
 
 .carousel {
     margin: auto;
@@ -14,10 +14,6 @@ a:hover {
     height: 100%;
 }
 
-/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
 .StripeElement {
     box-sizing: border-box;
 
@@ -51,11 +47,6 @@ a:hover {
     --input-padding-y: .75rem;
 }
 
-/*body {*/
-/*    background: #007bff;*/
-/*    background: linear-gradient(to right, #0062E6, #33AEFF);*/
-/*}*/
-
 .card-signin {
     border: 0;
     border-radius: 1rem;
@@ -71,7 +62,6 @@ a:hover {
 
 .card-signin .card-img-left {
     width: 60%;
-    /* Link to your background image using in the property below! */
     background: scroll center url('https://iili.io/dqmhDQ.jpg');
     background-size: cover;
 }
@@ -115,7 +105,6 @@ a:hover {
     display: block;
     width: 100%;
     margin-bottom: 0;
-    /* Override default `<label>` margin */
     line-height: 1.5;
     color: #495057;
     border: 1px solid transparent;
