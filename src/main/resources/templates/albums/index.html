@@ -51,7 +51,7 @@
 </div>
 
 
-<div th:if="${not (onePhoto || noPhoto)}">
+<div th:if="${enoughForCarousel}">
     <!--    Start of Carousel-->
     <div th:each="album : ${albums}">
         <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 400px; height: 275px;" data-ride="carousel">
