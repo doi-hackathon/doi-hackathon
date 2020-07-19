@@ -2,6 +2,7 @@ package com.scan4kids.project;
 
 import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
+import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,11 +18,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import javax.servlet.http.HttpSession;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ProjectApplication.class)
@@ -97,6 +99,19 @@ public class EventsIntegrationTests {
 
     }
 
+    @Test
+    public void testEventsIndex() throws Exception {
+
+        Event existingEvent = eventsDao.findAll().get(0);
+
+        //makes a get request to /events and verifies that we get some of the text of the events/index.html template and at least the title from the first event
+        this.mvc.perform(get("/events"))
+                .andExpect(status().isOk())
+                //test the static content of the page
+                .andExpect(content().string(containsString("Upcoming")))
+                //test the dynamic content of the page
+                .andExpect(content().string(containsString(existingEvent.getTitle())));
+    }
 
 
 }
