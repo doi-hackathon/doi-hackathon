@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head :: head('Edit a photo')">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar" />
+
+<div class="container">
+	<div sec:authorize="isAuthenticated()">
+		<div th:if="${#authentication.principal.isAdmin()}">
+			<h3>Are you sure you want to delete this photo?</h3>
+
+			<form th:action="${'/albums/' + photo.album.id + '/photos/' + photo.id + '/delete'}" th:method="POST">
+				<button type="submit" class="btn btn-danger mb-2">Delete photo</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
+
+</body>
+</html>

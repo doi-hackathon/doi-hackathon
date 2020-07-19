@@ -1,5 +1,7 @@
 package com.scan4kids.project.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    String passwordToConfirm;
 
     @Column(nullable = false, length = 100, unique = true)
     private String email;
@@ -34,15 +39,20 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Album> albums;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UsersEvents> userEvents;
+
     public User(){}
 
-    public User(String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
         this.username = username;
         this.password = password;
+        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
         this.isAdmin = isAdmin;
         this.events = events;
         this.albums = albums;
+        this.userEvents = userEvents;
     }
 
     public User(User copy) {
@@ -55,14 +65,16 @@ public class User {
         this.albums = copy.albums;
     }
 
-    public User(long id, String username, String password, String email, boolean isAdmin, List<Event> events, List<Album> albums) {
+    public User(long id, String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
         this.isAdmin = isAdmin;
         this.events = events;
         this.albums = albums;
+        this.userEvents = userEvents;
     }
 
     public long getId() {
@@ -87,6 +99,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordToConfirm() {
+        return passwordToConfirm;
+    }
+
+    public void setPasswordToConfirm(String passwordToConfirm) {
+        this.passwordToConfirm = passwordToConfirm;
     }
 
     public String getEmail() {
@@ -119,5 +139,13 @@ public class User {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public List<UsersEvents> getUserEvents() {
+        return userEvents;
+    }
+
+    public void setUserEvents(List<UsersEvents> userEvents) {
+        this.userEvents = userEvents;
     }
 }

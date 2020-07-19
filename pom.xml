@@ -61,6 +61,12 @@
             <version>3.0.4.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>7.26.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

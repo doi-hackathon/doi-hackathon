@@ -29,22 +29,22 @@ public class Event {
     @Column(nullable = true)
     private int volunteerGoal;
 
-    @ManyToMany(mappedBy = "events")
-    private List<User> users;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private List<UsersEvents> userEvents;
 
     public Event(){}
 
-    public Event(String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
+    public Event(String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
         this.title = title;
         this.location = location;
         this.dateAndTime = dateAndTime;
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
-        this.users = users;
+        this.userEvents = userEvents;
     }
 
-    public Event(long id, String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<User> users) {
+    public Event(long id, String title, String location, String dateAndTime, String description, String link, int volunteerGoal, List<UsersEvents> userEvents) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -52,7 +52,7 @@ public class Event {
         this.description = description;
         this.link = link;
         this.volunteerGoal = volunteerGoal;
-        this.users = users;
+        this.userEvents = userEvents;
     }
 
     public long getId() {
@@ -111,12 +111,12 @@ public class Event {
         this.dateAndTime = dateAndTime;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<UsersEvents> getUserEvents() {
+        return userEvents;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUserEvents(List<UsersEvents> userEvents) {
+        this.userEvents = userEvents;
     }
 
 }

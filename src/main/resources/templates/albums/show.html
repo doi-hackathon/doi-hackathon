@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head :: head('View an album')"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<h1 class="d-flex justify-content-center">Album</h1>
+
+<div class="container d-flex justify-content-center">
+	<div class="card border-white">
+		<div class="card-body">
+			<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
+			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
+			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
+			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
+				<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
+					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+				</a>
+			</div>
+
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2">Add a photo to this album</button>
+					</form>
+				</div>
+			</div>
+
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
+						<button type="submit" class="btn btn-primary mb-2 mr-2">Edit Album</button>
+					</form>
+				</div>
+			</div>
+
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.isAdmin()}">
+					<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
+						<button type="submit" class="btn btn-danger mb-2 mr-2">Delete Album</button>
+					</form>
+				</div>
+			</div>
+
+			<a th:href="${'/albums'}">Back to all Albums</a>
+
+			<br>
+			<br>
+		</div>
+	</div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<section th:replace="fragments/section :: section"></section>
+</body>
+</html>
