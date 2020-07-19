@@ -134,6 +134,27 @@ public class EventsIntegrationTests {
                 .andExpect(content().string(containsString("editedDateAndTime")));
     }
 
+    @Test
+    public void testDeleteEvent() throws Exception {
+        //creates a mock event to be deleted
+        this.mvc.perform(
+                post("/events/create").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("title", "mock title")
+                        .param("location", "mock location")
+                        .param("dateAndTime", "mock date and time"))
+                .andExpect(status().is3xxRedirection());
+        //gets the recent event that matches the title
+        Event existingEvent = eventsDao.findByTitle("mock title");
+        //makes a post request to /events/{id}/delete and expect a redirection to the Events index page
+        this.mvc.perform(
+                post("/events/" + existingEvent.getId() + "/delete").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("id", String.valueOf(existingEvent.getId())))
+                .andExpect(status().is3xxRedirection());
+
+    }
+
 
 
 }
