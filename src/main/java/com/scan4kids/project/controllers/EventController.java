@@ -38,17 +38,10 @@ public class EventController {
     @GetMapping("/events/{id}")
     public String show(@PathVariable long id, Model model){
         Event event = eventsDao.getOne(id);
-        System.out.println("event.getTitle(): " + event.getTitle());
-        System.out.println("event.getId(): " + event.getId());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("currentUser.getUsername(): " + currentUser.getUsername());
         List<UsersEvents> usersEvents = usersEventsDao.findAllByUserId(currentUser.getId());
-        System.out.println("usersEvents.size(): " + (usersEvents.size()));
         byte attendeeCount = usersEventsDao.countByEventAndUser(event, currentUser);
-        System.out.println("attendeeCount: " + attendeeCount);
         List<UsersEvents> volunteeredEventsList = usersEventsDao.findAllVolunteeredEvents(id);
-        System.out.println("volunteeredEventsList.size(): " + (volunteeredEventsList.size()));
-        System.out.println("volunteeredEventsList.isEmpty(): " + volunteeredEventsList.isEmpty());
         model.addAttribute("volunteeredEventCount", volunteeredEventsList.size());
         model.addAttribute("volunteeredEventsList", volunteeredEventsList);
         model.addAttribute("usersEvents", usersEvents);
