@@ -116,7 +116,7 @@ public class AlbumsIntegrationTests {
     @Test
     public void testAlbumsIndex() throws Exception {
 
-        Album existingEvent = albumsDao.findAll().get(0);
+        Album existingAlbum = albumsDao.findAll().get(0);
 
         //makes a get request to /albums and verifies that we get some of the text from the albums/index.html template and at least the title from the first album
         this.mvc.perform(get("/albums"))
@@ -124,7 +124,25 @@ public class AlbumsIntegrationTests {
                 //test the static content of the page
                 .andExpect(content().string(containsString("Albums")))
                 //test the dynamic content of the page
-                .andExpect(content().string(containsString(existingEvent.getTitle())));
+                .andExpect(content().string(containsString(existingAlbum.getTitle())));
+    }
+
+    @Test
+    public void testEditAlbum() throws Exception {
+        //gets the first Album
+        Album existingAlbum = albumsDao.findAll().get(0);
+        //makes a post request to /albums/{id}/edit and expects a redirection to the individual album page
+        this.mvc.perform(
+                post("/albums/" + existingAlbum.getId() + "/edit").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("title", "editedTitle"))
+                .andExpect(status().is3xxRedirection());
+
+        //Makes a GET request to /albums and expect a redirection to the individual album page
+        this.mvc.perform(get("/albums"))
+                .andExpect(status().isOk())
+                //test the static content of the page
+                .andExpect(content().string(containsString("editedTitle")));
     }
 
 
