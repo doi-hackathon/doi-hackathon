@@ -4,11 +4,17 @@ import com.scan4kids.project.models.Event;
 import com.scan4kids.project.models.User;
 import com.scan4kids.project.models.UsersEvents;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface UsersEventsRepository extends JpaRepository<UsersEvents, Long> {
     List<UsersEvents> findAllByUserId(long id);
     byte countByEventAndUser(Event event, User user);
+    // HQL
+//    select * from users_events where is_volunteer is true and event_id = 1;
+    @Query("from UsersEvents as ue where ue.isVolunteer = true and ue.event.id = ?1")
+    List<UsersEvents> findAllVolunteeredEvents(long id);
 
 }
