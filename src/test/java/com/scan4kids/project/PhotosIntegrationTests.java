@@ -136,4 +136,19 @@ public class PhotosIntegrationTests {
                 .andExpect(content().string(containsString("Photo")));
     }
 
+    @Test
+    public void testPhotosIndex() throws Exception {
+        //check to see if there's an existing photo
+        testPhoto = photosDao.findByDescription("genericDescription");
+        //if does not exist, create a photo
+        if(testPhoto == null) {
+            testCreatePhoto();
+        }
+        //makes a GET request to /albums/photos and verifies that we get some of the text from the albums/photos.html template
+        this.mvc.perform(get("/albums/photos"))
+                .andExpect(status().isOk())
+                //test the static content of the page
+                .andExpect(content().string(containsString("Photos")));
+    }
+
 }
