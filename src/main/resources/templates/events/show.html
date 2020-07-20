@@ -11,23 +11,25 @@
         No events found.
     </div>
     <div class="row justify-content-center">
-        <div class="card text-center m-5 border-secondary" style="width: 18rem;">
-            <div class="card-body p-0">
-                <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
-                <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
-                <p class="card-text my-3 px-2" th:text="${event.description}"></p>
-                <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
-                <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
-                <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers: </div>
-                <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
-            </div>
-            <div th:if="${attendeeCount == 0}">
-                <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                    <button class="btn btn-primary">Volunteer for Event</button>
-                </form>
-                <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
-                    <button class="btn btn-primary">RSVP Event</button>
-                </form>
+        <div class="card card-signin flex-row my-5">
+            <div class="card-img-left d-none d-md-flex">
+                <div class="card-body">
+                    <div class="card-title text-center" style="font-weight: bold" th:text="${event.title}"></div>
+                    <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
+                    <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                    <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
+                    <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
+                    <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers:</div>
+                    <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
+                </div>
+                <div th:if="${attendeeCount == 0}">
+                    <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase">Volunteer for Event</button>
+                    </form>
+                    <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase">RSVP Event</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
