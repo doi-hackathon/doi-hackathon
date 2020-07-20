@@ -99,4 +99,16 @@ public class AlbumsIntegrationTests {
 
     }
 
+    @Test
+    public void testShowAlbum() throws Exception {
+
+        Album existingAlbum = albumsDao.findAll().get(0);
+
+        // Makes a GET request to /albums/{id} and expect a redirection to the Album show page
+        this.mvc.perform(get("/albums/" + existingAlbum.getId()))
+                .andExpect(status().isOk())
+                // Test the dynamic content of the page
+                .andExpect(content().string(containsString(existingAlbum.getTitle())));
+    }
+
 }
