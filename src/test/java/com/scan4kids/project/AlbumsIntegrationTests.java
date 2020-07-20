@@ -109,6 +109,23 @@ public class AlbumsIntegrationTests {
                 .andExpect(status().isOk())
                 // Test the dynamic content of the page
                 .andExpect(content().string(containsString(existingAlbum.getTitle())));
+
+
     }
+
+    @Test
+    public void testAlbumsIndex() throws Exception {
+
+        Album existingEvent = albumsDao.findAll().get(0);
+
+        //makes a get request to /albums and verifies that we get some of the text from the albums/index.html template and at least the title from the first album
+        this.mvc.perform(get("/albums"))
+                .andExpect(status().isOk())
+                //test the static content of the page
+                .andExpect(content().string(containsString("Albums")))
+                //test the dynamic content of the page
+                .andExpect(content().string(containsString(existingEvent.getTitle())));
+    }
+
 
 }
