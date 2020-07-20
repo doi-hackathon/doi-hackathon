@@ -21,16 +21,6 @@
                 <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers: </div>
                 <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
             </div>
-            <!--            <div th:each="userEvent : ${usersEvents}">-->
-            <!--                <div th:switch="${usersEvents.get(event.getId())}">-->
-            <!--                    <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">-->
-            <!--                    <form th:case="${false}"  th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">-->
-            <!--                        <button class="btn btn-primary">Volunteer for Event</button>-->
-            <!--                    </form >-->
-            <!--                    <p th:case="${true}">You've already volunteered.</p>-->
-            <!--                    </form>-->
-            <!--                </div>-->
-            <!--            </div>-->
             <div th:if="${attendeeCount == 0}">
                 <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
                     <button class="btn btn-primary">Volunteer for Event</button>
