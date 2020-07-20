@@ -36,6 +36,7 @@ public class PhotosIntegrationTests {
 
     private User testUser;
     private Album testAlbum;
+    private Photo testPhoto;
     private HttpSession httpSession;
 
     @Autowired
@@ -119,4 +120,20 @@ public class PhotosIntegrationTests {
                 .andExpect(status().is3xxRedirection());
 
     }
+
+    @Test
+    public void testShowPhoto() throws Exception {
+        //check to see if there's an existing photo
+        testPhoto = photosDao.findByDescription("genericDescription");
+        //if does not exist, create a photo
+        if(testPhoto == null) {
+            testCreatePhoto();
+        }
+        // Makes a GET request to /albums/{albumid}/photos/id and expect a redirection to the photo show page
+        this.mvc.perform(get("/albums/" + testPhoto.getAlbum().getId() + "/photos/" + testPhoto.getId()))
+                .andExpect(status().isOk())
+                // Test the static content of the show page
+                .andExpect(content().string(containsString("Photo")));
+    }
+
 }
