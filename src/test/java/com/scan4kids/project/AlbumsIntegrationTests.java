@@ -145,5 +145,26 @@ public class AlbumsIntegrationTests {
                 .andExpect(content().string(containsString("editedTitle")));
     }
 
+    @Test
+    public void testDeleteAlbum() throws Exception {
+        // Creates a test Album to be deleted
+        this.mvc.perform(
+                post("/albums/create").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("title", "Fake album")
+                        .param("description", "Fake album description"))
+                .andExpect(status().is3xxRedirection());
+
+        // Get the recent Album that matches the title
+        Album existingAlbum = albumsDao.findByTitle("Fake album");
+
+        // Makes a Post request to /albums/{id}/delete and expects a redirection to the Album index page
+        this.mvc.perform(
+                post("/albums/" + existingAlbum.getId() + "/delete").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("id", String.valueOf(existingAlbum.getId())))
+                .andExpect(status().is3xxRedirection());
+    }
+
 
 }
