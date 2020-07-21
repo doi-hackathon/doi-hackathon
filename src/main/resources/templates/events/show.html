@@ -22,19 +22,21 @@
                         <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
                         <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers:</div>
                         <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
-<!--                    </div>-->
                     <div th:if="${attendeeCount == 0}">
                         <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                            <button class="btn btn-primary btn-block text-uppercase rounded-pill">Volunteer for
-                                Event
-                            </button>
+                            <button class="btn btn-primary text-uppercase rounded-pill mt-2">Volunteer for Event</button>
+                            <button class="btn btn-primary text-uppercase rounded-pill mt-2" form="rsvp-form">RSVP Event</button>
                         </form>
-                        <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post" class="mt-3 ">
-                            <button class="btn btn-primary btn-block text-uppercase rounded-pill">RSVP Event
-                            </button>
+                        <form id="rsvp-form" th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
                         </form>
+<!--                        <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">-->
+<!--                            <button class="btn btn-secondary">Edit Event</button>-->
+<!--                            <button form="delete-form" class="btn btn-danger">Delete Event</button>-->
+<!--                        </form >-->
+<!--                        <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">-->
+<!--                        </form>-->
+
                     </div>
-<!--                </div>-->
             </div>
         </div>
     </div>
