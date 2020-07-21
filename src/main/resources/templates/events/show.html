@@ -13,10 +13,11 @@
     <div class="row">
         <div class="col-lg-10 col-xl-9 mx-auto">
             <div class="shadow p-3 mb-5 bg-white rounded card my-5">
-                <div class="card text-center m-5">
+                <div class="card text-center m-5" style="font-family: Arial, Helvetica, sans-serif">
                     <div class="card-body p-0">
-                        <div class="card-title text-center" style="font-weight: bold" th:text="${event.title}"></div>
-                        <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
+                        <img src="img/balloons-icon-20.png" style="width: 200px; height: 75px">
+                        <div class="card-title text-center display-4" th:text="${event.title}"></div>
+                        <div class="card-subtitle mt-3 display-5" th:text="${event.dateAndTime}"></div>
                         <p class="card-text my-3 px-2" th:text="${event.description}"></p>
                         <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
                         <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
@@ -25,10 +26,13 @@
                     </div>
                     <div th:if="${attendeeCount == 0}">
                         <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-pill">Volunteer for Event</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-pill">Volunteer for
+                                Event
+                            </button>
                         </form>
                         <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post" class="mt-3 ">
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-pill">RSVP Event</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-pill">RSVP Event
+                            </button>
                         </form>
                     </div>
                 </div>
