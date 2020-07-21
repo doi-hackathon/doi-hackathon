@@ -151,4 +151,28 @@ public class PhotosIntegrationTests {
                 .andExpect(content().string(containsString("Photos")));
     }
 
+    @Test
+    public void testEditPhoto() throws Exception {
+        //check to see if there's an existing photo
+        testPhoto = photosDao.findByDescription("genericDescription");
+        //if does not exist, create a photo
+        if (testPhoto == null) {
+            testCreatePhoto();
+        }
+        //makes a post request to /albums/{albumid}/photos/{id}/edit and expects a redirection to the individual photo page
+        String someLink = "https://images.pexels.com/photos/337909/pexels-photo-337909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+        this.mvc.perform(
+                post("/albums/" + testPhoto.getAlbum().getId() + "/photos/" + testPhoto.getId() + "/edit").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("description", "editedDescription")
+                        .param("link", someLink))
+                .andExpect(status().is3xxRedirection());
+
+        // Makes a GET request to /albums/{albumid}/photos/id and expect a redirection to the photo show page
+        this.mvc.perform(get("/albums/" + testPhoto.getAlbum().getId() + "/photos/" + testPhoto.getId()))
+                .andExpect(status().isOk())
+                // Test the static content of the show page
+                .andExpect(content().string(containsString("editedDescription")));
+    }
+
 }
