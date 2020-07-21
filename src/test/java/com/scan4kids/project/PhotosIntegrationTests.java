@@ -129,7 +129,7 @@ public class PhotosIntegrationTests {
         if(testPhoto == null) {
             testCreatePhoto();
         }
-        // Makes a GET request to /albums/{albumid}/photos/id and expect a redirection to the photo show page
+        // Makes a GET request to /albums/{albumid}/photos/{id} and expect a redirection to the photo show page
         this.mvc.perform(get("/albums/" + testPhoto.getAlbum().getId() + "/photos/" + testPhoto.getId()))
                 .andExpect(status().isOk())
                 // Test the static content of the show page
@@ -174,5 +174,32 @@ public class PhotosIntegrationTests {
                 // Test the static content of the show page
                 .andExpect(content().string(containsString("editedDescription")));
     }
+
+    @Test
+    public void testDeletePhoto() throws Exception {
+        //Creates an Album to contain the photo to be deleted
+        Album newAlbum = new Album();
+        newAlbum.setTitle("newAlbumTitle");
+        newAlbum.setDescription("newAlbumDesc");
+        Album containerAlbum = albumsDao.save(newAlbum);
+        // Creates a photo to be deleted
+        this.mvc.perform(
+                post("/albums/" + containerAlbum.getId() + "/photos/create").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("description", "Temp description")
+                        .param("link", "https://d2ph5fj80uercy.cloudfront.net/04/cat2668.jpg"))
+                .andExpect(status().is3xxRedirection());
+
+        // Get the recent photo that matches the description
+        Photo existingPhoto = photosDao.findByDescription("Temp description");
+
+        // Makes a POST request to /albums/{albumid}/photos/{id}/delete and expects a redirection to the photo index page
+        this.mvc.perform(
+                post("/albums/" + existingPhoto.getAlbum().getId() + "/photos/" + existingPhoto.getId() + "/delete").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        .param("id", String.valueOf(existingPhoto.getId())))
+                .andExpect(status().is3xxRedirection());
+    }
+
 
 }
