@@ -16,6 +16,10 @@
                 <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
                 <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
                 <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                <p class="card-text my-3 px-2" th:text="${event.location}"></p>
+                <a th:href="${event.link}">
+                    <p class="card-text my-3 px-2" th:text="${event.link}"></p>
+                </a>
                 <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
                 <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
                 <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers: </div>

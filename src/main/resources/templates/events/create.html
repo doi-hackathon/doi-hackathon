@@ -8,6 +8,7 @@
 <nav th:replace="fragments/navbar :: navbar" />
 
 <div class="container">
+    <h2>Create an event</h2>
     <form th:action="@{/events/create}" th:method="post" th:object="${event}">
         <div class="form-group">
             <label for="formGroupExampleInput">Title</label>
