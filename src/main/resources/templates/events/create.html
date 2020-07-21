@@ -6,14 +6,13 @@
 </head>
 <body>
 
-<nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+<nav id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
     <img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 200px; height: 75px">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-
             <li class="nav-item" style="font-size: 1.2em">
                 <a class="nav-link" href="/">Home</a>
             </li>
@@ -40,15 +39,19 @@
     <div th:if="${#authentication.principal.isAdmin()}">
     <div class="container">
         <form th:action="@{/events/create}" th:method="post" th:object="${event}">
-            <div class="form-group">
-                <label for="formGroupExampleInput">Title</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput" th:field="*{title}">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput">Title</label>
+                    <input type="text" name="title" class="form-control" id="formGroupExampleInput" th:field="*{title}">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput2">Location</label>
-                <input type="text" name="location" class="form-control" id="formGroupExampleInput2" th:field="*{location}">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput2">Location</label>
+                    <input type="text" name="location" class="form-control" id="formGroupExampleInput2" th:field="*{location}">
+                </div>
             </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class='col-md-6'>
                         <div class="form-group">
                             <label class="control-label">Event Time</label>
@@ -61,20 +64,27 @@
                         </div>
                     </div>
                 </div>
-            <div class="form-group">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6">
                 <label for="formGroupExampleInput4">Description</label>
-                <input type="text" name="description" class="form-control" id="formGroupExampleInput4" th:field="*{description}">
+                <textarea rows="7" name="description" class="form-control" id="formGroupExampleInput4" th:field="*{description}"></textarea>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput5">Link</label>
-                <input type="text" name="link" class="form-control" id="formGroupExampleInput5" th:field="*{link}">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput5">Link</label>
+                    <input type="text" name="link" class="form-control" id="formGroupExampleInput5" th:field="*{link}">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput6">Volunteer Goal</label>
-                <input type="text" name="volunteerGoal" class="form-control" id="formGroupExampleInput6" th:field="*{volunteerGoal}">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput6">Volunteer Goal</label>
+                    <input type="text" name="volunteerGoal" class="form-control" id="formGroupExampleInput6" th:field="*{volunteerGoal}">
+                </div>
             </div>
-
-            <button type="submit" class="btn btn-primary mb-2 mr-2">Create Event</button>
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary mb-2 mr-2">Create Event</button>
+            </div>
         </form>
     </div>
     </div>
