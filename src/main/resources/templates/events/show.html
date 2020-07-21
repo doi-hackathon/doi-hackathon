@@ -13,8 +13,6 @@
     <div class="row">
         <div class="col-lg-10 col-xl-9 mx-auto">
             <div class="shadow p-3 mb-5 bg-white rounded card my-5 card text-center m-0">
-<!--                <div class="card text-center m-5" style="font-family: Arial, Helvetica, sans-serif; background: #ea4335">-->
-<!--                    <div class="card-body p-0" style="background: #ea4335">-->
                         <h3 class="card-title text-center" th:text="${event.title}"></h3>
                         <div class="card-subtitle mt-3 display-5" th:text="${event.dateAndTime}"></div>
                         <p class="card-text my-3 px-2" th:text="${event.description}"></p>
@@ -29,13 +27,6 @@
                         </form>
                         <form id="rsvp-form" th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
                         </form>
-<!--                        <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">-->
-<!--                            <button class="btn btn-secondary">Edit Event</button>-->
-<!--                            <button form="delete-form" class="btn btn-danger">Delete Event</button>-->
-<!--                        </form >-->
-<!--                        <form id="delete-form" class="" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">-->
-<!--                        </form>-->
-
                     </div>
             </div>
         </div>
