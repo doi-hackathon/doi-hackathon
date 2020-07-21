@@ -11,12 +11,16 @@
             <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
             <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
             <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+            <p class="card-text my-3 px-2" th:text="${event.location}"></p>
+            <a th:href="${event.link}">
+                <p class="card-text my-3 px-2" th:text="${event.link}"></p>
+            </a>
             <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
             <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
         </div>
         <div sec:authorize="isAuthenticated()">
             <div th:if="${#authentication.principal.isAdmin()}">
-                <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET" sec:authorize="isAuthenticated()">
+                <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET">
                     <button class="btn btn-secondary">Edit Event</button>
                     <button form="delete-form" class="btn btn-danger">Delete Event</button>
                 </form >
@@ -38,7 +42,6 @@
         </div>
     </div>
 </div>
-<footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
 </body>
 </html>

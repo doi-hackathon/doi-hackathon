@@ -77,6 +77,7 @@ public class UserController {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
         model.addAttribute("usersEvents", usersEvents);
+        model.addAttribute("noEventsFound", usersEvents.size() == 0);
         return "users/dashboard";
     }
 }
