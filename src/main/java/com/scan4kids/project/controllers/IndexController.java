@@ -2,6 +2,9 @@ package com.scan4kids.project.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexController {
@@ -16,10 +19,6 @@ public class IndexController {
         return "about";
     }
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
 
 //    @GetMapping("/donate")
 //    public String donate() {

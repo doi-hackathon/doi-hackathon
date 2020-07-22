@@ -3,10 +3,77 @@
 <head th:replace="fragments/head :: head('Contact Us')"></head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<h1 class="d-flex justify-content-center">Contact Us</h1>
+
+<section class="my-5">
+    <div class="row">
+        <div class="col-lg-5 mb-lg-0 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <form th:action="@{/contact}" th:method="POST" th:object="${contact}">
+                        <div class="form-header blue accent-1">
+                            <h3 class="mt-2"><i class="fas fa-envelope"></i> Contact Us:</h3>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input th:field="*{name}" type="text" id="form-name" class="form-control">
+                            <label for="form-name">Your name</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input th:field="*{email}" type="email" id="form-email" class="form-control">
+                            <label for="form-email">Your email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-tag prefix grey-text"></i>
+                            <input th:field="*{subject}" type="text" id="form-Subject" class="form-control">
+                            <label for="form-Subject">Subject</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-pencil-alt prefix grey-text"></i>
+                            <textarea th:field="*{message}" id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                            <label for="form-text">Message</label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+
+            <!--Google map-->
+            <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
+                <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=215%20East%20Elm%20S.C.A.N%20lebanon,%20missouri%2065536+(S.C.A.N.)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0"
+                        style="border:0" allowfullscreen></iframe>
+
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </a>
+                    <p>Lebanon, MO 65536</p>
+                    <p class="mb-md-0">United States</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <p>(417) 991-2029</p>
+                    <p class="mb-md-0">Mon - Fri 9:00 AM - 6:00 PM</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <p>info@scan4kids.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-<footer th:replace="fragments/footer :: footer"></footer>
 <section th:replace="fragments/section :: section"></section>
 </body>
 </html>

@@ -1,7 +1,3 @@
-/*a:hover {*/
-/*    box-shadow: 0 5px black;*/
-/*}*/
-
 .carousel {
     margin: auto;
     width: 40%;
@@ -153,4 +149,21 @@
 .btn-facebook {
     color: white;
     background-color: #3b5998;
+}
+
+.map-container-section {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-container-section iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+.about-us-headers {
+    font-family: 'Abril Fatface', cursive;
 }
