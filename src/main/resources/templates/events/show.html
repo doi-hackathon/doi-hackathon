@@ -6,33 +6,29 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"/>
-<div class="container">
+<div class="container mt-5">
     <div th:if="${event == null}">
         No events found.
     </div>
-    <div class="row justify-content-center">
-        <div class="card text-center m-5 border-secondary" style="width: 18rem;">
-            <div class="card-body p-0">
-                <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
-                <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
-                <p class="card-text my-3 px-2" th:text="${event.description}"></p>
-                <p class="card-text my-3 px-2" th:text="${event.location}"></p>
-                <a th:href="${event.link}">
-                    <p class="card-text my-3 px-2" th:text="${event.link}"></p>
-                </a>
-                <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
-                <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
-                <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers: </div>
-                <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
-            </div>
-            <div th:if="${attendeeCount == 0}">
-                <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                    <button class="btn btn-primary">Volunteer for Event</button>
-                </form>
-                <form th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
-                    <button class="btn btn-primary">RSVP Event</button>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="shadow p-3 mb-5 bg-white rounded card my-5 card text-center m-0">
+                        <h3 class="card-title text-center" th:text="${event.title}"></h3>
+                        <div class="card-subtitle mt-3 display-5" th:text="${event.dateAndTime}"></div>
+                        <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                        <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
+                        <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
+                        <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers:</div>
+                        <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
+                    <div th:if="${attendeeCount == 0}">
+                        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
+                            <button class="btn btn-primary text-uppercase rounded-pill mt-2">Volunteer for Event</button>
+                            <button class="btn btn-primary text-uppercase rounded-pill mt-2" form="rsvp-form">RSVP Event</button>
+                        </form>
+                        <form id="rsvp-form" th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
+                        </form>
+                    </div>
+              </div>
         </div>
     </div>
 </div>
