@@ -30,11 +30,11 @@
                     <div class="md-form">
                         <i class="fas fa-pencil-alt prefix grey-text"></i>
                         <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
-                        <label for="form-text">Send message</label>
+                        <label for="form-text">Message</label>
                     </div>
-                    <div class="text-center">
+                    <form th:action="${'/contact'}" th:method="POST">
                         <button class="btn btn-lg btn-primary btn-block text-uppercase">Submit</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
