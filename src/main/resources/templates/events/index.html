@@ -2,46 +2,47 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('Events')"></head>
 <body>
-<nav th:replace="fragments/navbar :: navbar"></nav>
-<h1 class="d-flex justify-content-center mt-5">Upcoming Events</h1>
-<h1 th:if="${noEventsFound}">No events found!</h1>
-<div class="row justify-content-center">
-    <div class="card card-signin text-center m-5 border-secondary" style="width: 18rem;" th:each="event : ${events}">
-        <div class="card-body p-0">
-            <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
-            <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
-            <p class="card-text my-3 px-2" th:text="${event.description}"></p>
-            <p class="card-text my-3 px-2" th:text="${event.location}"></p>
-            <a th:href="${event.link}">
-                <p class="card-text my-3 px-2" th:text="${event.link}"></p>
-            </a>
-            <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
-            <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <div th:if="${#authentication.principal.isAdmin()}">
-                <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET">
-                    <button class="btn btn-secondary">Edit Event</button>
-                    <button th:form="${'delete-form' + event.id}" class="btn btn-danger">Delete Event</button>
-                </form>
-                <form th:id="${'delete-form' + event.id}" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+    <h1 class="d-flex justify-content-center mt-5">Upcoming Events</h1>
+    <h1 th:if="${noEventsFound}">No events found!</h1>
+    <div class="row justify-content-center">
+        <div class="card card-signin text-center m-5 border-secondary" style="width: 25rem;" th:each="event : ${events}">
+            <div class="card-body p-0">
+                <div class="card-header" style="font-weight: bold" th:text="${event.title}"></div>
+                <div class="card-subtitle mt-3" style="font-weight: bold" th:text="${event.dateAndTime}"></div>
+                <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                <p class="card-text my-3 px-2" th:text="${event.location}"></p>
+                <a th:href="${event.link}">
+                    <p class="card-text my-3 px-2" th:text="${event.link}"></p>
+                </a>
+                <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
+                <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <div th:if="${#authentication.principal.isAdmin()}">
+                    <form class="my-2" th:action="${'/events/' + event.id + '/edit'}" th:method="GET">
+                        <button class="btn btn-secondary">Edit Event</button>
+                        <button th:form="${'delete-form' + event.id}" class="btn btn-danger">Delete Event</button>
+                    </form>
+                    <form th:id="${'delete-form' + event.id}" th:action="${'/events/' + event.id + '/delete'}" th:method="POST" sec:authorize="isAuthenticated()">
+                    </form>
+                </div>
+                <form th:action="${'/events/' + event.id}" th:method="GET">
+                    <button class="btn btn-primary my-3">View Event Details</button>
                 </form>
             </div>
-            <form th:action="${'/events/' + event.id}" th:method="GET">
-                <button class="btn btn-primary my-3">View Event Details</button>
-            </form>
         </div>
     </div>
-</div>
-<div sec:authorize="isAuthenticated()">
-    <div th:if="${#authentication.principal.isAdmin()}">
-        <div class="row justify-content-center">
-            <form th:action="${'/events/create'}" th:method="GET">
-                <button class="btn btn-secondary">Create Event</button>
-            </form>
+    <div sec:authorize="isAuthenticated()">
+        <div th:if="${#authentication.principal.isAdmin()}">
+            <div class="row justify-content-center">
+                <form th:action="${'/events/create'}" th:method="GET">
+                    <button class="btn btn-secondary">Create Event</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<section th:replace="fragments/section :: section"></section>
+    <section th:replace="fragments/section :: section"></section>
+    <br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
