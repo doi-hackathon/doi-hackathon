@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--Cannot use head fragment with this index page because the external style.css will override
+the style needed for class="carousel-inner" for this page.-->
 <!--<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')">-->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<title th:text="${title}">Header Title</title>
+<!--	Internal CSS is necessary for carousel to wrap whole page throughout all screen sizes.-->
+	<style>
+		.carousel-item .img-fluid {
+			width:100%;
+		}
+	</style>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<!--<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>-->
-<!--<div class="jumbotron jumbotron-fluid">-->
-<!--	<div class="container">-->
-<!--		<h1 class="display-4">Fluid jumbotron</h1>-->
-<!--		<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
-<!--	</div>-->
-<!--</div>-->
 
-<!--<div class="container-fluid">-->
 	<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active" data-interval="10000">
-				<img src="/img/carousel-pic1.png" class="d-block w-100" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic1.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="/img/carousel-pic2.png" class="d-block w-100" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic2.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="/img/carousel-pic3.png" class="d-block w-100" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic3.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 		</div>
 	</div>
-<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>
-<!--</div>-->
-<!--<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">-->
-<!--	<div class="carousel-inner">-->
-<!--		<div class="carousel-item active">-->
-<!--			<img src="..." class="d-block w-100" alt="...">-->
-<!--		</div>-->
-<!--		<div class="carousel-item">-->
-<!--			<img src="..." class="d-block w-100" alt="...">-->
-<!--		</div>-->
-<!--		<div class="carousel-item">-->
-<!--			<img src="..." class="d-block w-100" alt="...">-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</div>-->
+<h1 class="d-flex justify-content-center display-4">Welcome to</h1>
+<h1 class="d-flex justify-content-center display-4">S.C.A.N.!</h1>
 
-	<section th:replace="fragments/section :: section"></section>
+<section th:replace="fragments/section :: section"></section>
 </body>
 </html>
