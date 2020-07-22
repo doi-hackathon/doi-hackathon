@@ -1,24 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')"></head>
+<!--Cannot use head fragment with this index page because the external style.css will override
+the style needed for class="carousel-inner" for this page.-->
+<!--<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')">-->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title th:text="${title}">Header Title</title>
+<!--	Internal CSS is necessary for carousel to wrap whole page throughout all screen sizes.-->
+	<style>
+		.carousel-item .img-fluid {
+			width:100%;
+		}
+
+	</style>
+</head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>
 
 	<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner">
+		<div class="shadow-lg carousel-inner">
 			<div class="carousel-item active" data-interval="10000">
-				<img src="img/IMG_1530.JPG" class="d-block w-75 h-75" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic1.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic1.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="img/IMG_0066.JPG" class="d-block w-75 h-75" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic2.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic2.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="img/IMG_1277.JPG" class="d-block w-75 h-75" alt="...">
+				<picture>
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 1400px)">
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 769px)">
+					<source srcset="/img/carousel-pic3.png" media="(min-width: 577px)">
+					<img srcset="/img/carousel-pic3.png" alt="responsive image" class="d-block img-fluid">
+				</picture>
 			</div>
 		</div>
 	</div>
-
-	<section th:replace="fragments/section :: section"></section>
+<br><br>
+<h1 class="text-center display-4">Welcome  to  S.C.A.N.!</h1>
+<br>
+<div class="container">
+	<h3 class="text-center">
+		S.C.A.N., is a support group for families of children with additional needs. We are families coming together
+		to build a network of support and to share information. Giving is what we do. We as parents, grandparents,
+		siblings and caretakers of a child with additional needs all recognize the many challenges we face each day.
+		S.C.A.N. is comprised of individuals, their families, providers, teachers, and coaches. They assist in
+		enriching,
+		consoling, educating, sharing frustrations, achievements, and most of all, fellowship.
+	</h3>
+</div>
+<section th:replace="fragments/section :: section"></section>
 </body>
 </html>
