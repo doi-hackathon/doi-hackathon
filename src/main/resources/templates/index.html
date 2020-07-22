@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')"></head>
+<!--<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')">-->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title th:text="${title}">Header Title</title>
+</head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>
+<!--<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>-->
+<!--<div class="jumbotron jumbotron-fluid">-->
+<!--	<div class="container">-->
+<!--		<h1 class="display-4">Fluid jumbotron</h1>-->
+<!--		<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
+<!--	</div>-->
+<!--</div>-->
 
+<!--<div class="container-fluid">-->
 	<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active" data-interval="10000">
-				<img src="img/IMG_1530.JPG" class="d-block w-75 h-75" alt="...">
+				<img src="/img/carousel-pic1.png" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="img/IMG_0066.JPG" class="d-block w-75 h-75" alt="...">
+				<img src="/img/carousel-pic2.png" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item" data-interval="10000">
-				<img src="img/IMG_1277.JPG" class="d-block w-75 h-75" alt="...">
+				<img src="/img/carousel-pic3.png" class="d-block w-100" alt="...">
 			</div>
 		</div>
 	</div>
+<h1 class="d-flex justify-content-center">Welcome to Scan!</h1>
+<!--</div>-->
+<!--<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">-->
+<!--	<div class="carousel-inner">-->
+<!--		<div class="carousel-item active">-->
+<!--			<img src="..." class="d-block w-100" alt="...">-->
+<!--		</div>-->
+<!--		<div class="carousel-item">-->
+<!--			<img src="..." class="d-block w-100" alt="...">-->
+<!--		</div>-->
+<!--		<div class="carousel-item">-->
+<!--			<img src="..." class="d-block w-100" alt="...">-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 
 	<section th:replace="fragments/section :: section"></section>
 </body>
