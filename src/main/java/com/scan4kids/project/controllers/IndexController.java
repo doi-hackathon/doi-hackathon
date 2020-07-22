@@ -19,15 +19,6 @@ public class IndexController {
         return "about";
     }
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
-
-    @PostMapping("/contact")
-    public String submit() {
-        return "/contact-done";
-    }
 
 //    @GetMapping("/donate")
 //    public String donate() {
