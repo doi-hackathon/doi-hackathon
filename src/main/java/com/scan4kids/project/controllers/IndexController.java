@@ -25,9 +25,8 @@ public class IndexController {
     }
 
     @PostMapping("/contact")
-    @ResponseBody
     public String submit() {
-        return "Thanks for reaching out! We will get in touch with you in 1 business day.";
+        return "/contact-done";
     }
 
 //    @GetMapping("/donate")
