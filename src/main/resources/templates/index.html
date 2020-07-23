@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--Cannot use head fragment with this index page because the external style.css will override
-the style needed for class="carousel-inner" for this page.-->
-<!--<head th:replace="fragments/head :: head('Welcome to S.C.A.N.')">-->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<title th:text="${title}">Header Title</title>
-<!--	Internal CSS is necessary for carousel to wrap whole page throughout all screen sizes.-->
+	<title th:text="${title}">S.C.A.N.</title>
 	<style>
 		.carousel-item .img-fluid {
 			width:100%;
 		}
 
+		.nav-link {
+			font-family: 'Baloo Da 2', Impact, serif;
+			text-shadow: 4px 4px 4px #aaa;
+		}
 	</style>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-
 	<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 		<div class="shadow-lg carousel-inner">
 			<div class="carousel-item active" data-interval="10000">
@@ -47,7 +46,7 @@ the style needed for class="carousel-inner" for this page.-->
 		</div>
 	</div>
 <br><br>
-<h1 class="text-center display-4">Welcome  to  S.C.A.N.!</h1>
+<h1 class="text-center display-4">Welcome  to  S.C.A.N.</h1>
 <br>
 <div class="container">
 	<h3 class="text-center">
@@ -60,5 +59,6 @@ the style needed for class="carousel-inner" for this page.-->
 	</h3>
 </div>
 <section th:replace="fragments/section :: section"></section>
+<br><br><br><br>
 </body>
 </html>
