@@ -4,60 +4,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap" rel="stylesheet">
 </head>
 <nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
-    <img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 200px; height: 75px">
+    <img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 175px; height: 65px">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
+        <ul class="navbar-nav ml-auto mt-1 mr-3  mt-lg-0">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link" href="/about">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link" href="/events">Events</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link" href="/albums">Albums</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link" href="/donate">Donate</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <th:block sec:authorize="isAnonymous()">
-                <li class="nav-item">
-                    <form th:action="@{/sign-up}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
-                        <button id="sign-up-button" class="btn btn-outline-secondary">Sign Up</button>
-                    </form>
-                </li>
-                <form th:action="@{/login}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
-                    <button id="login-button" class="btn btn-outline-secondary">Login</button>
-                </form>
-            </th:block>
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--            <th:block sec:authorize="isAnonymous()">-->
+<!--                <li class="nav-item">-->
+<!--                    <form th:action="@{/sign-up}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">-->
+<!--                        <button id="sign-up-button" class="btn btn-outline-secondary">Sign Up</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--                <form th:action="@{/login}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">-->
+<!--                    <button id="login-button" class="btn btn-outline-secondary">Login</button>-->
+<!--                </form>-->
+<!--            </th:block>-->
 
-            <th:block sec:authorize="isAuthenticated()">
-                <li class="mt-2 mr-3" style="color: black">
-                    <span th:text="${#authentication.principal.username}"/>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/dashboard}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
-                        <button class="btn btn-outline-secondary">User Dashboard</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">
-                        <button class="btn btn-outline-secondary">Logout</button>
-                    </form>
-                </li>
-            </th:block>
-        </ul>
+<!--            <th:block sec:authorize="isAuthenticated()">-->
+<!--                <li class="mt-2 mr-3" style="color: black">-->
+<!--                    <span th:text="${#authentication.principal.username}"/>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <form th:action="@{/dashboard}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">-->
+<!--                        <button class="btn btn-outline-secondary">User Dashboard</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">-->
+<!--                        <button class="btn btn-outline-secondary">Logout</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--            </th:block>-->
+<!--        </ul>-->
     </div>
 </nav>
 </html>
