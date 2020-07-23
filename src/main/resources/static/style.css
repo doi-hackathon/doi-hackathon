@@ -178,8 +178,8 @@
 }
 
 .nav-link {
-    font-family: 'Baloo Da 2', Impact, serif;
-    text-shadow: 4px 4px 4px #aaa;
+    font-family: 'Noto Sans', sans-serif;
+    color: #f8f8f8;
 }
 
 .album-card {
@@ -190,4 +190,8 @@
 
 .main-title {
     font-family: 'Raleway', sans-serif;
+}
+
+#navigation {
+    background-color: #ffd115;
 }

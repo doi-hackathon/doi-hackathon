@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 </head>
-<nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
-    <img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 175px; height: 65px">
+<nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg">
+    <a href="/"><img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 150px; height: 55px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-1 mr-3  mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="/about">ABOUT US</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/about">About Us</a>
+                <a class="nav-link" href="/events">EVENTS</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/events">Events</a>
+                <a class="nav-link" href="/albums">ALBUMS</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/albums">Albums</a>
+                <a class="nav-link" href="/contact">CONTACT</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/contact">Contact</a>
-            </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="/donate">Donate</a>
+                <a class="nav-link" href="/donate">DONATE</a>
             </li>
         </ul>
 <!--        <ul class="navbar-nav ml-auto">-->
