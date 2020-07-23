@@ -11,13 +11,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-1 mr-3  mt-lg-0">
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/about">ABOUT US</a>
-            </li>
-            <li class="nav-item mr-3">
                 <a class="nav-link" href="/events">EVENTS</a>
             </li>
             <li class="nav-item mr-3">
                 <a class="nav-link" href="/albums">ALBUMS</a>
+            </li>
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="/about">ABOUT US</a>
             </li>
             <li class="nav-item mr-3">
                 <a class="nav-link" href="/contact">CONTACT</a>
@@ -25,6 +25,16 @@
             <li class="nav-item mr-3">
                 <a class="nav-link" href="/donate">DONATE</a>
             </li>
+            <th:block sec:authorize="isAnonymous()">
+                <li class="nav-item">
+                    <form th:action="@{/sign-up}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
+                        <button id="sign-up-button" class="btn btn-outline-light">Sign Up</button>
+                    </form>
+                </li>
+                <form th:action="@{/login}" th:method="get" class="form-inline my-2 my-lg-0">
+                    <button id="login-button" class="btn btn-outline-light">Login</button>
+                </form>
+            </th:block>
         </ul>
 <!--        <ul class="navbar-nav ml-auto">-->
 <!--            <th:block sec:authorize="isAnonymous()">-->

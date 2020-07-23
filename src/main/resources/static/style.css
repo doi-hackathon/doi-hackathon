@@ -179,7 +179,12 @@
 
 .nav-link {
     font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
     color: #f8f8f8;
+}
+
+a:hover {
+    color: black;
 }
 
 .album-card {
