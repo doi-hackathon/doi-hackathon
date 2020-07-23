@@ -200,3 +200,7 @@ a:hover {
 #navigation {
     background-color: #ffd115;
 }
+
+.navbar-toggler {
+    border-color: white;
+}
