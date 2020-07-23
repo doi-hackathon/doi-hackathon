@@ -4,16 +4,15 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center">Photo</h1>
+<h1 class="d-flex justify-content-center main-title">Photo</h1>
 
 <div class="container d-flex justify-content-center">
-	<div class="card border-white card-signin">
-		<div class="card-body p-0 shadow-lg">
-			<div class="card-header" style="font-weight: bold; font-size: 2em; background-color: #def5ff">From album: <span th:text="${photo.album.title}" /></div>
+	<div class="card border-0">
+		<div class="card-body album-card">
+			<div class="card-text">From album: <span th:text="${photo.album.title}" /></div>
 			<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-			<p th:text="${photo.description}" class="card-text my-3 px-2">Description</p>
-<!--			<p class="card-header" style="font-weight: bold; font-size: 2em; background-color: #def5ff">From album: <span th:text="${photo.album.title}" /></p>-->
-			<div sec:authorize="isAuthenticated()">
+			<p th:text="${photo.description}" class="card-text text-center my-3 px-2">Description</p>
+			<div class="row justify-content-center" sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isAdmin()}">
 					<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="GET">
 						<button type="submit" class="btn btn-secondary mb-2 mr-2">Edit</button>
@@ -23,8 +22,9 @@
 					</form>
 				</div>
 			</div>
-
+			<div class="text-center">
 			<a th:href="${'/albums/photos'}">Go to all Photos</a>
+			</div>
 			<br>
 			<br>
 		</div>

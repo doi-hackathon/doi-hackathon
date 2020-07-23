@@ -181,3 +181,13 @@ body {
     font-family: 'Baloo Da 2', Impact, serif;
     text-shadow: 4px 4px 4px #aaa;
 }
+
+.album-card {
+    background: rgb(148,255,165);
+    background: linear-gradient(0deg, rgba(148,255,165,0.6404936974789917) 4%, rgba(254,255,190,0.5844712885154062) 29%, rgba(255,255,255,1) 75%);
+    font-family: 'Raleway', sans-serif;
+}
+
+.main-title {
+    font-family: 'Raleway', sans-serif;
+}
