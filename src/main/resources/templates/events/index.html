@@ -7,15 +7,16 @@
     <h1 th:if="${noEventsFound}">No events found!</h1>
     <div class="row justify-content-center">
         <div class="card card-signin text-center m-5 border-secondary" style="width: 25rem;" th:each="event : ${events}">
-            <div class="card-body p-0">
+            <div class="card-body p-0 d-flex flex-column">
                 <div class="card-header" style="font-weight: bold; font-size: 2em; background-color: #def5ff; text-shadow: 2px 2px 2px #aaa;" th:text="${event.title}"></div>
-                <div class="card-subtitle mt-3" style="font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 1px #aaa;" th:text="${event.dateAndTime}"></div>
+                <div class="card-subtitle mt-3" style="font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 1px #aaa;" th:text="${event.location}"></div>
+                <div class="card-text mt-3" style="font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 1px #aaa;" th:text="${event.dateAndTime}"></div>
+                <hr>
                 <p class="card-text my-3 px-2" th:text="${event.description}"></p>
-                <p class="card-text my-3 px-2" th:text="${event.location}"></p>
                 <a th:href="${event.link}">
                     <p class="card-text my-3 px-2" th:text="${event.link}"></p>
                 </a>
-                <hr>
+                <hr class="mt-auto">
                 <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
                 <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
             </div>
