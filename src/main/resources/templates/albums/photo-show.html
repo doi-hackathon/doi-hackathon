@@ -7,20 +7,19 @@
 <h1 class="d-flex justify-content-center">Photo</h1>
 
 <div class="container d-flex justify-content-center">
-	<div class="card border-white">
-		<div class="card-body">
+	<div class="card border-white card-signin">
+		<div class="card-body p-0 shadow-lg">
+			<div class="card-header" style="font-weight: bold; font-size: 2em; background-color: #def5ff">From album: <span th:text="${photo.album.title}" /></div>
 			<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-			<p th:text="${photo.description}" class="card-text">Description</p>
-			<p class="card-text">From album: <span th:text="${photo.album.title}" /></p>
-
+			<p th:text="${photo.description}" class="card-text my-3 px-2">Description</p>
+<!--			<p class="card-header" style="font-weight: bold; font-size: 2em; background-color: #def5ff">From album: <span th:text="${photo.album.title}" /></p>-->
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isAdmin()}">
 					<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/edit'}" th:method="GET">
-						<button type="submit" class="btn btn-primary mb-2 mr-2">Edit</button>
+						<button type="submit" class="btn btn-secondary mb-2 mr-2">Edit</button>
+						<button form="delete-form" type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
 					</form>
-
-					<form th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="GET">
-						<button type="submit" class="btn btn-danger mb-2 mr-2">Delete</button>
+					<form id="delete-form" th:action="${'/albums/' + albumid + '/photos/' + photo.id + '/delete'}" th:method="GET">
 					</form>
 				</div>
 			</div>
