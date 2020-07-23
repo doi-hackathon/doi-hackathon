@@ -4,11 +4,11 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center">Album</h1>
+<h1 class="d-flex justify-content-center main-title">Album</h1>
 
 <div class="container d-flex justify-content-center">
-	<div class="card border-white">
-		<div class="card-body">
+	<div class="card border-0">
+		<div class="card-body album-card">
 			<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
 			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
 			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
