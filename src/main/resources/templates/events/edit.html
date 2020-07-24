@@ -8,7 +8,7 @@
 <div sec:authorize="isAuthenticated()">
 	<div th:if="${#authentication.principal.isAdmin()}">
 		<div class="container">
-			<h2 id="edit-event-header" class="d-flex justify-content-center">Edit an event</h2>
+			<h2 id="edit-event-header" class="d-flex justify-content-center" style="font-family: Oxygen, sans-serif;">Edit an event</h2>
 			<form th:action="${'/events/' + event.id + '/edit'}" th:method="POST" th:object="${event}">
 				<div class="row justify-content-center">
 					<div class="form-group col-md-6">

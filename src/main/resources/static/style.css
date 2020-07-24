@@ -1,5 +1,7 @@
 body {
     background-color: floralwhite;
+    position: relative;
+    min-height: 100vh;
 }
 
 .carousel {
