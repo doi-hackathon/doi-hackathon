@@ -271,12 +271,15 @@ a:hover {
 }
 
 .contact-submit {
-    background: #00107d;
-    color: white;
+    background-color: white;
+    color: black;
+    border: 1px solid #00107d;
+    transition-duration: 0.4s;
 }
 
 .contact-submit:hover {
-    color: darkorange;
+    background-color: #00107d;
+    color: white;
 }
 
 .login-signup-form {
