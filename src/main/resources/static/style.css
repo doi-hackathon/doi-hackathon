@@ -233,6 +233,26 @@ a:hover {
     border-color: white;
 }
 
+#create-event-header {
+    font-family: 'Oxygen', sans-serif;
+}
+
+#edit-event-header {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.login-signup-button {
+    background-color: white;
+    color: black;
+    border: 1px solid #00107d;
+    transition-duration: 0.4s;
+}
+
+.login-signup-button:hover {
+    background-color: #00107d;
+    color: white;
+}
+
 .album-body {
     background: floralwhite;
 }
