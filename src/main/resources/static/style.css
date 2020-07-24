@@ -188,9 +188,7 @@ a:hover {
 }
 
 .album-card {
-    background: rgb(148,255,165);
-    background: linear-gradient(0deg, rgba(148,255,165,0.6404936974789917) 4%, rgba(254,255,190,0.5844712885154062) 29%, rgba(255,255,255,1) 75%);
-    font-family: 'Raleway', sans-serif;
+    background: floralwhite;
 }
 
 .main-title {
@@ -203,4 +201,21 @@ a:hover {
 
 .navbar-toggler {
     border-color: white;
+}
+
+.album-body {
+    background: floralwhite;
+}
+
+.album-heading {
+    font-family: Jubilat, Georgia, sans-serif;
+}
+
+.contact-submit {
+    background: #00107d;
+    color: white;
+}
+
+.contact-submit:hover {
+    color: darkorange;
 }
