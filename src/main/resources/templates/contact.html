@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Contact Us')"></head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
@@ -11,27 +12,27 @@
                 <div class="card-body album-card pt-0">
                     <form th:action="@{/contact}" th:method="POST" th:object="${contact}">
                         <div class="form-header blue accent-1">
-                            <h3 class="mt-2"><i class="fas fa-envelope"></i> Contact Us:</h3>
+                            <h3 class="contact-form-labels mt-2"><i class="fas fa-envelope"></i> Contact Us:</h3>
                         </div>
                         <div class="md-form">
                             <i class="fas fa-user prefix grey-text"></i>
                             <input th:field="*{name}" type="text" id="form-name" class="form-control">
-                            <label for="form-name">Your name</label>
+                            <label class="contact-form-labels" for="form-name">Your name</label>
                         </div>
                         <div class="md-form">
                             <i class="fas fa-envelope prefix grey-text"></i>
                             <input th:field="*{email}" type="email" id="form-email" class="form-control">
-                            <label for="form-email">Your email</label>
+                            <label class="contact-form-labels" for="form-email">Your email</label>
                         </div>
                         <div class="md-form">
                             <i class="fas fa-tag prefix grey-text"></i>
                             <input th:field="*{subject}" type="text" id="form-Subject" class="form-control">
-                            <label for="form-Subject">Subject</label>
+                            <label class="contact-form-labels" for="form-Subject">Subject</label>
                         </div>
                         <div class="md-form">
                             <i class="fas fa-pencil-alt prefix grey-text"></i>
                             <textarea th:field="*{message}" id="form-text" class="form-control md-textarea" rows="3"></textarea>
-                            <label for="form-text">Message</label>
+                            <label class="contact-form-labels" for="form-text">Message</label>
                         </div>
                         <button class="btn btn-lg btn-block text-uppercase contact-submit">Submit</button>
                     </form>
@@ -52,21 +53,21 @@
                     <a class="btn-floating blue accent-1">
                         <i class="fas fa-map-marker-alt"></i>
                     </a>
-                    <p>Lebanon, MO 65536</p>
-                    <p class="mb-md-0">United States</p>
+                    <p class="contact-form-labels">Lebanon, MO 65536</p>
+                    <p class="mb-md-0 contact-form-labels">United States</p>
                 </div>
                 <div class="col-md-4">
                     <a class="btn-floating blue accent-1">
                         <i class="fas fa-phone"></i>
                     </a>
-                    <p>(417) 991-2029</p>
-                    <p class="mb-md-0">Mon - Fri 9:00 AM - 6:00 PM</p>
+                    <p class="contact-form-labels">(417) 991-2029</p>
+                    <p class="mb-md-0 contact-form-labels">Mon - Fri 9:00 AM - 6:00 PM</p>
                 </div>
                 <div class="col-md-4">
                     <a class="btn-floating blue accent-1">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <p>info@scan4kids.com</p>
+                    <p class="contact-form-labels">info@scan4kids.com</p>
                 </div>
             </div>
         </div>

@@ -285,3 +285,7 @@ a:hover {
 .login-signup-form {
     height: calc(100vh - 127px);
 }
+
+.contact-form-labels {
+    font-family: Montserrat, sans-serif;
+}
