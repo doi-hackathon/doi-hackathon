@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Photos')"></head>
-<body>
+<body class="album-body">
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center">Photos</h1>
+<h1 class="d-flex justify-content-center album-heading">Photos</h1>
 
 <h3 th:if="${noPhotosFound}">No photos found.</h3>
 
 
 <div class="container d-flex flex-wrap justify-content-center">
 	<div th:each="photo : ${photos}">
-		<div class="card border-white">
-			<div class="card-body">
+		<div class="card border-0">
+			<div class="card-body album-card">
 				<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
 					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
 				</a>
