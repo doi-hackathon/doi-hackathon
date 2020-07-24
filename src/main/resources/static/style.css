@@ -204,3 +204,7 @@ a:hover {
 .navbar-toggler {
     border-color: white;
 }
+
+.album-body {
+    background: floralwhite;
+}
