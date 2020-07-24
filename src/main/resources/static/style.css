@@ -1,10 +1,3 @@
-/*body {*/
-/*    background: rgb(148,255,165);*/
-/*    background: linear-gradient(0deg, rgba(148,255,165,0.6404936974789917) 4%, rgba(254,255,190,0.5844712885154062) 29%, rgba(255,255,255,1) 75%);*/
-/*    background-size: 100% 100%;*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: bottom right;*/
-/*}*/
 
 .carousel {
     margin: auto;
@@ -195,6 +188,43 @@ a:hover {
     font-family: 'Raleway', sans-serif;
 }
 
+#footer {
+    background-color: #00107d;
+    color: floralwhite;
+}
+
+#events-jumbotron {
+    background-image: url("/img/group-of-people-enjoying-music-concert-325521.jpg");
+    background-size: cover;
+}
+
+#events-header {
+    color: floralwhite;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    margin-top: -60px;
+}
+
+#events-paragraph {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.join-us-button {
+    background-color: white;
+    color: black;
+    border: 2px solid #656565;
+}
+
+.join-us-button:hover {
+    background-color: #656565;
+    color: floralwhite;
+}
+
+#events-index-card {
+    font-family: 'Montserrat', sans-serif;
+}
+  
 #navigation {
     background-color: #00107d;
 }
