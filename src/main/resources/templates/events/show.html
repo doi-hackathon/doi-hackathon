@@ -10,28 +10,59 @@
     <div th:if="${event == null}">
         No events found.
     </div>
+</div>
+<div class="container" style="font-family: 'IBM Plex Serif', serif;">
     <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto">
-            <div class="shadow p-3 mb-5 bg-white rounded card my-5 card text-center m-0">
-                        <h3 class="card-title text-center" th:text="${event.title}"></h3>
-                        <div class="card-subtitle mt-3 display-5" th:text="${event.dateAndTime}"></div>
-                        <p class="card-text my-3 px-2" th:text="${event.description}"></p>
-                        <div class="card-subtitle mt-3" style="font-weight: bold">Volunteer Goal</div>
-                        <div class="card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
-                        <div class="card-subtitle mt-3" style="font-weight: bold">Current number of volunteers:</div>
-                        <div class="card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <h1 class="card-title text-center my-4" th:text="${event.title}"></h1>
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <img class="card-img-top" src="/img/event-show-pic1.jpg" alt="Card image cap">
+                <div class="card-body" style="font-size: 20px">
+                    <p class="card-text my-3 px-2" th:text="${event.description}"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Event Location</h5>
+                <div class="card-text my-3 px-3" th:text="${event.location}"></div>
+            </div>
+            <!-- Categories Widget -->
+            <div class="card my-4">
+
+                <h5 class="card-header">Event Date and Time</h5>
+                <div class="card-text my-3 px-3" th:text="${event.dateAndTime}"></div>
+            </div>
+                <!-- Side Widget -->
+            <div class="card my-4">
+                    <h5 class="card-header">Volunteer or RSVP to this Event!</h5>
+                    <div class="text-center my-3 px-3" style="font-weight: bold">Volunteer Goal:</div>
+                    <div class="text-center card-subtitle my-2" th:text="${event.volunteerGoal}"></div>
+                    <div class="text-center my-3 px-3" style="font-weight: bold">Current Number of Volunteers:</div>
+                    <div class="text-center card-subtitle my-2" th:text="${volunteeredEventCount}"></div>
                     <div th:if="${attendeeCount == 0}">
-                        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post">
-                            <button class="btn btn-primary text-uppercase rounded-pill mt-2">Volunteer for Event</button>
-                            <button class="btn btn-primary text-uppercase rounded-pill mt-2" form="rsvp-form">RSVP Event</button>
+                        <form th:action="${'/events/' + event.id + '/volunteer'}" th:method="post" class="pl-1 pb-2">
+                            <button class="btn btn-outline-primary text-uppercase mt-2">Volunteer for Event
+                            </button>
+                            <button class="btn btn-outline-primary text-uppercase mt-2" form="rsvp-form">RSVP Event
+                            </button>
                         </form>
                         <form id="rsvp-form" th:action="${'/events/' + event.id + '/rsvp'}" th:method="post">
                         </form>
                     </div>
-              </div>
+            </div>
         </div>
+
     </div>
+    <!-- /.row -->
+
 </div>
+<!-- /.container -->
+
 <section th:replace="fragments/section :: section"></section>
 </body>
 </html>
