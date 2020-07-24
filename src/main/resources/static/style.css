@@ -210,3 +210,12 @@ a:hover {
 .album-heading {
     font-family: Jubilat, Georgia, sans-serif;
 }
+
+.contact-submit {
+    background: #00107d;
+    color: white;
+}
+
+.contact-submit:hover {
+    color: darkorange;
+}
