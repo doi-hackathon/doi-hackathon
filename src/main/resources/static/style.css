@@ -1,6 +1,3 @@
-body {
-    background-color: floralwhite;
-}
 
 .carousel {
     margin: auto;
@@ -174,14 +171,17 @@ body {
 }
 
 .nav-link {
-    font-family: 'Baloo Da 2', Impact, serif;
-    text-shadow: 4px 4px 4px #aaa;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: #f8f8f8;
+}
+
+a:hover {
+    color: black;
 }
 
 .album-card {
-    background: rgb(148,255,165);
-    background: linear-gradient(0deg, rgba(148,255,165,0.6404936974789917) 4%, rgba(254,255,190,0.5844712885154062) 29%, rgba(255,255,255,1) 75%);
-    font-family: 'Raleway', sans-serif;
+    background: floralwhite;
 }
 
 .main-title {
@@ -223,4 +223,29 @@ body {
 
 #events-index-card {
     font-family: 'Montserrat', sans-serif;
+}
+  
+#navigation {
+    background-color: #00107d;
+}
+
+.navbar-toggler {
+    border-color: white;
+}
+
+.album-body {
+    background: floralwhite;
+}
+
+.album-heading {
+    font-family: Jubilat, Georgia, sans-serif;
+}
+
+.contact-submit {
+    background: #00107d;
+    color: white;
+}
+
+.contact-submit:hover {
+    color: darkorange;
 }
