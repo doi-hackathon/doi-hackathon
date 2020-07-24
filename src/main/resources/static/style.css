@@ -201,12 +201,13 @@ body {
 #events-header {
     color: floralwhite;
     text-align: center;
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'Oxygen', sans-serif;
+    margin-top: -60px;
 }
 
 #events-paragraph {
     text-align: center;
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .join-us-button {
