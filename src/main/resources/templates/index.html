@@ -2,16 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script src="https://use.fontawesome.com/80d86ae958.js"></script>
 	<title th:text="${title}">S.C.A.N.</title>
-	<style>
-		body {
-			background-color: floralwhite;
-		}
-	</style>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
@@ -19,8 +14,6 @@
 	<img src="img/Index-page-resized.png" class="img" alt="home-pic" style="width: 100%">
 </div>
 <br><br><br>
-<!--<div class="d-flex justify-content-center">-->
-<!--</div>-->
 <div class="container">
 	<div class="row">
 		<div class="col">
@@ -29,8 +22,8 @@
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
-					<h3 class="display-4" style="font-family: 'IBM Plex Serif', serif;">Who is S.C.A.N.?</h3>
-					<h5 class="" style="font-family: 'IBM Plex Serif', serif;">
+					<h3 class="display-4" style="font-family: Oxygen, sans-serif; text-align: center">Who is S.C.A.N.?</h3>
+					<h5 style="font-family: Oxygen, sans-serif; text-align: center">
 						S.C.A.N. is a support group for families of children with additional needs. We are families coming together
 						to build a network of support and to share information. Giving is what we do. We as parents, grandparents,
 						siblings and caretakers of a child with additional needs all recognize the many challenges we face each day.
@@ -44,7 +37,7 @@
 		</div>
 	</div>
 </div>
-<div class="jumbotron jumbotron-fluid mt-2" style="background-color: white">
+<div class="jumbotron jumbotron-fluid mt-5" style="background-color: white">
 	<div class="container d-flex justify-content-center">
 		<h5 class="text-center"> <span class="font-weight-bolder">"</span>To measure the success of our societies, we should examine how well those with different abilities,<br>including
 			persons with autism, are integrated as full and valued members. <span class="font-weight-bolder">"</span></h5>
