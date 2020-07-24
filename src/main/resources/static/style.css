@@ -206,3 +206,7 @@ a:hover {
 .album-body {
     background: floralwhite;
 }
+
+.album-heading {
+    font-family: Jubilat, Georgia, sans-serif;
+}
