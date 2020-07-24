@@ -62,8 +62,8 @@ body {
 
 .card-signin .card-img-left {
     margin: auto;
-    width: 47vh;
-    height: 47vh;
+    width: 42vh;
+    height: 42vh;
     background: scroll center url('https://iili.io/dqmhDQ.jpg');
     background-size: cover;
 }
@@ -195,6 +195,9 @@ a:hover {
 #footer {
     background-color: #00107d;
     color: floralwhite;
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
 }
 
 #events-jumbotron {
@@ -272,4 +275,8 @@ a:hover {
 
 .contact-submit:hover {
     color: darkorange;
+}
+
+.login-signup-form {
+    height: calc(100vh - 191px);
 }
