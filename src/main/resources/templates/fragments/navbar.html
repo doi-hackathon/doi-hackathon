@@ -9,8 +9,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto mt-1 mr-3  mt-lg-0">
-            <li class="nav-item mr-3">
+        <ul class="navbar-nav mr-auto mt-1 mr-3  mt-lg-0">
+            <li class="nav-item mx-3">
                 <a class="nav-link" href="/events">EVENTS</a>
             </li>
             <li class="nav-item mr-3">
@@ -25,27 +25,22 @@
             <li class="nav-item mr-3">
                 <a class="nav-link" href="/donate">DONATE</a>
             </li>
+            <th:block sec:authorize="isAuthenticated()">
+                <a id="user-dashboard-link" class="mav-item nav-link" href="/dashboard">USER DASHBOARD</a>
+            </th:block>
+        </ul>
             <th:block sec:authorize="isAnonymous()">
-                <li class="nav-item">
-                    <form th:action="@{/sign-up}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
-                        <button id="sign-up-button" class="btn btn-outline-light">Sign Up</button>
-                    </form>
-                </li>
-                <form th:action="@{/login}" th:method="get" class="form-inline my-2 my-lg-0">
+                <form th:action="@{/sign-up}" th:method="get" class="form-inline mr-3 my-lg-0">
+                    <button id="sign-up-button" class="btn btn-outline-light">Sign Up</button>
+                </form>
+                <form th:action="@{/login}" th:method="get" class="form-inline my-lg-0">
                     <button id="login-button" class="btn btn-outline-light">Login</button>
                 </form>
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
-                <li class="nav-item">
-                    <form th:action="@{/dashboard}" th:method="get" class="form-inline my-2 mr-3 my-lg-0">
-                        <button class="btn btn-outline-light">User Dashboard</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">
-                        <button class="btn btn-outline-light">Logout</button>
-                    </form>
-                </li>
+                <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-light">Logout</button>
+                </form>
             </th:block>
         </ul>
     </div>
