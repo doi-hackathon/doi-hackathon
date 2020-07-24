@@ -1,3 +1,8 @@
+body {
+    background-color: floralwhite;
+    position: relative;
+    min-height: 100vh;
+}
 
 .carousel {
     margin: auto;
@@ -58,8 +63,9 @@
 }
 
 .card-signin .card-img-left {
-    width: 50vh;
-    height: 50vh;
+    margin: auto;
+    width: 42vh;
+    height: 42vh;
     background: scroll center url('https://iili.io/dqmhDQ.jpg');
     background-size: cover;
 }
@@ -177,7 +183,7 @@
 }
 
 a:hover {
-    color: black;
+    color: #b8b9bb;
 }
 
 .album-card {
@@ -191,6 +197,9 @@ a:hover {
 #footer {
     background-color: #00107d;
     color: floralwhite;
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
 }
 
 #events-jumbotron {
@@ -262,10 +271,21 @@ a:hover {
 }
 
 .contact-submit {
-    background: #00107d;
-    color: white;
+    background-color: white;
+    color: black;
+    border: 1px solid #00107d;
+    transition-duration: 0.4s;
 }
 
 .contact-submit:hover {
-    color: darkorange;
+    background-color: #00107d;
+    color: white;
+}
+
+.login-signup-form {
+    height: calc(100vh - 127px);
+}
+
+.contact-form-labels {
+    font-family: Montserrat, sans-serif;
 }
