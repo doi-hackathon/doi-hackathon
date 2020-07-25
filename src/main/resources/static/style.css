@@ -277,9 +277,26 @@ a:hover {
     transition-duration: 0.4s;
 }
 
-.contact-submit:hover {
-    background-color: #00107d;
-    color: white;
+.member-name {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.team-member {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.team-member img {
+    width: 14rem;
+    height: 14rem;
+    border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+.team-member h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.about-us {
+    height: calc(100vh - 325px);
 }
 
 .login-signup-form {
