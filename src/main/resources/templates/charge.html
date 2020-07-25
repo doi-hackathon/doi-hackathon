@@ -12,25 +12,21 @@
     <!--Stripe JavaScript Library-->
     <script src="https://js.stripe.com/v3/"></script>
 </head>
-<body class="bg-light pt-5">
-
+<body>
+<img src="img/person-making-clay-figures-1449934.jpg" alt="" style="width: 100%">
 <!--hero section-->
+
 <section class="py-5">
-    <div class="container">
+    <div class="container border rounded">
         <div class="row">
             <div class="col-lg-6 col-md-8 col-12 my-auto mx-auto">
                 <h1>
-                    Stripe One-Time Charge
+                     One-Time Donation
                 </h1>
                 <p class="lead mb-4">
                     Please fill the form below to complete the order payment
                 </p>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5>Leather Bag</h5>
-                        <p class="lead">USD 9.99</p>
-                    </div>
-                </div>
+
                 <form action="#" id="payment-form" method="post">
                     <input id="api-key" type="hidden" th:value="${stripePublicKey}">
                     <div class="form-group">
@@ -59,13 +55,7 @@
 
                         </div>
                     </div>
-
-
                 </form>
-                <p class="mt-5 text-muted">
-                    <small>An example project by <a th:href="@{https://attacomsian.com}" target="_blank">Atta</a>.
-                    </small>
-                </p>
             </div>
         </div>
     </div>
