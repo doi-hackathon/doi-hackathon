@@ -197,7 +197,7 @@ a:hover {
 #footer {
     background-color: #00107d;
     color: floralwhite;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     bottom: 0;
 }
