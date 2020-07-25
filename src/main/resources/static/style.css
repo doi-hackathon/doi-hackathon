@@ -297,9 +297,18 @@ a:hover {
 }
 
 /*.page-section {*/
-/*    height: calc(100vh - 127px);*/
+/*    !*height: calc(100vh - 127px);*!*/
+/*    border: solid red 5px;*/
+/*    margin: 0 auto;*/
+/*}*/
+/*.page-test {*/
+/*    border: solid red 5px;*/
 /*}*/
 
-/*.login-signup-form {*/
-/*    height: calc(100vh - 127px);*/
-/*}*/
+.login-signup-form {
+    height: calc(100vh - 127px);
+}
+
+.about-us {
+    height: calc(100vh - 325px);
+}
