@@ -63,8 +63,9 @@ body {
 }
 
 .card-signin .card-img-left {
-    width: 50vh;
-    height: 50vh;
+    margin: auto;
+    width: 42vh;
+    height: 42vh;
     background: scroll center url('https://iili.io/dqmhDQ.jpg');
     background-size: cover;
 }
@@ -182,7 +183,7 @@ body {
 }
 
 a:hover {
-    color: black;
+    color: #b8b9bb;
 }
 
 .album-card {
@@ -270,12 +271,10 @@ a:hover {
 }
 
 .contact-submit {
-    background: #00107d;
-    color: white;
-}
-
-.contact-submit:hover {
-    color: darkorange;
+    background-color: white;
+    color: black;
+    border: 1px solid #00107d;
+    transition-duration: 0.4s;
 }
 
 .member-name {
@@ -298,4 +297,12 @@ a:hover {
 
 .about-us {
     height: calc(100vh - 325px);
+}
+
+.login-signup-form {
+    height: calc(100vh - 127px);
+}
+
+.contact-form-labels {
+    font-family: Montserrat, sans-serif;
 }

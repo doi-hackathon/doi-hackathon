@@ -5,40 +5,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!--<nav id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-white">-->
-<!--    <img src="/img/S.C.A.N..png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 200px; height: 75px">-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--        <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">-->
-<!--        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/">Home</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/about">About Us</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/events">Events</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/albums">Albums</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/contact">Contact</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item" style="font-size: 1.2em">-->
-<!--                <a class="nav-link" href="/donate">Donate</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
-
 <div sec:authorize="isAuthenticated()">
     <div th:if="${#authentication.principal.isAdmin()}">
         <div class="container">
-            <h2 id="create-event-header" class="d-flex justify-content-center">Create an event</h2>
+            <h2 id="create-event-header" class="d-flex justify-content-center" style="font-family: Oxygen, sans-serif;">Create an event</h2>
             <form th:action="@{/events/create}" th:method="post" th:object="${event}">
                 <div class="row justify-content-center">
                     <div class="form-group col-md-6">
