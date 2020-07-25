@@ -6,32 +6,13 @@
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
-<!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />-->
-<!--<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />-->
-<!--<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />-->
-
-<style>
-    .team-member {
-        margin-bottom: 3rem;
-        text-align: center;
-    }
-    .team-member img {
-        width: 14rem;
-        height: 14rem;
-        border: 0.5rem solid rgba(0, 0, 0, 0.1);
-    }
-    .team-member h4 {
-        margin-top: 1.5rem;
-        margin-bottom: 0;
-    }
-</style>
 
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <br><br>
 
 <!-- Team-->
-<section class="page-section" id="team">
+<section class="page-section pt-5" id="team">
     <div class="container">
         <div class="text-center pb-3">
             <h2 class="section-heading text-uppercase" style="font-family: 'Oxygen', sans-serif">Our Amazing Team</h2>
@@ -40,7 +21,7 @@
             <div class="col-lg-3">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="/img/Tylerphoto.png" alt="" />
-                    <h4>Tyler Trudgeon</h4>
+                    <h4 class="member-name">Tyler Trudgeon</h4>
                     <br>
                     <a class="btn btn-dark btn-social mx-2" href="https://github.com/tylertrudgeon"><i class="fab fa-github"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/tylertrudgeon/"><i class="fab fa-linkedin-in"></i></a>
@@ -50,7 +31,7 @@
             <div class="col-lg-3">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="/img/Rexphoto2.png" alt="" />
-                    <h4>Rex Sutton</h4>
+                    <h4 class="member-name">Rex Sutton</h4>
                     <br>
                     <a class="btn btn-dark btn-social mx-2" href="https://github.com/rexnsutton"><i class="fab fa-github"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/rex-sutton/"><i class="fab fa-linkedin-in"></i></a>
@@ -61,7 +42,7 @@
             <div class="col-lg-3">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="/img/Sarahphoto.png" alt="" />
-                    <h4>Sarah Nainggolan</h4>
+                    <h4 class="member-name">Sarah Nainggolan</h4>
                     <br>
                     <a class="btn btn-dark btn-social mx-2" href="https://github.com/sarahlia"><i class="fab fa-github"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/sarah-nainggolan/"><i class="fab fa-linkedin-in"></i></a>
@@ -71,7 +52,7 @@
             <div class="col-lg-3">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="/img/Ramonphoto.png" alt="" />
-                    <h4>Ramon Hubbell</h4>
+                    <h4 class="member-name">Ramon Hubbell</h4>
                     <br>
                     <a class="btn btn-dark btn-social mx-2" href="https://github.com/ramonhubbell"><i class="fab fa-github"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/ramon-hubbell/"><i class="fab fa-linkedin-in"></i></a>
@@ -81,47 +62,12 @@
         </div>
     </div>
 </section>
-
-
-<!--<div class="row d-flex justify-content-center">-->
-<!--<div class="card card-signin col-md-2 col-sm-2 mt-5 mx-4">-->
-<!--    <img src="/img/Tyler%20Trudgeon%20Photo.jpg" class="mt-3 rounded" alt="..."  style="height: 60% ;width:100%;">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title d-flex justify-content-center" style="font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 1px #aaa;">Tyler Trudgeon</h5>-->
-<!--        <div class="caption d-flex justify-content-center"> <a href="https://github.com/tylertrudgeon"><i class="fa fa-github fa-2x mr-3" aria-hidden="true"></i></a>-->
-<!--            <a href="https://www.linkedin.com/in/tylertrudgeon/"><i class="fa fa-linkedin-square fa-2x mx-3" aria-hidden="true"></i></a><a href="https://alumni.codeup.com/students/829"><i class="fa fa-terminal fa-2x ml-3" aria-hidden="true"></i></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="card card-signin col-md-2 col-sm-2 mt-5 mx-4">-->
-<!--    <img src="/img/Sarah_Nainggolan_Headshot.jpg" class="mt-3 rounded" alt="..."  style="height: 60% ;width:100%;">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title d-flex justify-content-center" style="font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 1px #aaa;">Sarah Nainggolan</h5>-->
-<!--        <div class="caption d-flex justify-content-center"> <a href="https://github.com/sarahlia"><i class="fa fa-github fa-2x mr-3" aria-hidden="true"></i></a>-->
-<!--            <a href="https://www.linkedin.com/in/sarah-nainggolan/"><i class="fa fa-linkedin-square fa-2x mx-3" aria-hidden="true"></i></a><a href="https://alumni.codeup.com/students/834"><i class="fa fa-terminal fa-2x ml-3" aria-hidden="true"></i></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="card card-signin col-md-2 col-sm-2 mt-5 mx-4">-->
-<!--    <img src="/img/Professional-headshot.jpeg" class="mt-3 rounded" alt="..." style="height: 60% ;width:100%;">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title d-flex justify-content-center" style="font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 1px #aaa;">Rex Sutton</h5>-->
-<!--        <div class="caption d-flex justify-content-center"> <a href="https://github.com/rexnsutton"><i class="fa fa-github fa-2x mr-3" aria-hidden="true"></i></a>-->
-<!--            <a href="https://www.linkedin.com/in/rex-sutton/"><i class="fa fa-linkedin-square fa-2x mx-3" aria-hidden="true"></i></a><a href="https://alumni.codeup.com/students/822"><i class="fa fa-terminal fa-2x ml-3" aria-hidden="true"></i></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="card card-signin col-md-2 col-sm-2 mt-5 mx-4">-->
-<!--    <img src="/img/DSC00192.jpg" class="mt-3 rounded" alt="..." style="height: 60% ;width:100%;">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title d-flex justify-content-center" style="font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 1px #aaa;">Ramon Hubbell</h5>-->
-<!--        <div class="caption d-flex justify-content-center"> <a href="https://github.com/ramonhubbell"><i class="fa fa-github fa-2x mr-3" aria-hidden="true"></i></a>-->
-<!--            <a href="https://www.linkedin.com/in/ramon-hubbell/"><i class="fa fa-linkedin-square fa-2x mx-3" aria-hidden="true"></i></a><a href="https://alumni.codeup.com/students/830"><i class="fa fa-terminal fa-2x ml-3" aria-hidden="true"></i></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</div>-->
 <section th:replace="fragments/section :: section"></section>
+<footer id="footer" class="py-3">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
+    </div>
+</footer>
 <br><br><br><br><br><br>
 </body>
 </html>
