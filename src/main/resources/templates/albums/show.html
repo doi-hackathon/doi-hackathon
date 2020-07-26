@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Album</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
@@ -27,7 +28,7 @@
 					<a th:href="${photo.link}" data-lightbox="photos">
 						<img th:src="${photo.link}" class="img-fluid" style="width: 16rem; height: 12rem;">
 					</a>
-					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}"/></a>
+					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}" class="d-flex justify-content-center"/></a>
 				</div>
 			</div>
 		</div>
@@ -36,7 +37,7 @@
 	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
 		<div th:if="${#authentication.principal.isAdmin()}">
 			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
-				<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
+				<button type="submit" class="join-us-button btn btn-secondary mb-2">ADD A PHOTO</button>
 			</form>
 		</div>
 	</div>
@@ -44,7 +45,7 @@
 	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
 		<div th:if="${#authentication.principal.isAdmin()}">
 			<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
-				<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
+				<button type="submit" class="album-create btn btn-secondary mb-2 mr-2">Edit Album</button>
 			</form>
 		</div>
 	</div>
@@ -52,7 +53,7 @@
 	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
 		<div th:if="${#authentication.principal.isAdmin()}">
 			<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
-				<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
+				<button type="submit" class="album-create btn btn-danger mb-2 mr-2">Delete Album</button>
 			</form>
 		</div>
 	</div>
