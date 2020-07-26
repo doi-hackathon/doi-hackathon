@@ -2,32 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Photos')"></head>
 <body class="album-body">
-<nav th:replace="fragments/navbar :: navbar"></nav>
+	<nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center album-heading">Photos</h1>
+	<h1 class="d-flex justify-content-center album-heading">Photos</h1>
 
-<h3 th:if="${noPhotosFound}">No photos found.</h3>
+	<h3 th:if="${noPhotosFound}">No photos found.</h3>
 
 
-<div class="container d-flex flex-wrap justify-content-center">
-	<div th:each="photo : ${photos}">
-		<div class="card border-0">
-			<div class="card-body album-card">
-				<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
-					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-				</a>
+	<div class="container d-flex flex-wrap justify-content-center">
+		<div th:each="photo : ${photos}">
+			<div class="card border-0">
+				<div class="card-body album-card">
+					<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
+						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<a th:href="${'/albums'}" class="d-flex justify-content-center">Go to all Albums</a>
+	<a th:href="${'/albums'}" class="d-flex justify-content-center">Go to all Albums</a>
 
-<br>
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-<section th:replace="fragments/section :: section"></section>
+	<footer id="footer" class="py-3">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
+		</div>
+	</footer>
+
+	<section th:replace="fragments/section :: section"></section>
 </body>
 </html>

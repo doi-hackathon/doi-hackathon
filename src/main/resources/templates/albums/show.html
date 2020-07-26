@@ -2,54 +2,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head :: head('View an album')"></head>
 <body class="album-body">
-<nav th:replace="fragments/navbar :: navbar"></nav>
+	<nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1 class="d-flex justify-content-center main-title">Album</h1>
+	<h1 class="d-flex justify-content-center main-title">Album</h1>
 
-<div class="container d-flex justify-content-center">
-	<div class="card border-0">
-		<div class="card-body album-card">
-			<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
-			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
-			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
-			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
-				<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
-					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-				</a>
-			</div>
-
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
-					</form>
+	<div class="container d-flex justify-content-center">
+		<div class="card border-0">
+			<div class="card-body album-card">
+				<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
+				<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
+				<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
+				<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
+					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
+						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+					</a>
 				</div>
-			</div>
 
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
-					</form>
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
+						</form>
+					</div>
 				</div>
-			</div>
 
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
-					</form>
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
+						</form>
+					</div>
 				</div>
+
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
+						</form>
+					</div>
+				</div>
+
+				<a th:href="${'/albums'}">Back to all Albums</a>
+
+				<br>
+				<br>
+				<br>
 			</div>
-
-			<a th:href="${'/albums'}">Back to all Albums</a>
-
-			<br>
-			<br>
 		</div>
 	</div>
-</div>
 
-<section th:replace="fragments/section :: section"></section>
+	<footer id="footer" class="py-3">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
+		</div>
+	</footer>
+
+	<section th:replace="fragments/section :: section"></section>
 </body>
 </html>
