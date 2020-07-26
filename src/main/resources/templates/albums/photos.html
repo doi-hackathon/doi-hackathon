@@ -4,7 +4,7 @@
 <body class="album-body">
 	<nav th:replace="fragments/navbar :: navbar"></nav>
 
-	<h1 class="d-flex justify-content-center album-heading">Photos</h1>
+	<h1 class="d-flex justify-content-center album-heading mt-3">Photos</h1>
 
 	<h3 th:if="${noPhotosFound}">No photos found.</h3>
 
@@ -14,7 +14,7 @@
 			<div class="card border-0">
 				<div class="card-body album-card">
 					<a th:href="${'/albums/' + photo.album.id + '/photos/' + photo.id}">
-						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
+						<img th:src="${photo.link}" class="card-title img-thumbnail" style="width: 16rem; height: 12rem;">
 					</a>
 				</div>
 			</div>
