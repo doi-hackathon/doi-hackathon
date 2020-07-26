@@ -22,40 +22,38 @@
 		<div class="container">
 			<h4 class="d-flex justify-content-center">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>
 			<p class="d-flex justify-content-center"> <span th:text="${album.description}" /></p>
-			<div class="row photos">
+			<div class="row photos d-flex justify-content-center">
 				<div th:each="photo : ${album.photos}" class="col-sm-6 col-md-4 col-lg-3 item">
 					<a th:href="${photo.link}" data-lightbox="photos">
 						<img th:src="${photo.link}" class="img-fluid" style="width: 16rem; height: 12rem;">
 					</a>
+					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}"/></a>
 				</div>
-
-				<div sec:authorize="isAuthenticated()">
-					<div th:if="${#authentication.principal.isAdmin()}">
-						<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
-							<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
-						</form>
-					</div>
-				</div>
-
-				<div sec:authorize="isAuthenticated()">
-					<div th:if="${#authentication.principal.isAdmin()}">
-						<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
-							<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
-						</form>
-					</div>
-				</div>
-
-				<div sec:authorize="isAuthenticated()">
-					<div th:if="${#authentication.principal.isAdmin()}">
-						<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
-							<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
-						</form>
-					</div>
-				</div>
-<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/carousel-pic2.png" data-lightbox="photos"><img class="img-fluid" src="/img/carousel-pic2.png" style="width: 16rem; height: 12rem;"></a></div>-->
-<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/carousel-pic3.png" data-lightbox="photos"><img class="img-fluid" src="/img/carousel-pic3.png" style="width: 16rem; height: 12rem;"></a></div>-->
-<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/event-show-pic1.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/event-show-pic1.jpg" style="width: 16rem; height: 12rem;"></a></div>-->
 			</div>
+		</div>
+	</div>
+
+	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
+		<div th:if="${#authentication.principal.isAdmin()}">
+			<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
+				<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
+			</form>
+		</div>
+	</div>
+
+	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
+		<div th:if="${#authentication.principal.isAdmin()}">
+			<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
+				<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
+			</form>
+		</div>
+	</div>
+
+	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-center">
+		<div th:if="${#authentication.principal.isAdmin()}">
+			<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
+				<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
+			</form>
 		</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
