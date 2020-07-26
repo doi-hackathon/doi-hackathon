@@ -190,10 +190,6 @@ a:hover {
     background: floralwhite;
 }
 
-.main-title {
-    font-family: 'Raleway', sans-serif;
-}
-
 #footer {
     background-color: #00107d;
     color: floralwhite;
@@ -269,6 +265,11 @@ a:hover {
 .album-heading {
     font-family: 'Montserrat', sans-serif;
 }
+
+.album-subheading {
+    font-family: 'Oxygen', sans-serif;
+}
+
 
 .contact-submit {
     background-color: white;
