@@ -19,13 +19,13 @@
 	<h1 class="d-flex justify-content-center album-heading mt-3">Album</h1>
 
 <!--	lightbox -->
-	<div class="photo-gallery">
-		<div class="container">
-			<h4 class="d-flex justify-content-center">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>
-			<p class="d-flex justify-content-center"> <span th:text="${album.description}" /></p>
+	<h4 class="d-flex justify-content-center">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>
+	<p class="d-flex justify-content-center"> <span th:text="${album.description}" /></p>
+	<div class="photo-gallery d-flex justify-content-center">
+		<div class="container d-flex justify-content-center">
 			<div class="row photos d-flex justify-content-center">
 				<div th:each="photo : ${album.photos}" class="col-sm-6 col-md-4 col-lg-3 item">
-					<a th:href="${photo.link}" data-lightbox="photos">
+					<a th:href="${photo.link}" data-lightbox="photos" class="d-flex justify-content-center">
 						<img th:src="${photo.link}" class="img-fluid" style="width: 16rem; height: 12rem;">
 					</a>
 					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}" class="d-flex justify-content-center"/></a>
