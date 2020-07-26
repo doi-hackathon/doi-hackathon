@@ -190,14 +190,10 @@ a:hover {
     background: floralwhite;
 }
 
-.main-title {
-    font-family: 'Raleway', sans-serif;
-}
-
 #footer {
     background-color: #00107d;
     color: floralwhite;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     bottom: 0;
 }
@@ -262,13 +258,14 @@ a:hover {
     color: white;
 }
 
-.album-body {
-    background: floralwhite;
+.album-heading {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.album-heading {
-    font-family: Jubilat, Georgia, sans-serif;
+.album-subheading {
+    font-family: 'Oxygen', sans-serif;
 }
+
 
 .contact-submit {
     background-color: white;
@@ -277,9 +274,26 @@ a:hover {
     transition-duration: 0.4s;
 }
 
-.contact-submit:hover {
-    background-color: #00107d;
-    color: white;
+.member-name {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.team-member {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.team-member img {
+    width: 14rem;
+    height: 14rem;
+    border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+.team-member h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.about-us {
+    height: calc(100vh - 325px);
 }
 
 .login-signup-form {
@@ -300,4 +314,8 @@ a:hover {
 
 #dashboard-welcome-image {
     z-index: -1;
+}
+  
+.album-create {
+    font-family: 'Montserrat', sans-serif;
 }
