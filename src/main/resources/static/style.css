@@ -1,5 +1,5 @@
 body {
-    background-color: floralwhite;
+    background-color: #fffaf0;
     position: relative;
     min-height: 100vh;
 }
@@ -288,4 +288,16 @@ a:hover {
 
 .contact-form-labels {
     font-family: Montserrat, sans-serif;
+}
+
+#dashboard-buttons {
+    margin-top: 30vh;
+}
+
+#dashboard-welcome-text {
+    margin-top: -240px;
+}
+
+#dashboard-welcome-image {
+    z-index: -1;
 }
