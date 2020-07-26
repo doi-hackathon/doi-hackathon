@@ -16,11 +16,6 @@
 			font: 0.938em/1.6 'Oxygen',sans-serif;
 		}
 
-		.content { margin: 7% auto 0;
-			padding: 2em 1em 1em;
-			max-width: 640px;
-		}
-
 		img { float: left;
 			margin: 0 2em 2em 0;
 		}
@@ -57,18 +52,34 @@
 			color: floralwhite;
 		}
 
+		.flex-container {
+			width: 100%;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+		}
+
+		.flex-item {
+			height: 220px;
+			width: 600px;
+		}
+
 	</style>
 </head>
-<body>
-<div class="content" role="main">
-	<a href="/"><img src="/img/SCAN%20LOGO.jpg"
-											 alt=Wikimedia width=200px height=200px></a>
-	<h1>Page not found</h1>
-	<p><em>/404</em></p>
-	<p>We could not find the above page on our servers.</p>
-	<div>
-		<a href="/"><button type="button" class="join-us-button btn mb-3 px-5 py-2" style="font-size: 1em">GO TO MAIN PAGE</button></a>
+<body class="flex-container">
+	<div class="flex-item">
+		<a href="/"><img src="/img/SCAN%20LOGO.jpg"
+						 alt=Wikimedia width=200px height=200px>
+		</a>
+		<h1>Page not found</h1>
+		<p><em>/404</em></p>
+		<p>We could not find the above page on our servers.</p>
+		<div>
+			<a href="/">
+				<button type="button" class="join-us-button btn mb-3 px-5 py-2" style="font-size: 1em">GO TO MAIN PAGE
+				</button>
+			</a>
+		</div>
 	</div>
-</div>
 </body>
 </html>
