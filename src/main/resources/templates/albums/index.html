@@ -17,7 +17,7 @@
     <div sec:authorize="isAuthenticated()">
         <div th:if="${#authentication.principal.isAdmin()}">
             <form th:action="${'/albums/create'}" th:method="GET" class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-outline-dark mb-2 mr-2">Create an Album</button>
+                <button type="submit" class="album-create btn btn-secondary mb-2 mr-2">Create an Album</button>
             </form>
         </div>
     </div>
