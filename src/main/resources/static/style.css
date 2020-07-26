@@ -190,10 +190,6 @@ a:hover {
     background: floralwhite;
 }
 
-.main-title {
-    font-family: 'Raleway', sans-serif;
-}
-
 #footer {
     background-color: #00107d;
     color: floralwhite;
@@ -262,13 +258,14 @@ a:hover {
     color: white;
 }
 
-.album-body {
-    background: floralwhite;
+.album-heading {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.album-heading {
-    font-family: Jubilat, Georgia, sans-serif;
+.album-subheading {
+    font-family: 'Oxygen', sans-serif;
 }
+
 
 .contact-submit {
     background-color: white;
@@ -305,4 +302,8 @@ a:hover {
 
 .contact-form-labels {
     font-family: Montserrat, sans-serif;
+}
+
+.album-create {
+    font-family: 'Montserrat', sans-serif;
 }
