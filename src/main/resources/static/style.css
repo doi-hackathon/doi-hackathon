@@ -188,10 +188,11 @@ a:hover {
 
 .album-card {
     background: floralwhite;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .main-title {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #footer {
@@ -267,7 +268,7 @@ a:hover {
 }
 
 .album-heading {
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .contact-submit {
@@ -287,5 +288,5 @@ a:hover {
 }
 
 .contact-form-labels {
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }

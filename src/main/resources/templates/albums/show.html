@@ -1,55 +1,116 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="fragments/head :: head('View an album')"></head>
-<body class="album-body">
-<nav th:replace="fragments/navbar :: navbar"></nav>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Album</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<style th:inline="css">
 
-<h1 class="d-flex justify-content-center main-title">Album</h1>
+	</style>
+</head>
+<body>
+	<nav th:replace="fragments/navbar :: navbar"></nav>
 
-<div class="container d-flex justify-content-center">
-	<div class="card border-0">
-		<div class="card-body album-card">
-			<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="d-flex justify-content-center"/></h4>
-			<h6 class="card-text d-flex justify-content-center">Album # <span th:text="${album.id}" /></h6>
-			<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>
-			<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
-				<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
-					<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">
-				</a>
-			</div>
+	<h1 class="d-flex justify-content-center album-heading mt-3">Album</h1>
 
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
-					</form>
+<!--	lightbox -->
+	<div class="photo-gallery">
+		<div class="container">
+			<h4 class="d-flex justify-content-center">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>
+			<p class="d-flex justify-content-center"> <span th:text="${album.description}" /></p>
+			<div class="row photos">
+				<div th:each="photo : ${album.photos}" class="col-sm-6 col-md-4 col-lg-3 item">
+					<a th:href="${photo.link}" data-lightbox="photos">
+						<img th:src="${photo.link}" class="img-fluid" style="width: 16rem; height: 12rem;">
+					</a>
 				</div>
-			</div>
 
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
-					</form>
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>
+						</form>
+					</div>
 				</div>
-			</div>
 
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.isAdmin()}">
-					<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
-						<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
-					</form>
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>
+						</form>
+					</div>
 				</div>
+
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.isAdmin()}">
+						<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">
+							<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>
+						</form>
+					</div>
+				</div>
+<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/carousel-pic2.png" data-lightbox="photos"><img class="img-fluid" src="/img/carousel-pic2.png" style="width: 16rem; height: 12rem;"></a></div>-->
+<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/carousel-pic3.png" data-lightbox="photos"><img class="img-fluid" src="/img/carousel-pic3.png" style="width: 16rem; height: 12rem;"></a></div>-->
+<!--				<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/img/event-show-pic1.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/event-show-pic1.jpg" style="width: 16rem; height: 12rem;"></a></div>-->
 			</div>
-
-			<a th:href="${'/albums'}">Back to all Albums</a>
-
-			<br>
-			<br>
 		</div>
 	</div>
-</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 
-<section th:replace="fragments/section :: section"></section>
+
+<!--	<h1 class="d-flex justify-content-center main-title mt-3">Album</h1>-->
+
+
+<!--	earlier code-->
+<!--	<div class="d-flex justify-content-center">-->
+<!--		<div class="card border-0">-->
+<!--			<div class="card-body album-card">-->
+<!--				<h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>-->
+<!--				<p class="card-text d-flex justify-content-center"> <span th:text="${album.description}" /></p>-->
+<!--				<div th:each="photo : ${album.photos}" class="d-flex justify-content-center">-->
+<!--					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">-->
+<!--						<img th:src="${photo.link}" class="card-title" style="width: 16rem; height: 12rem;">-->
+<!--					</a>-->
+<!--				</div>-->
+
+<!--				<div sec:authorize="isAuthenticated()">-->
+<!--					<div th:if="${#authentication.principal.isAdmin()}">-->
+<!--						<form th:action="${'/albums/' + albumId + '/photos/create/'}" th:method="GET">-->
+<!--							<button type="submit" class="btn btn-outline-dark mb-2">Add a photo to this album</button>-->
+<!--						</form>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--				<div sec:authorize="isAuthenticated()">-->
+<!--					<div th:if="${#authentication.principal.isAdmin()}">-->
+<!--						<form th:action="${'/albums/' + albumId + '/edit'}" th:method="GET">-->
+<!--							<button type="submit" class="btn btn-outline-secondary mb-2 mr-2">Edit Album</button>-->
+<!--						</form>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--				<div sec:authorize="isAuthenticated()">-->
+<!--					<div th:if="${#authentication.principal.isAdmin()}">-->
+<!--						<form th:action="${'/albums/' + albumId + '/delete'}" th:method="GET">-->
+<!--							<button type="submit" class="btn btn-outline-danger mb-2 mr-2">Delete Album</button>-->
+<!--						</form>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--				<a th:href="${'/albums'}">Back to all Albums</a>-->
+
+<!--				<br>-->
+<!--				<br>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	<section th:replace="fragments/section :: section"></section>-->
+
 </body>
 </html>
