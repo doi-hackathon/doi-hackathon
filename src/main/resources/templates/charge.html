@@ -4,6 +4,7 @@
     <title>Charge</title>
     <!--Bootstrap 4 CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <!--Bootstrap 4 JavaScript-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -13,20 +14,26 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-<img src="img/person-making-clay-figures-1449934.jpg" alt="" style="width: 100%">
-<!--hero section-->
-
+<nav class="position-sticky sticky-top" th:replace="fragments/navbar :: navbar"></nav>
+<div class="position-fixed d-none d-lg-block d-xl-block">
+<img src="img/person-s-hand-with-paints-1174932.jpg" alt="" style="width: 100%">
+</div>
 <section class="py-5">
-    <div class="container">
+    <div class="container position-fixed fixed-bottom mb-5">
         <div class="row">
-            <div class="col-lg-6 col-md-8 col-12 my-auto mx-auto border rounded">
+            <div class="col-lg-6 col-md-8 col-12 my-auto mx-auto border rounded bg-white mt-5">
                 <h1>
-                     One-Time Donation
+                     Thank you for your Donation!
                 </h1>
                 <p class="lead mb-4">
-                    Please fill the form below to complete the order payment
+                    Please fill the form below to complete the payment
                 </p>
-
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>S.C.A.N. One time donation</h5>
+                        <p class="lead">USD 9.99</p>
+                    </div>
+                </div>
                 <form action="#" id="payment-form" method="post">
                     <input id="api-key" type="hidden" th:value="${stripePublicKey}">
                     <div class="form-group">
@@ -44,7 +51,7 @@
                     <!-- Used to display Element errors. -->
                     <div class="text-danger w-100" id="card-errors" role="alert"></div>
                     <div class="form-group pt-2">
-                        <button class="btn btn-primary btn-block" id="submitButton" type="submit">
+                        <button class="btn btn-primary btn-block stripe-button" id="submitButton" type="submit">
                             Pay With Your Card
                         </button>
                         <div class="small text-muted mt-2">

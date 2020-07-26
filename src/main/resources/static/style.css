@@ -269,3 +269,6 @@ a:hover {
 .contact-submit:hover {
     color: darkorange;
 }
+.stripe-button {
+    background: #00107d;
+}
