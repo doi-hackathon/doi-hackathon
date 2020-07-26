@@ -33,10 +33,10 @@ public class AlbumController {
 
         for(Album album: albums) {
             boolean noPhoto = album.getPhotos().size() == 0;
-            boolean onePhoto = album.getPhotos().size() == 1;
-            boolean enoughForCarousel = album.getPhotos().size() >= 2;
+            boolean somePhotos = (album.getPhotos().size() == 1) || (album.getPhotos().size() == 2);
+            boolean enoughForCarousel = album.getPhotos().size() >= 3;
             model.addAttribute("noPhoto", noPhoto);
-            model.addAttribute("onePhoto", onePhoto);
+            model.addAttribute("somePhotos", somePhotos);
             model.addAttribute("enoughForCarousel", enoughForCarousel);
         }
 
