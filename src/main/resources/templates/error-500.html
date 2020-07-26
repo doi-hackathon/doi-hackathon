@@ -1,19 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Error 500')"></head>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sorry, error!</title>
 	<link href="https://fonts.googleapis.com/css2?family=News+Cycle&display=swap" rel="stylesheet">
 	<style>
-		.msg {
-			font-family: 'News Cycle', sans-serif;
+		body {
+			background: #fff;
+			color: #202122;
+			font: 0.938em/1.6 'Oxygen', sans-serif;
+		}
+
+		h1 {
+			margin-top: 1em;
+			font-size: 1.2em;
+		}
+
+		p {
+			margin: 0.7em 0 1em 0;
+		}
+
+		a {
+			color: #36c;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		em {
+			color: #72777d;
+			font-style: normal;
+		}
+
+		.flex-container {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.flex-item {
+			height: 440px;
+			width: 90%;
+			border: #656565 solid 2px;
+			border-radius: 1rem;
+			box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		a img {
+			border: 0;
+			top: 8px;
+		}
+
+		.container {
+			text-align: center;
+		}
+
+		@media screen and (min-width: 768px) {
+			a img {
+				border: 0;
+				position: absolute;
+				top: 8px;
+				left: 60px;
+			}
+
+			.join-us-button {
+				background-color: white;
+				color: black;
+				border: 2px solid #656565;
+			}
+
+			.join-us-button:hover {
+				background-color: #656565;
+				color: floralwhite;
+			}
+
+			.flex-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.flex-item {
+				height: 240px;
+				width: 600px;
+				border: #656565 solid 2px;
+				position: relative;
+				border-radius: 1rem;
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+
+			.container {
+				width: 46%;
+				right: 50px;
+				position: absolute;
+			}
 		}
 	</style>
 </head>
-<body>
-	<h1 class="msg">Sorry, something went wrong. We are working on it and will be back with you shortly.</h1>
-
-	<a href="/" class="msg">Go to the Main Page</a>
-
+<body class="flex-container">
+<div class="flex-item">
+	<a href="/"><img src="/img/SCAN%20LOGO.jpg"
+					 alt="" width=200px height=200px>
+	</a>
+	<div class="container">
+		<h1>Page not found</h1>
+		<p><em>/500</em></p>
+		<p>Sorry, something went wrong. We are working on it and will be back with you shortly.</p>
+		<div>
+			<a href="/">
+				<button type="button" class="join-us-button btn mb-3 px-5 py-2" style="font-size: 1em">GO TO MAIN PAGE
+				</button>
+			</a>
+		</div>
+	</div>
+</div>
 </body>
 </html>
