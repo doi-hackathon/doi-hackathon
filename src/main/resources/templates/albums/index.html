@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Albums</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-</head>
+<head th:replace="fragments/head :: head('Albums')"></head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/style.css">
+
 <body>
     <nav th:replace="fragments/navbar :: navbar"></nav>
-    <h1 class="d-flex justify-content-center album-heading">Albums</h1>
+    <h1 class="d-flex justify-content-center album-heading mt-3">Albums</h1>
 
     <h3 th:if="${noAlbumsFound}">No albums found!</h3>
 
@@ -60,7 +56,7 @@
     <div th:if="${enoughForCarousel}">
         <!--    Start of Carousel-->
         <div th:each="album : ${albums}">
-            <div id="carouselExampleCaptions" class="carousel slide mx-auto" style="width: 500px; height: 345px;" data-ride="carousel">
+            <div id="carouselExampleCaptions" class="carousel slide mx-auto" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -98,10 +94,11 @@
             </div>
             <br>
             <br>
-            <br>
         </div>
     </div>
-
+    <br>
+    <br>
+    <br>
     <footer id="footer" class="py-3">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
@@ -109,5 +106,6 @@
     </footer>
 
     <section th:replace="fragments/section :: section"></section>
+
 </body>
 </html>
