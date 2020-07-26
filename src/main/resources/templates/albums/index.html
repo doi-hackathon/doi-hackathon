@@ -13,7 +13,7 @@
     <div sec:authorize="isAuthenticated()">
         <div th:if="${#authentication.principal.isAdmin()}">
             <form th:action="${'/albums/create'}" th:method="GET" class="d-flex justify-content-center">
-                <button type="submit" class="album-create btn btn-secondary mb-2 mr-2">Create an Album</button>
+                <button type="submit" class="album-create btn btn-secondary mb-2">Create an Album</button>
             </form>
         </div>
     </div>
@@ -21,8 +21,7 @@
     <div th:if="${noPhoto}">
         <!--    Start of Regular View-->
         <div th:each="album : ${albums}">
-            <a th:href="${'/albums/' + album.id}"><h4 class="card-title d-flex justify-content-center">Album title: <span th:text="${album.title}" /></h4></a>
-            <h6 class="card-title d-flex justify-content-center">Album #<span th:text="${album.id}" /></h6>
+            <a th:href="${'/albums/' + album.id}"><h5 class="card-title d-flex justify-content-center album-subheading">Album title: <span th:text="${album.title}" /></h5></a>
             <h6 class="card-title d-flex justify-content-center"><span th:text="${album.description}" /></h6>
             <div th:each="photo : ${album.photos}" class="d-flex justify-content-center">
                 <a th:href="${'/albums/' + album.id + '/photos/' + photo.id}">
@@ -42,7 +41,7 @@
                         <img th:src="${album.photos[0].link}" class="card-img-top" style="width: 286px; height: 202px;">
                     </a>
                     <div class="card-body">
-                        <p class="card-text"><span th:text="${album.title}" class="d-flex justify-content-center"/></p>
+                        <h5 class="card-text album-subheading"><span th:text="${album.title}" class="d-flex justify-content-center"/></h5>
                     </div>
                 </div>
             </div>
@@ -64,35 +63,34 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active pic">
-                        <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                        <h5 class="d-flex justify-content-center album-subheading" th:text="${album.title}"></h5>
                         <a th:href="${'/albums/' + album.id}">
                             <img th:src="${album.photos[0].link}" class="d-block w-100">
                         </a>
                         <div class="carousel-caption d-none d-md-block">
-                            <p><span th:text="${album.photos[0].description}"/></p>
+                            <p class="album-subheading"><span th:text="${album.photos[0].description}"/></p>
                         </div>
                     </div>
                     <div class="carousel-item pic">
-                        <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                        <h5 class="d-flex justify-content-center album-subheading" th:text="${album.title}"></h5>
                         <a th:href="${'/albums/' + album.id}">
                             <img th:src="${album.photos[1].link}" class="d-block w-100">
                         </a>
                         <div class="carousel-caption d-none d-md-block">
-                            <p><span th:text="${album.photos[1].description}"/></p>
+                            <p class="album-subheading"><span th:text="${album.photos[1].description}"/></p>
                         </div>
                     </div>
                     <div class="carousel-item pic">
-                        <span class="d-flex justify-content-center" th:text="${album.title}"/>
+                        <h5 class="d-flex justify-content-center album-subheading" th:text="${album.title}"></h5>
                         <a th:href="${'/albums/' + album.id}">
                             <img th:src="${album.photos[2].link}" class="d-block w-100">
                         </a>
                         <div class="carousel-caption d-none d-md-block">
-                            <p><span th:text="${album.photos[2].description}"/></p>
+                            <p class="album-subheading"><span th:text="${album.photos[2].description}"/></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
             <br>
         </div>
     </div>
