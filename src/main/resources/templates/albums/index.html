@@ -57,9 +57,9 @@
         <div th:each="album : ${albums}">
             <div th:id="${'carouselExampleCaptions' + album.id}" class="carousel slide mx-auto" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li th:attr="data-target=${'carouselExampleCaptions' + album.id}" data-slide-to="0" class="active"></li>
-                    <li th:attr="data-target=${'carouselExampleCaptions' + album.id}" data-slide-to="1"></li>
-                    <li th:attr="data-target=${'carouselExampleCaptions' + album.id}" data-slide-to="2"></li>
+                    <li th:attr="data-target=${'#carouselExampleCaptions' + album.id}" data-slide-to="0" class="active"></li>
+                    <li th:attr="data-target=${'#carouselExampleCaptions' + album.id}" data-slide-to="1"></li>
+                    <li th:attr="data-target=${'#carouselExampleCaptions' + album.id}" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active pic">
