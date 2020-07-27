@@ -18,14 +18,14 @@
         <div class="col-lg-5 col-md-5">
             <div class="d-flex justify-content-center">
                 <button class="login-signup-button btn btn-lg" style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);" type="button" data-toggle="collapse" data-target="#RSVP" aria-expanded="false" aria-controls="RSVP">
-                    <span class="px-3 py-2">View RSVP'd Events</span>
+                    <span class="px-3 py-2">RSVP'd Events</span>
                 </button>
             </div>
         </div>
         <div class="col-lg-5 col-md-5">
             <div class="d-flex justify-content-center">
                 <button class="login-signup-button btn btn-lg" style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);" type="button" data-toggle="collapse" data-target="#volunteer" aria-expanded="false" aria-controls="volunteer">
-                    <span class="px-3 py-2">View Volunteered Events</span>
+                    <span class="px-3 py-2">Volunteered Events</span>
                 </button>
             </div>
         </div>
@@ -34,9 +34,8 @@
 
 <div class="row justify-content-center">
     <div class="col-lg-5 col-md-5">
-        <div class="collapse container" id="RSVP">
+        <div class="collapse container show" id="RSVP">
             <div class="events-index-card">
-<!--                <div class="d-flex justify-content-center mt-5" style="font-family: Montserrat, sans-serif; font-size: 2em">RSVP</div>-->
                     <div class="my-2" th:each="userEvent_rsvp : ${usersEvents}" th:if="${!userEvent_rsvp.isVolunteer()}">
                     <div class="card card-signin my-5">
                         <div class="card-body text-center">
@@ -55,9 +54,8 @@
             </div>
         </div>
         <div class="col-lg-5 col-md-5">
-        <div class="collapse container" id="volunteer">
+        <div class="collapse container show" id="volunteer">
             <div class="events-index-card">
-<!--                <div class="d-flex justify-content-center mt-5" style="font-family: Montserrat, sans-serif; font-size: 2em">Volunteered</div>-->
                     <div class="my-2" th:each="userEvent_volunteer : ${usersEvents}" th:if="${userEvent_volunteer.isVolunteer()}">
                     <div class="card card-signin my-5">
                         <div class="card-body text-center">
