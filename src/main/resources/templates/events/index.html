@@ -24,9 +24,9 @@
                         <div class="card-text my-3" style="font-size: 1em;" th:text="${event.dateAndTime}"></div><hr>
                         <p class="card-text" th:text="${event.description}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi aperiam aspernatur consectetur, culpa doloribus ex inventore iusto laudantium molestias nesciunt quo, quos reprehenderit soluta temporibus ullam ut vero voluptates.</p>
                     </div>
-                    <a th:href="${event.link}">
-                        <p class="card-text my-3 px-2" th:text="${event.link}"></p>
-                    </a>
+                    <p>
+                        <a th:href="${event.link}"><img src="/img/facebook30x30.png"></a>
+                    </p>
                     <div class="card-footer" style="background-color: white" sec:authorize="isAuthenticated()">
                         <form th:action="${'/events/' + event.id}" th:method="GET">
                             <button class="join-us-button btn">View Event</button>
