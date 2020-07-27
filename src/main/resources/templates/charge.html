@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('scanApp | Charge')"></head>
 <head>
     <title>Charge</title>
     <!--Bootstrap 4 CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="/style.css">-->
     <!--Bootstrap 4 JavaScript-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
     <!--Stripe JavaScript Library-->
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-<nav class="position-sticky sticky-top" th:replace="fragments/navbar :: navbar"></nav>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<!--<nav th:replace="fragments/navbar :: navbar"/>-->
 <div class="position-fixed d-none d-lg-block d-xl-block">
     <img src="img/hand-pic.jpg" alt="" style="width: 100%">
 </div>
 <section class="py-5">
-    <div class="container position-fixed fixed-bottom mb-5">
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-lg-6 col-md-8 col-12 my-auto mx-auto border rounded bg-white mt-5">
+            <div class="col-lg-6 col-md-8 col-12 my-auto mx-auto border rounded bg-white mt-5 text-center">
                 <h1>
                     Thank you for your Donation!
                 </h1>
@@ -64,6 +66,12 @@
         </div>
     </div>
 </section>
+<footer id="footer" class="py-3">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
+    </div>
+</footer>
+<section th:replace="fragments/section :: section"></section>
 <!--custom javascript for handling subscription-->
 <script>
     $(function () {
