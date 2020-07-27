@@ -1,5 +1,5 @@
 body {
-    background-color: floralwhite;
+    background-color: #fffaf0;
     position: relative;
     min-height: 100vh;
 }
@@ -226,7 +226,7 @@ a:hover {
     color: floralwhite;
 }
 
-#events-index-card {
+.events-index-card {
     font-family: 'Montserrat', sans-serif;
 }
   
@@ -306,6 +306,18 @@ a:hover {
     font-family: Montserrat, sans-serif;
 }
 
+#dashboard-buttons {
+    margin-top: 30vh;
+}
+
+#dashboard-welcome-text {
+    margin-top: -240px;
+}
+
+#dashboard-welcome-image {
+    z-index: -1;
+}
+  
 .album-create {
     font-family: 'Montserrat', sans-serif;
 }
