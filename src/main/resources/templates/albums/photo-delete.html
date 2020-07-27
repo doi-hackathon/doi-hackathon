@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="fragments/head :: head('Edit a photo')">
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
+<head th:replace="fragments/head :: head('Delete a photo')"></head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
+
 <body>
-<nav th:replace="fragments/navbar :: navbar" />
+	<nav th:replace="fragments/navbar :: navbar" />
 
-<div class="container">
-	<div sec:authorize="isAuthenticated()">
-		<div th:if="${#authentication.principal.isAdmin()}">
-			<h3>Are you sure you want to delete this photo?</h3>
+	<div class="container">
+		<div sec:authorize="isAuthenticated()">
+			<div th:if="${#authentication.principal.isAdmin()}">
+				<h3 class="album-heading mt-3">Are you sure you want to delete this photo?</h3>
 
-			<form th:action="${'/albums/' + photo.album.id + '/photos/' + photo.id + '/delete'}" th:method="POST">
-				<button type="submit" class="btn btn-danger mb-2">Delete photo</button>
-			</form>
+				<form th:action="${'/albums/' + photo.album.id + '/photos/' + photo.id + '/delete'}" th:method="POST">
+					<button type="submit" class="btn btn-danger mb-2 album-subheading">Delete photo</button>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
-<section th:replace="fragments/section :: section"></section>
+	<section th:replace="fragments/section :: section"></section>
 
 </body>
 </html>

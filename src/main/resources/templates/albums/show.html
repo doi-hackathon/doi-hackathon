@@ -17,15 +17,13 @@
 	<!--	lightbox gallery-->
 	<h4 class="d-flex justify-content-center album-subheading">Album title: <span th:text="${album.title}" class="ml-1 d-flex justify-content-center"/></h4>
 	<p class="d-flex justify-content-center album-subheading"> <span th:text="${album.description}" /></p>
-	<div class="photo-gallery d-flex justify-content-center">
-		<div class="container d-flex justify-content-center">
-			<div class="row photos d-flex justify-content-center">
-				<div th:each="photo : ${album.photos}" class="col-sm-6 col-md-4 col-lg-3 item">
-					<a th:href="${photo.link}" data-lightbox="photos" class="d-flex justify-content-center">
-						<img th:src="${photo.link}" class="img-fluid" style="width: 16rem; height: 12rem;">
-					</a>
-					<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}" class="d-flex justify-content-center album-subheading"/></a>
-				</div>
+	<div class="photo-gallery">
+		<div class="container d-flex flex-wrap justify-content-center">
+			<div th:each="photo : ${album.photos}" class="col-sm-6 col-md-4 col-lg-3 item">
+				<a th:href="${photo.link}" data-lightbox="photos" class="d-flex justify-content-center">
+					<img th:src="${photo.link}" style="width: 16rem; height: 12rem;">
+				</a>
+				<a th:href="${'/albums/' + album.id + '/photos/' + photo.id}"><p th:text="${photo.description}" class="d-flex justify-content-center album-subheading"/></a>
 			</div>
 		</div>
 	</div>
