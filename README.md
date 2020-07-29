@@ -32,4 +32,5 @@ A full-stack web application for an actual non-profit organization, Supporters o
 *	Integration Tests for Events, Albums, and Photos
 
 **Database Design**
+
 ![Database design](https://cdn.filestackcontent.com/YQ4cnqapRPS5vdrzBPXS)
