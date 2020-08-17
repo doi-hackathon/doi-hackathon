@@ -1,4 +1,4 @@
 package com.scan4kids.project.models;
 
-public class Roles {
+public class Role {
 }
