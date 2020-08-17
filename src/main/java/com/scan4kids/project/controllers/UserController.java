@@ -4,7 +4,6 @@ import com.scan4kids.project.daos.EventsRepository;
 import com.scan4kids.project.daos.UsersEventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.User;
-import com.scan4kids.project.models.UsersEvents;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

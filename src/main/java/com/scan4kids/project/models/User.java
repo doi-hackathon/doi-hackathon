@@ -13,68 +13,50 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    String passwordToConfirm;
-
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
-    private boolean isAdmin;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="users_events",
-            joinColumns = {@JoinColumn(name="user_id")},
-            inverseJoinColumns = {@JoinColumn(name="event_id")}
-    )
-    private List<Event> events;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Album> albums;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UsersEvents> userEvents;
 
     public User(){}
 
-    public User(String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
+    public User(String username, String firstName, String lastName, String password, String email) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName
         this.password = password;
-        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
-        this.isAdmin = isAdmin;
-        this.events = events;
-        this.albums = albums;
-        this.userEvents = userEvents;
+
     }
 
     public User(User copy) {
         this.id = copy.id;
         this.username = copy.username;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
         this.password = copy.password;
         this.email = copy.email;
-        this.isAdmin = copy.isAdmin;
-        this.events = copy.events;
-        this.albums = copy.albums;
     }
 
-    public User(long id, String username, String password, String passwordToConfirm, String email, boolean isAdmin, List<Event> events, List<Album> albums, List<UsersEvents> userEvents) {
+    public User(long id, String username, String firstName, String lastName, String password, String email) {
         this.id = id;
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
-        this.passwordToConfirm = passwordToConfirm;
         this.email = email;
-        this.isAdmin = isAdmin;
-        this.events = events;
-        this.albums = albums;
-        this.userEvents = userEvents;
     }
 
     public long getId() {
@@ -93,6 +75,22 @@ public class User {
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -101,51 +99,11 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordToConfirm() {
-        return passwordToConfirm;
-    }
-
-    public void setPasswordToConfirm(String passwordToConfirm) {
-        this.passwordToConfirm = passwordToConfirm;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-    }
-
-    public List<UsersEvents> getUserEvents() {
-        return userEvents;
-    }
-
-    public void setUserEvents(List<UsersEvents> userEvents) {
-        this.userEvents = userEvents;
     }
 }
