@@ -2,7 +2,8 @@ package com.scan4kids.project.models;
 
 import javax.persistence.*;
 import java.util.List;
-
+@Entity
+@Table(name = "grades")
 public class Grade {
 
     @Id
