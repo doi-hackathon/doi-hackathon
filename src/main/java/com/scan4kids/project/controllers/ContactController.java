@@ -1,6 +1,5 @@
 package com.scan4kids.project.controllers;
 
-import com.scan4kids.project.models.Contact;
 import com.scan4kids.project.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

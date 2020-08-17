@@ -3,8 +3,6 @@ package com.scan4kids.project.controllers;
 
 import com.scan4kids.project.daos.AlbumsRepository;
 import com.scan4kids.project.daos.PhotosRepository;
-import com.scan4kids.project.models.Album;
-import com.scan4kids.project.models.Photo;
 import com.scan4kids.project.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
