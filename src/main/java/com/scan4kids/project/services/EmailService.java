@@ -1,6 +1,5 @@
 package com.scan4kids.project.services;
 
-import com.scan4kids.project.models.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;

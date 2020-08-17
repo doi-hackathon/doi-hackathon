@@ -2,7 +2,6 @@ package com.scan4kids.project;
 
 import com.scan4kids.project.daos.AlbumsRepository;
 import com.scan4kids.project.daos.UsersRepository;
-import com.scan4kids.project.models.Album;
 import com.scan4kids.project.models.User;
 import org.junit.Before;
 import org.junit.Test;

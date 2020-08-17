@@ -2,12 +2,7 @@ package com.scan4kids.project.controllers;
 
 import com.scan4kids.project.daos.AlbumsRepository;
 import com.scan4kids.project.daos.PhotosRepository;
-import com.scan4kids.project.daos.UsersRepository;
-import com.scan4kids.project.models.Album;
-import com.scan4kids.project.models.Photo;
-import com.scan4kids.project.models.User;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
