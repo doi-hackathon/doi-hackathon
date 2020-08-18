@@ -1,7 +1,5 @@
 package com.scan4kids.project.controllers;
 
-import com.scan4kids.project.daos.EventsRepository;
-import com.scan4kids.project.daos.UsersEventsRepository;
 import com.scan4kids.project.daos.UsersRepository;
 import com.scan4kids.project.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;

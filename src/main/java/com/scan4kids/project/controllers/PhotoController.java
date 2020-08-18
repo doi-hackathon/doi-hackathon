@@ -1,7 +1,5 @@
 package com.scan4kids.project.controllers;
 
-import com.scan4kids.project.daos.AlbumsRepository;
-import com.scan4kids.project.daos.PhotosRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
