@@ -20,7 +20,6 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-
     public UserController(UsersRepository usersDao, PasswordEncoder passwordEncoder) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
