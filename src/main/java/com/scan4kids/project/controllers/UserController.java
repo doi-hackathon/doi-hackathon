@@ -18,8 +18,6 @@ public class UserController {
 
     private UsersRepository usersDao;
     private PasswordEncoder passwordEncoder;
-    private EventsRepository eventsDao;
-    private UsersEventsRepository usersEventsDao;
 
 
 
@@ -43,9 +41,9 @@ public class UserController {
             validation.rejectValue("username", "user.username", user.getUsername() + " is already in use.");
         }
 
-        if(!user.getPassword().equals(user.getPasswordToConfirm())) {
-            validation.rejectValue("password",user.getPassword(), "Your passwords do not match.");
-        }
+//        if(!user.getPassword().equals(user.getPasswordToConfirm())) {
+//            validation.rejectValue("password",user.getPassword(), "Your passwords do not match.");
+//        }
 
         if(existingEmail != null) {
             validation.rejectValue("email", "user.email", user.getEmail() + " is already in use.");
@@ -58,9 +56,9 @@ public class UserController {
         }
 
         String hash = passwordEncoder.encode(user.getPassword());
-        String hashForConfirm = passwordEncoder.encode(user.getPasswordToConfirm());
+//        String hashForConfirm = passwordEncoder.encode(user.getPasswordToConfirm());
         user.setPassword(hash);
-        user.setPasswordToConfirm(hashForConfirm);
+//        user.setPasswordToConfirm(hashForConfirm);
 
         usersDao.save(user);
         return "redirect:/login";
@@ -70,11 +68,11 @@ public class UserController {
     public String showUserDashboard(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(currentUser.getId());
-        List <UsersEvents> usersEvents = user.getUserEvents();
+//        List <UsersEvents> usersEvents = user.getUserEvents();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentEmail", currentUser);
-        model.addAttribute("usersEvents", usersEvents);
-        model.addAttribute("noEventsFound", usersEvents.size() == 0);
+//        model.addAttribute("usersEvents", usersEvents);
+//        model.addAttribute("noEventsFound", usersEvents.size() == 0);
         return "users/dashboard";
     }
 }
