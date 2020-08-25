@@ -2,11 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('DOI-Hackathon')">
 </head>
-<body>
+<body id="landing-body">
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<h1>WELCOME TO THE DALLAS OFFICE OF INNOVATION 2020 HACKATHON</h1>
 
+<div class="container">
+    <div class="welcome-card row align-items-center">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin">
+                <div class="card-img-left d-none d-md-flex">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title text-center">Welcome to the 2020 DOI Hackathon!</h3>
 
+                    <h5 class="text-center">Contestants and Judges please sign in with your pre-assigned login credentials.</h5>
+
+                    <a href="/login" class="btn rounded-pill btn-lg btn-block mx-auto mt-4" style="background-color: #E80085; color: white; width: 50%">Login</a>
+
+                    <hr class="my-5">
+
+                    <h3 class="card-title text-center">Sponsors</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,7 +1,9 @@
 body {
-    background-color: #fffaf0;
-    position: relative;
-    min-height: 100vh;
+    /*background-color: #fffaf0;*/
+    /*position: relative;*/
+    /*min-height: 100vh;*/
+    background: rgb(232,0,133);
+    background: linear-gradient(90deg, rgba(232,0,133,1) 39%, rgba(128,62,151,1) 100%);
 }
 
 .carousel {
@@ -35,13 +37,13 @@ body {
     font-size: 1.5rem;
 }
 
-.card-signin .card-img-left {
-    margin: auto;
-    width: 42vh;
-    height: 42vh;
-    background: scroll center url('https://iili.io/dqmhDQ.jpg');
-    background-size: cover;
-}
+/*.card-signin .card-img-left {*/
+/*    margin: auto;*/
+/*    width: 42vh;*/
+/*    height: 42vh;*/
+/*    background: scroll center url('https://iili.io/dqmhDQ.jpg');*/
+/*    background-size: cover;*/
+/*}*/
 
 .card-signin .card-body {
     padding: 2rem;
@@ -121,29 +123,6 @@ body {
     color: #777;
 }
 
-.btn-google {
-    color: white;
-    background-color: #ea4335;
-}
-
-.btn-facebook {
-    color: white;
-    background-color: #3b5998;
-}
-
-.map-container-section {
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
-}
-.map-container-section iframe {
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-}
 
 .about-us-headers {
     font-family: 'Abril Fatface', cursive;
@@ -171,23 +150,6 @@ a:hover {
     bottom: 0;
 }
 
-#events-jumbotron {
-    background-image: url("/img/group-of-people-enjoying-music-concert-325521.jpg");
-    background-size: cover;
-}
-
-#events-header {
-    color: floralwhite;
-    text-align: center;
-    font-family: 'Oxygen', sans-serif;
-    margin-top: -60px;
-}
-
-#events-paragraph {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
 .join-us-button {
     background-color: white;
     color: black;
@@ -199,10 +161,6 @@ a:hover {
     color: floralwhite;
 }
 
-.events-index-card {
-    font-family: 'Montserrat', sans-serif;
-}
-  
 #navigation {
     background-color: white;
 }
@@ -211,13 +169,6 @@ a:hover {
     border-color: white;
 }
 
-#create-event-header {
-    font-family: 'Oxygen', sans-serif;
-}
-
-#edit-event-header {
-    font-family: 'Oxygen', sans-serif;
-}
 
 .login-signup-button {
     background-color: white;
@@ -256,6 +207,10 @@ a:hover {
 }
 
 .login-signup-form {
+    height: calc(100vh - 127px);
+}
+
+.welcome-card {
     height: calc(100vh - 127px);
 }
 
