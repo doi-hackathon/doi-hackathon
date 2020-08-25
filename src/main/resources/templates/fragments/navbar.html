@@ -4,30 +4,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 </head>
 <nav th:fragment="navbar" id="navigation" class="navbar sticky-top navbar-expand-lg navbar-dark">
-    <a href="/"><img src="/img/doi-logo.png" class="navbar-brand m-0 p-0" id="navbar-brand" style="width: 150px; height: 55px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <a href="/"><img src="/img/doi-logo.png" class="navbar-brand m-0 p-0 ml-3" id="navbar-brand"
+                     style="width: 150px; height: 55px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-1 mr-3  mt-lg-0">
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="/about">ABOUT US</a>
-            </li>
-            <th:block sec:authorize="isAuthenticated()">
-                <a id="user-dashboard-link" class="mav-item nav-link" href="/dashboard">USER DASHBOARD</a>
-            </th:block>
-        </ul>
-            <th:block sec:authorize="isAnonymous()">
-                <form th:action="@{/login}" th:method="get" class="form-inline my-lg-0">
-                    <button id="login-button" class="btn btn-outline-light">Login</button>
-                </form>
-            </th:block>
-            <th:block sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-light">Logout</button>
-                </form>
-            </th:block>
-        </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+<!--                <ul class="navbar-nav mr-auto mt-1 mr-3  mt-lg-0">-->
+<!--                    <li class="nav-item mr-3">-->
+<!--                        <a class="nav-link" href="/about">ABOUT US</a>-->
+<!--                    </li>-->
+<!--                    <th:block sec:authorize="isAuthenticated()">-->
+<!--                        <a id="user-dashboard-link" class="mav-item nav-link" href="/dashboard">USER DASHBOARD</a>-->
+<!--                    </th:block>-->
+<!--                </ul>-->
+        <th:block sec:authorize="isAnonymous()">
+<!--            <form th:action="@{/login}" th:method="get" class="form-inline my-lg-0">-->
+<!--                <button id="login-button" class="btn rounded-pill" style="background-color: #E80085; color: white">Login</button>-->
+<!--            </form>-->
+            <a href="/login" class="btn rounded-pill ml-2 mr-3" style="background-color: #E80085; color: white">Login</a>
+
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" th:method="post" class="form-inline my-2 my-lg-0">
+                <button class="btn rounded-pill" style="background-color: #E80085; color: white">Logout</button>
+            </form>
+        </th:block>
+
+
+        <a href="/about" class="btn rounded-pill ml-2 mr-3" style="background-color: #E80085; color: white">About Us</a>
+
+
     </div>
 </nav>
 </html>
