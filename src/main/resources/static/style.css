@@ -226,4 +226,9 @@ a:hover {
 #dashboard-welcome-image {
     z-index: -1;
 }
+
+.sponsors {
+    width: 50%;
+    margin: 0 auto;
+}
   
