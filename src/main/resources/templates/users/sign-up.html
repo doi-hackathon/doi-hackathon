@@ -50,11 +50,11 @@
 							<input type="password" id="password" class="form-control" th:classappend="validate" th:field="*{password}" required/>
 							<label for="password">Password</label>
 						</div>
-						<div class="form-label-group">
-							<input id="passwordToConfirm" name="passwordToConfirm" type="password" class="form-control" required/>
-							<label for="passwordToConfirm">Re-Enter Password</label>
-							<small class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('password')}" th:classappend="validate" th:errors="*{password}"></small>
-						</div>
+<!--						<div class="form-label-group">-->
+<!--							<input id="passwordToConfirm" name="passwordToConfirm" type="password" class="form-control" required/>-->
+<!--							<label for="passwordToConfirm">Re-Enter Password</label>-->
+<!--							<small class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('password')}" th:classappend="validate" th:errors="*{password}"></small>-->
+<!--						</div>-->
 						<button class="login-signup-button btn btn-lg btn-block text-uppercase" type="submit">Sign Up</button>
 						<a class="d-block text-center mt-2 small" href="login">Login</a>
 					</form>
