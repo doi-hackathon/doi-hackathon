@@ -40,13 +40,14 @@ public class User {
 
     public User(){}
 
-    public User(String username, String firstName, String lastName, String password, String email, Team team) {
+    public User(String username, String firstName, String lastName, String password, String email, Team team, Role role) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
         this.team = team;
+        this.role = role;
 
     }
 
@@ -58,9 +59,10 @@ public class User {
         this.password = copy.password;
         this.email = copy.email;
         this.team = copy.team;
+        this.role = copy.role;
     }
 
-    public User(long id, String username, String firstName, String lastName, String password, String email, Team team) {
+    public User(long id, String username, String firstName, String lastName, String password, String email, Team team, Role role) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -68,6 +70,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.team = team;
+        this.role = role;
     }
 
     public long getId() {
@@ -124,5 +127,13 @@ public class User {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

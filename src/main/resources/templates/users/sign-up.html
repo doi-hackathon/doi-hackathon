@@ -21,6 +21,16 @@
 							<small class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
 						</div>
 						<div class="form-label-group">
+							<input type="text" id="firstName" name="firstName" class="form-control" th:classappend="validate" th:field="*{firstName}" required autofocus>
+							<label for="firstName">First Name</label>
+							<small class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></small>
+						</div>
+						<div class="form-label-group">
+							<input type="text" id="lastName" name="lastName" class="form-control" th:classappend="validate" th:field="*{lastName}" required autofocus>
+							<label for="lastName">Last Name</label>
+							<small class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></small>
+						</div>
+						<div class="form-label-group">
 							<input type="email" id="email" class="form-control" th:classappend="validate" th:field="*{email}" required>
 							<label for="email">Email address</label>
 							<small id="emailHelp" class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
