@@ -152,7 +152,7 @@ a:hover {
 
 .join-us-button {
     background-color: white;
-    color: black;
+    color: #803e97;
     border: 2px solid #656565;
 }
 
@@ -172,8 +172,8 @@ a:hover {
 
 .login-signup-button {
     background-color: white;
-    color: black;
-    border: 1px solid #00107d;
+    color: #656565;
+    border: 1px solid #777;
     transition-duration: 0.4s;
 }
 
