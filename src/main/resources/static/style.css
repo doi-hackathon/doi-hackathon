@@ -228,7 +228,14 @@ a:hover {
 }
 
 .sponsors {
-    width: 50%;
+    width: 120px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.sponsors-square {
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
 }
   
