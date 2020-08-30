@@ -1,86 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('User Dashboard')">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=Oxygen&display=swap" rel="stylesheet">
+<head th:replace="fragments/head :: head('DOI-Hackathon')">
 </head>
-<body>
-<div>
+<body id="landing-body">
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div id="dashboard-welcome-image" class="d-flex justify-content-center">
-    <img src="img/dashboard-2.png" class="img  d-none d-lg-block" alt="home-pic" style="width: 100%">
-</div>
-<div>
-    <h1 id="dashboard-welcome-text" class="d-flex justify-content-center" style="font-family: Montserrat, sans-serif; font-style: italic; font-size: 3em">Welcome, <span class="pl-2" th:text="${currentUser.username}"></span></h1>
-</div>
-
-<div id="dashboard-buttons">
-    <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-5">
-            <div class="d-flex justify-content-center">
-                <button class="login-signup-button btn btn-lg" style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);" type="button" data-toggle="collapse" data-target="#RSVP" aria-expanded="false" aria-controls="RSVP">
-                    <span class="px-3 py-2">RSVP'd Events</span>
-                </button>
-            </div>
-        </div>
-        <div class="col-lg-5 col-md-5">
-            <div class="d-flex justify-content-center">
-                <button class="login-signup-button btn btn-lg" style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);" type="button" data-toggle="collapse" data-target="#volunteer" aria-expanded="false" aria-controls="volunteer">
-                    <span class="px-3 py-2">Volunteered Events</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row justify-content-center">
-    <div class="col-lg-5 col-md-5">
-        <div class="collapse container show" id="RSVP">
-            <div class="events-index-card">
-                    <div class="my-2" th:each="userEvent_rsvp : ${usersEvents}" th:if="${!userEvent_rsvp.isVolunteer()}">
-                    <div class="card card-signin my-5">
-                        <div class="card-body text-center">
-                                <div class="card-title mb-2" style="font-family: Oxygen, sans-serif" th:text="${userEvent_rsvp.getEvent().title}"></div>
-                                <div class="card-subtitle mt-3" th:text="${userEvent_rsvp.getEvent().dateAndTime}"></div><hr>
-                                <div class="card-subtitle mt-3" th:text="${userEvent_rsvp.getEvent().location}"></div><hr>
-                                <form id="remove-rsvp-form" class="mt-4" th:action="${'/events/' + userEvent_rsvp.getId() + '/deleteUserEvent'}" th:method="POST">
-                                    <button form="view-event" class="join-us-button btn mr-3">View Event Details</button>
-                                    <button form="remove-rsvp-form" class="join-us-button btn">Cancel RSVP</button>
-                                </form>
-                                <form id="view-event" th:action="${'/events/' + userEvent_rsvp.getEvent().getId()}" th:method="GET"></form>
-                            </div>
-                        </div>
-                    </div>
+<br>
+<br>
+<div class="container">
+    <div class="welcome-card row align-items-center">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin">
+                <div class="card-img-left d-none d-md-flex">
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-5 col-md-5">
-        <div class="collapse container show" id="volunteer">
-            <div class="events-index-card">
-                    <div class="my-2" th:each="userEvent_volunteer : ${usersEvents}" th:if="${userEvent_volunteer.isVolunteer()}">
-                    <div class="card card-signin my-5">
-                        <div class="card-body text-center">
-                                <div class="card-title mb-2" style="font-family: Oxygen, sans-serif" th:text="${userEvent_volunteer.getEvent().getTitle()}"></div>
-                                <div class="card-subtitle mt-3" th:text="${userEvent_volunteer.getEvent().dateAndTime}"></div><hr>
-                                <div class="card-subtitle mt-3" th:text="${userEvent_volunteer.getEvent().location}"></div><hr>
-                                <form id='remove-volunteer-form' class="mt-4" th:action="${'/events/' + userEvent_volunteer.getId() + '/deleteUserEvent'}" th:method="POST">
-                                    <button form="view-event2" class="join-us-button btn mr-3">View Event Details</button>
-                                    <button form="remove-volunteer-form" class="join-us-button btn">Cancel Volunteer</button>
-                                </form>
-                                <form id="view-event2" th:action="${'/events/' + userEvent_volunteer.getEvent().getId()}" th:method="GET"></form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <h1 class="text-center">Challenge</h1>
+                    <br>
+                    <h5 class="text-center">Please read the following instructions for the challenge and review all datasets before uploading your submission.</h5>
+                    <br>
+                    //Create Submission Button
+<!--                    <a href="/login" class="btn rounded-pill btn-lg btn-block mx-auto mt-4" style="background-color: #E80085; color: white; width: 50%">Login</a>-->
+
+                    <hr class="my-5">
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<br><br>
-<section th:replace="fragments/section :: section"></section>
-<footer id="footer" class="py-3">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; S.C.A.N. 2020</p>
-    </div>
-</footer>
+
 </body>
 </html>
