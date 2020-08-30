@@ -35,11 +35,6 @@
 							<label for="email">Email address</label>
 							<small id="emailHelp" class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
 						</div>
-						<div class="form-label-group">
-							<input type="text" id="role" class="form-control" th:classappend="validate" th:field="*{role}" required>
-							<label for="role">Role</label>
-							<small id="roleHelp" class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></small>
-						</div>
 						<hr>
 						<div class="form-label-group">
 							<input type="password" id="password" class="form-control" th:classappend="validate" th:field="*{password}" required/>

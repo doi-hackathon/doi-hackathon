@@ -28,21 +28,18 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
-
-
+    @Column
+    private boolean isJudge;
 
     public User(){}
 
-    public User(String username, String firstName, String lastName, String password, String email, Role role) {
+    public User(String username, String firstName, String lastName, String password, String email, boolean isJudge) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.isJudge = isJudge;
 
     }
 
@@ -53,17 +50,17 @@ public class User {
         this.lastName = copy.lastName;
         this.password = copy.password;
         this.email = copy.email;
-        this.role = copy.role;
+        this.isJudge = copy.isJudge;
     }
 
-    public User(long id, String username, String firstName, String lastName, String password, String email, Role role) {
+    public User(long id, String username, String firstName, String lastName, String password, String email, boolean isJudge) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.isJudge = isJudge;
     }
 
     public long getId() {
@@ -114,11 +111,7 @@ public class User {
         this.email = email;
     }
 
-    public Role getRole() {
-        return role;
-    }
+    public boolean isJudge() { return isJudge; }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    public void setJudge(boolean judge) {isJudge = judge; }
 }

@@ -11,7 +11,25 @@ public class Score {
     private long id;
 
     @Column
-    private int score;
+    private int dataManagement;
+
+    @Column
+    private int creativity;
+
+    @Column
+    private int analysis;
+
+    @Column
+    private int visualization;
+
+    @Column
+    private int coding;
+
+    @Column
+    private int professionalism;
+
+    @Column
+    private int totalScore;
 
     @OneToOne
     private User judge;
@@ -26,16 +44,28 @@ public class Score {
     public Score() {
     }
 
-    public Score(long id, int score, User judge, Submission submission, String comment) {
+    public Score(long id, int dataManagement, int creativity, int analysis, int visualization, int coding, int professionalism, int totalScore, User judge, Submission submission, String comment) {
         this.id = id;
-        this.score = score;
+        this.dataManagement = dataManagement;
+        this.creativity = creativity;
+        this.analysis = analysis;
+        this.visualization = visualization;
+        this.coding = coding;
+        this.professionalism = professionalism;
+        this.totalScore = totalScore;
         this.judge = judge;
         this.submission = submission;
         this.comment = comment;
     }
 
-    public Score(int score, User judge, Submission submission, String comment) {
-        this.score = score;
+    public Score(int dataManagement, int creativity, int analysis, int visualization, int coding, int professionalism, int totalScore, User judge, Submission submission, String comment) {
+        this.dataManagement = dataManagement;
+        this.creativity = creativity;
+        this.analysis = analysis;
+        this.visualization = visualization;
+        this.coding = coding;
+        this.professionalism = professionalism;
+        this.totalScore = totalScore;
         this.judge = judge;
         this.submission = submission;
         this.comment = comment;
@@ -49,12 +79,60 @@ public class Score {
         this.id = id;
     }
 
-    public int getScore() {
-        return score;
+    public int getDataManagement() {
+        return dataManagement;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setDataManagement(int dataManagement) {
+        this.dataManagement = dataManagement;
+    }
+
+    public int getCreativity() {
+        return creativity;
+    }
+
+    public void setCreativity(int creativity) {
+        this.creativity = creativity;
+    }
+
+    public int getAnalysis() {
+        return analysis;
+    }
+
+    public void setAnalysis(int analysis) {
+        this.analysis = analysis;
+    }
+
+    public int getVisualization() {
+        return visualization;
+    }
+
+    public void setVisualization(int visualization) {
+        this.visualization = visualization;
+    }
+
+    public int getCoding() {
+        return coding;
+    }
+
+    public void setCoding(int coding) {
+        this.coding = coding;
+    }
+
+    public int getProfessionalism() {
+        return professionalism;
+    }
+
+    public void setProfessionalism(int professionalism) {
+        this.professionalism = professionalism;
+    }
+
+    public int getTotalScore() {
+        return dataManagement + creativity + analysis + visualization + coding + professionalism;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     public User getJudge() {

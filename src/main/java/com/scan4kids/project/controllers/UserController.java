@@ -69,7 +69,6 @@ public class UserController {
         User user = usersDao.getOne(currentUser.getId());
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("currentUserEmail", currentUser.getEmail());
-        model.addAttribute("currentUserRole", currentUser.getRole());
         return "users/dashboard";
     }
 }
