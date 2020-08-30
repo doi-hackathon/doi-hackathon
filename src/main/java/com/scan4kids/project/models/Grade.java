@@ -10,23 +10,18 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "grade")
-    private List<Team> teams;
-
     @Column
     private String name;
 
     public Grade() {
     }
 
-    public Grade(long id, List<Team> teams, String name) {
+    public Grade(long id, String name) {
         this.id = id;
-        this.teams = teams;
         this.name = name;
     }
 
-    public Grade(List<Team> teams, String name) {
-        this.teams = teams;
+    public Grade(String name) {
         this.name = name;
     }
 
@@ -36,14 +31,6 @@ public class Grade {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
     }
 
     public String getName() {
