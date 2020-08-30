@@ -14,12 +14,18 @@
                 </div>
                 <div class="card-body">
                    <h1 class="d-flex justify-content-center">Welcome, <span class="ml-2" th:text="${currentUser.firstName + ' ' + currentUser.lastName}"></span></h1>
-<!--                    //Create Submission Button-->
-<!--                    <a href="/login" class="btn rounded-pill btn-lg btn-block mx-auto mt-4" style="background-color: #E80085; color: white; width: 50%">Login</a>-->
+
                     <hr class="my-5">
                     <h1 class="text-center">Challenge</h1>
                     <br>
                     <h5 class="text-center">Please read the following instructions for the challenge and review all datasets before uploading your submission.</h5>
+
+                    <form action="/fileupload" method="POST" enctype="multipart/form-data">
+                        <input class="mt-2" id="file" name="file" type="file" />
+                        <br>
+                        <input class="mt-2" type="submit" value="upload" />
+                    </form>
+
                     <br>
                 </div>
             </div>
