@@ -29,10 +29,6 @@ public class User {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
-
-    @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
@@ -40,13 +36,12 @@ public class User {
 
     public User(){}
 
-    public User(String username, String firstName, String lastName, String password, String email, Team team, Role role) {
+    public User(String username, String firstName, String lastName, String password, String email, Role role) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.team = team;
         this.role = role;
 
     }
@@ -58,18 +53,16 @@ public class User {
         this.lastName = copy.lastName;
         this.password = copy.password;
         this.email = copy.email;
-        this.team = copy.team;
         this.role = copy.role;
     }
 
-    public User(long id, String username, String firstName, String lastName, String password, String email, Team team, Role role) {
+    public User(long id, String username, String firstName, String lastName, String password, String email, Role role) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.team = team;
         this.role = role;
     }
 
@@ -119,14 +112,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 
     public Role getRole() {
