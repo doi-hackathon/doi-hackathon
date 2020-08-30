@@ -42,7 +42,7 @@
 						</div>
 						<div class="form-label-group">
 							<input type="text" id="role" class="form-control" th:classappend="validate" th:field="*{role}" required>
-							<label for="role">Email address</label>
+							<label for="role">Role</label>
 							<small id="roleHelp" class="form-text text-center" style="color: #ff7669" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></small>
 						</div>
 						<hr>
