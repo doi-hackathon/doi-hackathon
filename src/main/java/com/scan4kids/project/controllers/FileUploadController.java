@@ -1,45 +1,88 @@
 package com.scan4kids.project.controllers;
 
+
+import com.scan4kids.project.daos.UsersRepository;
+import com.scan4kids.project.exception.RecordNotFoundException;
+import com.scan4kids.project.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.*;
+import java.net.URI;
+import java.util.concurrent.Callable;
 
-@Controller
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+
+@RestController
+@RequestMapping(value = "/users/{id}/submission")
+@PropertySource("classpath:application.properties")
 public class FileUploadController {
 
-    @Value("${file-upload-path}")
-    private String uploadPath;
+    @Autowired
+    private UsersRepository repository;
 
-    @GetMapping("/fileupload")
-    public String showUploadFileForm() {
-        return "redirect:/dashboard";
+    @Value("${file-upload-path}")
+    private File uploadDirRoot;
+
+    @Autowired
+    FileUploadController(@Value("${image.upload.dir}") String uploadDir,
+                            UsersRepository repository) {
+        this.uploadDirRoot = new File(uploadDir);
+        this.repository = repository;
     }
 
-    @PostMapping("/fileupload")
-    public String saveFile(
-            @RequestParam(name = "file") MultipartFile uploadedFile,
-            Model model
-    ) {
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile);
-            model.addAttribute("message", "File successfully uploaded!");
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("message", "Oops! Something went wrong! " + e);
-        }
-        return "redirect:/dashboard";
+    @GetMapping
+    ResponseEntity<Resource> read(@PathVariable Long id)
+    {
+        return this.repository.findById(id)
+                .map(user->
+                {
+                    File file = fileFor(user);
+                    Resource fileSystemResource = new FileSystemResource(file);
+                    return ResponseEntity.ok()
+                            .contentType(MediaType.APPLICATION_PDF)
+                            .body(fileSystemResource);
+                })
+                .orElseThrow(() -> new RecordNotFoundException("Image for available"));
+    }
+
+    @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT },
+            consumes = { "multipart/form-data" })
+    Callable<ResponseEntity<?>> write(@PathVariable Long id,
+                                      @RequestParam("file") MultipartFile file) throws Exception
+    {
+        return () -> this.repository.findById(id)
+                .map(user ->
+                {
+                    File fileForUser = fileFor(user);
+
+                    try (InputStream in = file.getInputStream();
+                         OutputStream out = new FileOutputStream(fileForUser))
+                    {
+                        FileCopyUtils.copy(in, out);
+                    }
+                    catch (IOException ex)
+                    {
+                        throw new RuntimeException(ex);
+                    }
+
+                    URI location = fromCurrentRequest().buildAndExpand(id).toUri();
+
+                    return ResponseEntity.created(location).build();
+                })
+                .orElseThrow(() -> new RecordNotFoundException("Employee id is not present in database"));
+    }
+
+    private File fileFor(User e) {
+        return new File(this.uploadDirRoot, Long.toString(e.getId()));
     }
 }
 
