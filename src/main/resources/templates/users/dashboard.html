@@ -20,7 +20,8 @@
                     <br>
                     <h5 class="text-center">Please read the following instructions for the challenge and review all datasets before uploading your submission.</h5>
 
-                    <form action="/fileupload" method="POST" enctype="multipart/form-data">
+                    <form th:action="@{/fileupload}" th:method="post" enctype="multipart/form-data">
+                        <label for="file">Upload a file!</label>
                         <input class="mt-2" id="file" name="file" type="file" />
                         <br>
                         <input class="mt-2" type="submit" value="upload" />
@@ -32,6 +33,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
