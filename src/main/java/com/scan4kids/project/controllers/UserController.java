@@ -71,4 +71,14 @@ public class UserController {
         model.addAttribute("currentUserEmail", currentUser.getEmail());
         return "users/dashboard";
     }
+
+    @GetMapping("/judge-dashboard")
+    public String showJudgeDashboard(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(currentUser.getId());
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("currentUserEmail", currentUser.getEmail());
+        return "users/judge-dashboard";
+    }
+
 }
