@@ -19,6 +19,7 @@ public class UserService {
     public void importUsersCSV(){
         List<String> lines = null;
         User importUser = null;
+
         try {
             lines = Files.readAllLines(Paths.get("data", "sample-users-to-import.csv"));
 
@@ -26,7 +27,8 @@ public class UserService {
                 System.out.println("line = " + line);
                 //TODO: Now that you can read a file, separate the values by commas and build a new User object with those pieces and save it into the DB.
 //                importUser = new User("fieldX","fieldY",...);
-                //TODO: Consider hashing the passwords, I believe the best approach is to generate random passwords for them and let me change it in their profile page
+                //TODO: Consider hashing the passwords, I believe the best approach is to generate random passwords for them and let me change it in their profile page, here's a suggestion:
+                // importUser.setPassword(firstName+lastName+"2020");
 //                usersRepository.save(importUser);
 
 
