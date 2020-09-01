@@ -143,8 +143,7 @@ a:hover {
 }
 
 #footer {
-    background-color: #00107d;
-    color: floralwhite;
+    background-color: white;
     position: fixed;
     width: 100vw;
     bottom: 0;
@@ -237,5 +236,11 @@ a:hover {
     width: 100px;
     height: 100px;
     margin: 0 auto;
+}
+
+#codeup-logo {
+    width: 90px;
+    height: 40px;
+    padding-bottom: 8px;
 }
   
