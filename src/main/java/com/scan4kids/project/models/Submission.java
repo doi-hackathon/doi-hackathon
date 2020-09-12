@@ -1,5 +1,7 @@
 package com.scan4kids.project.models;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,7 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Value("${file-upload-path}")
     private String submission_file;
 
     public Submission() {

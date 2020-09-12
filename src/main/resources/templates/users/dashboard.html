@@ -35,7 +35,8 @@
                     <hr class="my-5">
                     <h3 class="card-title text-center">Upload Your Submission</h3>
 
-                    <form action="/fileupload" method="POST" enctype="multipart/form-data">
+                    <form th:action="@{/users/1/submission}" th:method="post" enctype="multipart/form-data">
+                        <label for="file">Upload a file!</label>
                         <input class="mt-2" id="file" name="file" type="file" />
                         <br>
                         <input class="mt-2" type="submit" value="upload" />
@@ -47,6 +48,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
